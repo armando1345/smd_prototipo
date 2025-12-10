@@ -1,6 +1,61 @@
 // Inicializar iconos
 lucide.createIcons();
 
+// Categorías permitidas y normalización
+const ALLOWED_CATEGORIES = {
+    'vaticano': 'Vaticano',
+    'iglesia en el mundo': 'Iglesia en el Mundo',
+    'mundo': 'Iglesia en el Mundo',
+    'tecnologia y fe': 'Iglesia en el Mundo',
+    'reportajes': 'Iglesia en el Mundo',
+    'cultura': 'Iglesia en el Mundo',
+    'solidaridad': 'Iglesia en el Mundo',
+    'actualidad': 'Iglesia en el Mundo',
+    'jovenes': 'Iglesia en el Mundo',
+    'smd radio': 'Iglesia en el Mundo',
+    'iglesia en el salvador': 'Iglesia en el Salvador',
+    'iglesia en el el salvador': 'Iglesia en el Salvador',
+    'liturgia': 'Liturgia',
+    'siervas de la misericordia de dios': 'Siervas de la Misericordia de Dios',
+    'opinion': 'Opinión'
+};
+
+function normalizeCategory(value = '') {
+    const normalized = value.trim().toLowerCase();
+    if (ALLOWED_CATEGORIES[normalized]) return ALLOWED_CATEGORIES[normalized];
+    return '';
+}
+
+function applyAllowedCategories() {
+    const categoryPills = document.querySelectorAll('.pill');
+    categoryPills.forEach((pill) => {
+        const raw = pill.textContent || pill.dataset.category || '';
+        const cleaned = normalizeCategory(raw);
+        if (cleaned) {
+            pill.textContent = cleaned;
+        } else {
+            pill.classList.add('pill--hidden');
+        }
+    });
+
+    const articleCards = document.querySelectorAll('[data-article]');
+    articleCards.forEach((card) => {
+        const dataCat = card.dataset.category || '';
+        const pill = card.querySelector('.pill');
+        const fallbackText = pill ? pill.textContent : '';
+        const cleaned = normalizeCategory(dataCat || fallbackText);
+        card.dataset.category = cleaned;
+        if (pill) {
+            if (cleaned) {
+                pill.textContent = cleaned;
+                pill.classList.remove('pill--hidden');
+            } else {
+                pill.classList.add('pill--hidden');
+            }
+        }
+    });
+}
+
 // Menu movil
 const mobileMenuBtn = document.getElementById('mobile-menu-btn');
 const closeMenuBtn = document.getElementById('close-menu-btn');
@@ -64,7 +119,7 @@ function initRevealAnimations() {
 // Imagenes con blur-up ligero
 function initImagePlaceholders() {
     const fallbackSrc = 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=800&auto=format&fit=crop';
-    const images = document.querySelectorAll('.hero__media img, .news-card__media img');
+    const images = document.querySelectorAll('.feature__media img, .news-card__media img');
     images.forEach((img) => {
         img.loading = 'lazy';
         img.decoding = 'async';
@@ -92,6 +147,54 @@ function initImagePlaceholders() {
 
 initRevealAnimations();
 initImagePlaceholders();
+applyAllowedCategories();
+initHeroStickyButton();
+
+// Boton sticky del hero que desaparece al llegar al destacado
+function initHeroStickyButton() {
+    const button = document.getElementById('hero-sticky-btn');
+    const buttonWrap = document.getElementById('hero-sticky-wrap');
+    const hero = document.querySelector('.hero');
+    const target = document.querySelector('.feature__card');
+
+    if (!button || !buttonWrap || !hero || !target) return;
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let heroVisible = true;
+    let targetVisible = false;
+
+    const updateState = () => {
+        const shouldHide = targetVisible || !heroVisible;
+        button.classList.toggle('is-hidden', shouldHide);
+        buttonWrap.classList.toggle('is-hidden', shouldHide);
+    };
+
+    const heroObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            heroVisible = entry.isIntersecting;
+            updateState();
+        });
+    }, { threshold: 0.1 });
+
+    const targetObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            targetVisible = entry.isIntersecting;
+            updateState();
+        });
+    }, { threshold: 0.25 });
+
+    heroObserver.observe(hero);
+    targetObserver.observe(target);
+
+    button.addEventListener('click', () => {
+        const behavior = prefersReducedMotion ? 'auto' : 'smooth';
+        const header = document.getElementById('main-header');
+        const offset = header ? header.offsetHeight + 16 : 16; /* Offset para evitar que el header tape el destacado */
+        const targetTop = target.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top: Math.max(targetTop, 0), behavior });
+        button.classList.add('is-hidden');
+    });
+}
 
 // Menu desplegable de secciones
 const sectionsDropdown = document.getElementById('sections-dropdown');
