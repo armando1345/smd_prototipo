@@ -1,235 +1,380 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Sí Mi Dios — Inicio</title>
-  <meta name="color-scheme" content="light" />
-  <link rel="stylesheet" href="styles.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMD | Noticias de la Iglesia Catolica</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
-  <a href="#" class="smd-fab" aria-label="Acceso rápido SMD">SMD</a>
-
-  <header>
-    <div class="container brandbar">
-      <a href="#" aria-label="Ir al inicio">
-        <img class="logo" src="https://res.cloudinary.com/dul66qlpq/image/upload/v1762346821/Logo_smd_dj2ldo.svg" alt="Sí Mi Dios — logo" />
-      </a>
-      <form class="search" role="search" aria-label="Buscar" onsubmit="event.preventDefault()">
-        <label class="sr-only" for="q">Buscar</label>
-        <input id="q" type="search" placeholder="Buscar noticias, temas, autores…" />
-        <span class="icon" aria-hidden="true">⌕</span>
-      </form>
-    </div>
-  </header>
-
-  <main>
-    <!-- Titulares / Mosaico -->
-    <section class="container section" aria-label="Titulares">
-      <div class="mosaic">
-        <article class="card hero stretched">
-          <div class="media" role="img" aria-label="Imagen de portada"></div>
-          <div class="content">
-            <span class="pill pill--blue600">Últimas</span>
-            <h3 class="title"><a class="stretched-link" href="#">El Papa invita a rezar por la paz y propone un ayuno mundial el próximo viernes</a></h3>
-            <p class="lead">El mensaje dominical convocó a la Iglesia universal a unir fuerzas por la reconciliación.</p>
-            <div class="meta"><span>hace 2 h</span><span>•</span><span>Guardar</span></div>
-          </div>
-        </article>
-
-        <div class="stack">
-          <article class="card stretched">
-            <div class="media"></div>
-            <div class="content">
-              <span class="pill pill--blue500">Iglesia en El Salvador</span>
-              <h3 class="title title--md"><a class="stretched-link" href="#">Arquidiócesis de San Salvador presenta plan de formación para catequistas 2025</a></h3>
-              <p class="lead">El programa prioriza comunidades rurales y procesos de acompañamiento familiar.</p>
-              <div class="meta"><span>hace 3 h</span><span>•</span><span>Guardar</span></div>
-            </div>
-          </article>
-          <article class="card stretched">
-            <div class="media"></div>
-            <div class="content">
-              <span class="pill pill--gold-darktext">Iglesia en el mundo</span>
-              <h3 class="title title--md"><a class="stretched-link" href="#">Canonización: fecha para la beatificación de mártires latinoamericanos</a></h3>
-              <p class="lead">La congregación para las Causas de los Santos confirmó el calendario y la delegación oficial.</p>
-              <div class="meta"><span>ayer</span><span>•</span><span>Guardar</span></div>
-            </div>
-          </article>
+    <div class="ticker" role="status" aria-live="polite" id="breaking-bar">
+        <div class="layout ticker__inner">
+            <span class="ticker__label">Ultima hora</span>
+            <p class="ticker__text">El Vaticano anuncia nuevas fechas para la JMJ 2027 - Sinodo de la Sinodalidad entra en fase decisiva - Nuevas excavaciones en Tierra Santa revelan basilica del siglo IV.</p>
+            <a class="ticker__cta" href="#destacado">Ver mas</a>
+            <button class="icon-button" id="close-breaking" aria-label="Cerrar barra de ultima hora">
+                <i data-lucide="x"></i>
+            </button>
         </div>
-
-        <article class="card compact stretched span-3">
-          <div class="media"></div>
-          <div class="content">
-            <span class="pill pill--red600">Opinión</span>
-            <h3 class="title"><a class="stretched-link" href="#">¿Cómo vivir la caridad política en tiempos polarizados?</a></h3>
-            <div class="meta"><span>ayer</span></div>
-          </div>
-        </article>
-        <article class="card compact stretched span-3">
-          <div class="media"></div>
-          <div class="content">
-            <span class="pill pill--blue500">Reportaje</span>
-            <h3 class="title"><a class="stretched-link" href="#">Peregrinos de Centroamérica en Tierra Santa: fe que camina</a></h3>
-            <div class="meta"><span>hace 5 h</span></div>
-          </div>
-        </article>
-        <article class="card compact stretched span-3">
-          <div class="media"></div>
-          <div class="content">
-            <span class="pill pill--gold-darktext">Vida y Fe</span>
-            <h3 class="title"><a class="stretched-link" href="#">7 claves para preparar la liturgia dominical en casa</a></h3>
-            <div class="meta"><span>hoy</span></div>
-          </div>
-        </article>
-        <article class="card compact stretched span-3">
-          <div class="media"></div>
-          <div class="content">
-            <span class="pill pill--blue600">País</span>
-            <h3 class="title"><a class="stretched-link" href="#">Voluntarios reconstruyen capilla tras tormentas</a></h3>
-            <div class="meta"><span>hoy</span></div>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- Más leídas -->
-    <section class="container section" aria-label="Más leídas">
-      <div class="section-head section-head--dark">
-        <h2>Más leídas</h2>
-        <a class="seeall" href="#">Ver todas</a>
-      </div>
-      <div class="strip">
-        <a class="card mini" href="#">
-          <div class="content body">
-            <div class="thumb" aria-hidden="true"></div>
-            <div>
-              <span class="pill pill--gold-darktext">Tendencia</span>
-              <h4>Homilía: signos de esperanza en medio de la tormenta</h4>
-              <p class="meta" style="margin:0"><span>hace 1 h</span></p>
-            </div>
-          </div>
-        </a>
-        <a class="card mini" href="#">
-          <div class="content body">
-            <div class="thumb"></div>
-            <div>
-              <span class="pill pill--gold-darktext">Tendencia</span>
-              <h4>Peregrinación juvenil: crónica fotográfica</h4>
-              <p class="meta" style="margin:0"><span>hace 2 h</span></p>
-            </div>
-          </div>
-        </a>
-        <a class="card mini" href="#">
-          <div class="content body">
-            <div class="thumb"></div>
-            <div>
-              <span class="pill pill--gold-darktext">Tendencia</span>
-              <h4>Entrevista: la música sacra en tiempos digitales</h4>
-              <p class="meta" style="margin:0"><span>hace 3 h</span></p>
-            </div>
-          </div>
-        </a>
-      </div>
-    </section>
-
-    <!-- Opinión -->
-    <section class="container section" aria-label="Opinión">
-      <div class="section-head section-head--dark">
-        <h2>Opinión</h2>
-        <a class="seeall" href="#">Ver columna diaria</a>
-      </div>
-      <div class="opinion-grid">
-        <article class="card stretched">
-          <div class="op-img"></div>
-          <div class="content">
-            <span class="pill pill--red600">Opinión</span>
-            <h3 class="title title--sm"><a class="stretched-link" href="#">La amistad social como camino</a></h3>
-            <p class="lead">Un ensayo para dialogar sin perder la verdad ni la caridad.</p>
-          </div>
-        </article>
-        <article class="card stretched">
-          <div class="op-img"></div>
-          <div class="content">
-            <span class="pill pill--red600">Opinión</span>
-            <h3 class="title title--sm"><a class="stretched-link" href="#">El trabajo como vocación</a></h3>
-            <p class="lead">Notas sobre dignidad, justicia y bien común.</p>
-          </div>
-        </article>
-        <article class="card stretched">
-          <div class="op-img"></div>
-          <div class="content">
-            <span class="pill pill--red600">Opinión</span>
-            <h3 class="title title--sm"><a class="stretched-link" href="#">Política con misericordia</a></h3>
-            <p class="lead">Aprender a escuchar en tiempos polarizados.</p>
-          </div>
-        </article>
-        <article class="card stretched">
-          <div class="op-img"></div>
-          <div class="content">
-            <span class="pill pill--red600">Opinión</span>
-            <h3 class="title title--sm"><a class="stretched-link" href="#">Catequesis en familia</a></h3>
-            <p class="lead">Ideas prácticas para la vida parroquial.</p>
-          </div>
-        </article>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="foot">
-      <div>
-        <img class="logo" style="height:42px" src="https://res.cloudinary.com/dul66qlpq/image/upload/v1762346821/Logo_smd_dj2ldo.svg" alt="Sí Mi Dios — logo" />
-        <p class="foot-desc">Periodismo católico con rigor, claridad y esperanza. Reportajes, análisis y vida de fe.</p>
-      </div>
-      <div>
-        <h4>Secciones</h4>
-        <nav class="foot-nav">
-          <a href="#">Últimas</a>
-          <a href="#">Papa Francisco</a>
-          <a href="#">Iglesia en El Salvador</a>
-          <a href="#">Iglesia en el mundo</a>
-        </nav>
-      </div>
-      <div>
-        <h4>Conecta</h4>
-        <nav class="foot-nav">
-          <a href="#">Boletín</a>
-          <a href="#">Radio</a>
-          <a href="#">YouTube</a>
-        </nav>
-      </div>
-      <div>
-        <h4>Legal</h4>
-        <nav class="foot-nav">
-          <a href="#">Términos</a>
-          <a href="#">Privacidad</a>
-          <a href="#">Contacto</a>
-        </nav>
-      </div>
     </div>
-    <div class="foot-meta">
-      <div class="container foot-meta__row">
-        <p>© <span id="year"></span> Sí Mi Dios.</p>
-        <p>Hecho con <span class="dot-gold">●</span> buen diseño.</p>
-      </div>
-    </div>
-  </footer>
 
-  <script defer>
-    // Año dinámico y comportamiento del botón SMD (scroll al inicio)
-    document.addEventListener('DOMContentLoaded', function() {
-      document.getElementById('year').textContent = String(new Date().getFullYear());
-      var fab = document.querySelector('.smd-fab');
-      if (fab) fab.addEventListener('click', function(e){ e.preventDefault(); window.scrollTo({top:0, behavior:'smooth'}); });
-      // Mini-tests de sanidad
-      console.assert(!!document.querySelector('header'), 'header existe');
-      console.assert(!!document.querySelector("input[type='search']"), 'buscador existe');
-      console.assert(!!document.querySelector('.mosaic'), 'mosaico existe');
-      console.assert(!!document.querySelector('.card.hero'), 'hero existe');
-      console.assert(!!document.querySelector("[aria-label='Opinión']"), 'sección opinión existe');
-      console.assert(!!document.querySelector('.smd-fab'), 'FAB SMD existe');
-    });
-  </script>
+    <header class="site-header" id="main-header">
+        <div class="layout header__inner">
+            <div class="header__side">
+                <button class="icon-button header__menu-toggle" id="mobile-menu-btn" aria-label="Abrir menu">
+                    <i data-lucide="menu"></i>
+                </button>
+                <div class="sections-dropdown" id="sections-dropdown">
+                    <button class="icon-button sections-dropdown__toggle" id="sections-dropdown-toggle" aria-expanded="false" aria-haspopup="true" aria-controls="sections-dropdown-menu">
+                        <i data-lucide="menu"></i>
+                        <span class="sr-only">Abrir secciones</span>
+                    </button>
+                    <div class="sections-dropdown__menu" id="sections-dropdown-menu" role="menu">
+                        <a href="#" role="menuitem">Vaticano</a>
+                        <a href="#" role="menuitem">Iglesia en El Salvador</a>
+                        <a href="#" role="menuitem">Mundo</a>
+                        <a href="#" role="menuitem">Liturgia</a>
+                        <a href="#" role="menuitem">Opinion</a>
+                    </div>
+                </div>
+            </div>
+
+            <a href="#" class="header__logo" aria-label="SMD Inicio">
+                <img src="https://res.cloudinary.com/dul66qlpq/image/upload/v1762346821/Logo_smd_dj2ldo.svg" alt="SMD Mi Dios">
+            </a>
+
+            <div class="header__side header__side--right">
+                <button class="button button--filled">Donar</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="mobile-menu" id="mobile-menu">
+        <div class="mobile-menu__header">
+            <img src="https://res.cloudinary.com/dul66qlpq/image/upload/v1762346821/Logo_smd_dj2ldo.svg" alt="SMD Mi Dios" class="mobile-menu__logo">
+            <button class="icon-button" id="close-menu-btn" aria-label="Cerrar menu">
+                <i data-lucide="x"></i>
+            </button>
+        </div>
+        <nav class="mobile-menu__nav" aria-label="Menu movil">
+            <a href="#">Vaticano</a>
+            <a href="#">Iglesia en El Salvador</a>
+            <a href="#">Iglesia en el Mundo</a>
+            <a href="#">Liturgia</a>
+            <a href="#">Siervas de la Misericordia de Dios</a>
+            <a href="#">Opinion</a>
+            <a href="#" class="mobile-menu__cta">SMD Radio (USD 2/mes)</a>
+        </nav>
+    </div>
+
+    <main class="layout main">
+        <section class="hero" aria-labelledby="destacado">
+            <div class="hero__grid">
+                <article class="hero__feature article-card" data-article="true" data-title="El Papa Francisco llama a una revolucion de la ternura" data-category="Vaticano" data-image="https://images.unsplash.com/photo-1548625361-17d47225c50c?q=80&w=2000&auto=format&fit=crop" data-body="El Papa Francisco publica una carta que invita a poner la tecnologia al servicio de la dignidad humana y una cultura de cuidado.">
+                    <figure class="hero__media">
+                        <img src="https://images.unsplash.com/photo-1548625361-17d47225c50c?q=80&w=2000&auto=format&fit=crop" alt="Cupulas del Vaticano">
+                    </figure>
+                    <div class="hero__body">
+                        <div class="section-heading">
+                            <p class="section-heading__kicker" id="destacado">Destacado</p>
+                            <span class="pill pill--gold">Vaticano</span>
+                        </div>
+                        <h1 class="hero__title">El Papa Francisco llama a una revolucion de la ternura</h1>
+                        <p class="hero__lead">En su nueva carta, el Santo Padre aborda los desafios de la tecnologia, advierte sobre el aislamiento y pide abrir espacios concretos de encuentro.</p>
+                        <p class="hero__meta">Por Redaccion SMD - Hace 1 hora</p>
+                    </div>
+                </article>
+
+                <div class="hero__latest" aria-labelledby="ultimas">
+                    <div class="section-heading section-heading--tight">
+                        <p class="section-heading__kicker" id="ultimas">Ultimas</p>
+                        <span class="section-heading__line"></span>
+                    </div>
+                    <div class="latest-list">
+                        <article class="news-card news-card--compact article-card" data-article="true" data-title="Notre Dame reabre sus puertas" data-category="Mundo" data-image="https://images.unsplash.com/photo-1517789178007-16d16f8484b3?q=80&w=500&auto=format&fit=crop" data-body="La catedral de Paris vuelve a recibir peregrinos tras anos de restauracion y trabajo artesanal.">
+                            <div class="news-card__media">
+                                <img src="https://images.unsplash.com/photo-1517789178007-16d16f8484b3?q=80&w=500&auto=format&fit=crop" alt="Catedral restaurada">
+                            </div>
+                            <div class="news-card__body">
+                                <span class="pill">Mundo</span>
+                                <h3 class="news-card__title">Notre Dame reabre sus puertas al mundo</h3>
+                                <p class="news-card__meta">Hace 2 horas</p>
+                            </div>
+                        </article>
+
+                        <article class="news-card news-card--compact article-card" data-article="true" data-title="Apps de oracion baten record" data-category="Tecnologia y Fe" data-image="https://images.unsplash.com/photo-1438232992991-995b7058bbb3?q=80&w=500&auto=format&fit=crop" data-body="Plataformas de oracion guiada reportan descargas historicas en America Latina.">
+                            <div class="news-card__media">
+                                <img src="https://images.unsplash.com/photo-1438232992991-995b7058bbb3?q=80&w=500&auto=format&fit=crop" alt="Persona usando app de oracion">
+                            </div>
+                            <div class="news-card__body">
+                                <span class="pill pill--blue">Tecnologia y Fe</span>
+                                <h3 class="news-card__title">Apps de oracion alcanzan record de descargas</h3>
+                                <p class="news-card__meta">Hace 4 horas</p>
+                            </div>
+                        </article>
+
+                        <article class="news-card news-card--compact article-card" data-article="true" data-title="Opinion: El silencio como lujo" data-category="Opinion" data-body="Reflexion sobre el ruido digital y la necesidad de espacios de silencio para escuchar a Dios y a los demas.">
+                            <div class="news-card__media news-card__media--placeholder">
+                                <i data-lucide="feather"></i>
+                            </div>
+                            <div class="news-card__body">
+                                <span class="pill pill--dark">Opinion</span>
+                                <h3 class="news-card__title">Opinion: El silencio, un lujo necesario</h3>
+                                <p class="news-card__meta">Columna - Mons. Juan Perez</p>
+                            </div>
+                        </article>
+
+                        <article class="news-card news-card--compact article-card" data-article="true" data-title="Jovenes reaniman la adoracion" data-category="Jovenes" data-image="https://images.unsplash.com/photo-1529070538774-1843cb3265df?q=80&w=500&auto=format&fit=crop" data-body="Parroquias reportan aumento en la adoracion inspirados por el testimonio digital del beato Carlo Acutis.">
+                            <div class="news-card__media">
+                                <img src="https://images.unsplash.com/photo-1529070538774-1843cb3265df?q=80&w=500&auto=format&fit=crop" alt="Jovenes en adoracion">
+                            </div>
+                            <div class="news-card__body">
+                                <span class="pill">Jovenes</span>
+                                <h3 class="news-card__title">El efecto Carlo Acutis sigue creciendo</h3>
+                                <p class="news-card__meta">Hace 6 horas</p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" aria-labelledby="ultimas-grid">
+            <div class="section-heading">
+                <p class="section-heading__kicker" id="ultimas-grid">Ultimas</p>
+                <h2 class="section-heading__title">Lo mas reciente</h2>
+            </div>
+            <div class="news-grid">
+                <article class="news-card article-card" data-article="true" data-title="Caritas lanza campana global" data-category="Solidaridad" data-image="https://images.unsplash.com/photo-1593113598332-cd288d649433?q=80&w=800&auto=format&fit=crop" data-body="Caritas inicia una colecta internacional para responder a la sequia en varias regiones de Africa.">
+                    <div class="news-card__media">
+                        <img src="https://images.unsplash.com/photo-1593113598332-cd288d649433?q=80&w=800&auto=format&fit=crop" alt="Voluntarios de Caritas">
+                    </div>
+                    <div class="news-card__body">
+                        <span class="pill pill--line">Solidaridad</span>
+                        <h3 class="news-card__title">Caritas lanza campana global contra el hambre</h3>
+                        <p class="news-card__summary">Se busca recaudar 50 millones de euros para comunidades afectadas por la sequia.</p>
+                    </div>
+                </article>
+
+                <article class="news-card article-card" data-article="true" data-title="Museos Vaticanos de noche" data-category="Cultura" data-image="https://images.unsplash.com/photo-1544163994-1a9e992955f2?q=80&w=800&auto=format&fit=crop" data-body="Los Museos Vaticanos extenderan horario nocturno durante el verano con aforo reducido y visitas guiadas.">
+                    <div class="news-card__media">
+                        <img src="https://images.unsplash.com/photo-1544163994-1a9e992955f2?q=80&w=800&auto=format&fit=crop" alt="Museos Vaticanos">
+                    </div>
+                    <div class="news-card__body">
+                        <span class="pill pill--line">Cultura</span>
+                        <h3 class="news-card__title">Los Museos Vaticanos abren en horario nocturno</h3>
+                        <p class="news-card__summary">Una experiencia reducida en aforo con recitales en los patios principales.</p>
+                    </div>
+                </article>
+
+                <article class="news-card article-card" data-article="true" data-title="Reportaje: Agua y territorio" data-category="Reportajes" data-image="https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?q=80&w=800&auto=format&fit=crop" data-body="Comunidades rurales en Centroamerica defienden sus fuentes de agua ante proyectos extractivos.">
+                    <div class="news-card__media">
+                        <img src="https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?q=80&w=800&auto=format&fit=crop" alt="Comunidad rural">
+                    </div>
+                    <div class="news-card__body">
+                        <span class="pill pill--line">Reportajes</span>
+                        <h3 class="news-card__title">Agua y territorio: defensores en primera linea</h3>
+                        <p class="news-card__summary">Lideres comunitarios dialogan con obispos sobre sostenibilidad y justicia social.</p>
+                    </div>
+                </article>
+
+                <article class="news-card article-card" data-article="true" data-title="Sinodo: etapa decisiva" data-category="Actualidad" data-image="https://images.unsplash.com/photo-1515169067868-5387ec356754?q=80&w=800&auto=format&fit=crop" data-body="El Sinodo de la Sinodalidad entra en fase de escucha regional con propuestas concretas para laicos.">
+                    <div class="news-card__media">
+                        <img src="https://images.unsplash.com/photo-1515169067868-5387ec356754?q=80&w=800&auto=format&fit=crop" alt="Interior de catedral">
+                    </div>
+                    <div class="news-card__body">
+                        <span class="pill pill--line">Actualidad</span>
+                        <h3 class="news-card__title">Sinodo entra en etapa decisiva de escucha</h3>
+                        <p class="news-card__summary">Obispos y delegados definen calendarios para la fase continental.</p>
+                    </div>
+                </article>
+
+                <article class="news-card article-card" data-article="true" data-title="Arte sacro recuperado" data-category="Cultura" data-image="https://images.unsplash.com/photo-1526392060635-9d6019884377?q=80&w=800&auto=format&fit=crop" data-body="Restauradores devuelven color y brillo a un retablo barroco del siglo XVIII en Mexico.">
+                    <div class="news-card__media">
+                        <img src="https://images.unsplash.com/photo-1526392060635-9d6019884377?q=80&w=800&auto=format&fit=crop" alt="Arte sacro restaurado">
+                    </div>
+                    <div class="news-card__body">
+                        <span class="pill pill--line">Cultura</span>
+                        <h3 class="news-card__title">Un retablo barroco renace tras meses de restauracion</h3>
+                        <p class="news-card__summary">Especialistas utilizan tecnicas de limpieza no invasiva para preservar policromia.</p>
+                    </div>
+                </article>
+
+                <article class="news-card article-card" data-article="true" data-title="Jornada de voluntariado" data-category="Solidaridad" data-image="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=800&auto=format&fit=crop" data-body="Parroquias de San Salvador convocan a donar alimentos y tiempo en comedores sociales.">
+                    <div class="news-card__media">
+                        <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=800&auto=format&fit=crop" alt="Voluntarios organizando alimentos">
+                    </div>
+                    <div class="news-card__body">
+                        <span class="pill pill--line">Solidaridad</span>
+                        <h3 class="news-card__title">Convocatoria de voluntariado para comedores sociales</h3>
+                        <p class="news-card__summary">Los organizadores esperan cubrir turnos de fin de semana y entregas a domicilio.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="section" aria-labelledby="bloques">
+            <div class="section-heading">
+                <p class="section-heading__kicker" id="bloques">Analisis</p>
+                <h2 class="section-heading__title">Por categoria</h2>
+            </div>
+            <div class="category-grid">
+                <div class="category-block">
+                    <div class="category-block__header">
+                        <span class="pill pill--dark">Opinion</span>
+                        <p class="category-block__subtitle">Voces que ponen contexto</p>
+                    </div>
+                    <div class="category-block__items">
+                        <article class="category-item article-card" data-article="true" data-title="El silencio como disciplina" data-category="Opinion" data-body="Una invitacion a recuperar momentos de retiro y a poner limites sanos al consumo de pantallas.">
+                            <h3 class="category-item__title">El silencio como disciplina espiritual</h3>
+                            <p class="category-item__meta">Mons. Juan Perez - 4 min</p>
+                        </article>
+                        <article class="category-item article-card" data-article="true" data-title="Fratelli tutti, tres anos despues" data-category="Opinion" data-body="Analisis sobre los frutos sociales y pastorales de la enciclica en comunidades locales.">
+                            <h3 class="category-item__title">Fratelli tutti: tres anos despues</h3>
+                            <p class="category-item__meta">Analisis - 6 min</p>
+                        </article>
+                    </div>
+                </div>
+
+                <div class="category-block">
+                    <div class="category-block__header">
+                        <span class="pill pill--blue">Reportajes</span>
+                        <p class="category-block__subtitle">Historias en profundidad</p>
+                    </div>
+                    <div class="category-block__items">
+                        <article class="category-item article-card" data-article="true" data-title="Comedores que resisten" data-category="Reportajes" data-body="Voluntarios mantienen comedores populares con apoyo de parroquias locales.">
+                            <h3 class="category-item__title">Comedores que resisten la inflacion</h3>
+                            <p class="category-item__meta">Redaccion SMD - 8 min</p>
+                        </article>
+                        <article class="category-item article-card" data-article="true" data-title="Vocaciones en linea" data-category="Reportajes" data-body="Seminaristas cuentan como las redes ayudan a su acompanamiento vocacional.">
+                            <h3 class="category-item__title">Vocaciones que nacen en la red</h3>
+                            <p class="category-item__meta">Testimonios - 5 min</p>
+                        </article>
+                    </div>
+                </div>
+
+                <div class="category-block">
+                    <div class="category-block__header">
+                        <span class="pill pill--line">Actualidad</span>
+                        <p class="category-block__subtitle">Agenda del dia</p>
+                    </div>
+                    <div class="category-block__items">
+                        <article class="category-item article-card" data-article="true" data-title="Agenda del Papa" data-category="Actualidad" data-body="El Santo Padre recibira a representantes de universidades catolicas en audiencia privada.">
+                            <h3 class="category-item__title">Agenda del Papa para la semana</h3>
+                            <p class="category-item__meta">Roma - 2 min</p>
+                        </article>
+                        <article class="category-item article-card" data-article="true" data-title="Reformas en parroquias" data-category="Actualidad" data-body="Diocesis propone auditorias energeticas para reducir consumo y costos.">
+                            <h3 class="category-item__title">Parroquias avanzan en eficiencia energetica</h3>
+                            <p class="category-item__meta">Actualizacion - 3 min</p>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section radio" aria-labelledby="radio">
+            <div class="section-heading">
+                <p class="section-heading__kicker" id="radio">Audio</p>
+                <h2 class="section-heading__title">SMD Radio</h2>
+            </div>
+            <div class="radio__panel">
+                <div class="radio__intro">
+                    <p class="radio__label">Contenido premium</p>
+                    <h3 class="radio__title">Entrevistas y analisis sin ruido</h3>
+                    <p class="radio__text">Suscribete para recibir conversaciones profundas con voces de la Iglesia y la sociedad.</p>
+                    <div class="radio__actions">
+                        <span class="radio__price">USD 2 / mes</span>
+                        <button class="button button--filled">
+                            Suscribirse
+                            <i data-lucide="lock"></i>
+                        </button>
+                        <p class="radio__small">Cancela cuando quieras.</p>
+                    </div>
+                </div>
+                <div class="radio__list">
+                    <article class="radio__item article-card" data-article="true" data-title="Los secretos del conclave" data-category="SMD Radio" data-body="Que sucede tras las puertas cerradas de la Capilla Sixtina y como se prepara cada cardenal.">
+                        <p class="radio__tag">Exclusivo - 45 min</p>
+                        <h3 class="radio__item-title">Los secretos del conclave</h3>
+                        <p class="radio__item-meta">Conduccion: Maria Lopez</p>
+                    </article>
+                    <article class="radio__item article-card" data-article="true" data-title="La Iglesia perseguida en Oriente" data-category="SMD Radio" data-body="Testimonios directos que no veras en los medios tradicionales.">
+                        <p class="radio__tag">Entrevista - 60 min</p>
+                        <h3 class="radio__item-title">La Iglesia perseguida en Oriente</h3>
+                        <p class="radio__item-meta">Conduccion: Carlos Diaz</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section newsletter" aria-labelledby="newsletter">
+            <div class="newsletter__content">
+                <div class="section-heading">
+                    <p class="section-heading__kicker" id="newsletter">Boletin</p>
+                    <h2 class="section-heading__title">La fe en tu bandeja de entrada</h2>
+                </div>
+                <p class="newsletter__text">Resumen semanal con lo esencial: analisis sereno, historias humanas y agenda liturgica.</p>
+                <form class="newsletter__form">
+                    <label class="sr-only" for="email">Correo electronico</label>
+                    <input id="email" name="email" type="email" placeholder="Tu correo electronico" required>
+                    <button type="button" class="button button--outline">Suscribirse</button>
+                </form>
+                <p class="newsletter__small">Al suscribirte aceptas nuestra politica de privacidad.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="layout footer__inner">
+            <div class="footer__brand">
+                <img src="https://res.cloudinary.com/dul66qlpq/image/upload/v1762346821/Logo_smd_dj2ldo.svg" alt="SMD Mi Dios">
+                <p>Somos un medio independiente comprometido con la verdad, la belleza y la tradicion de la Iglesia Catolica en el mundo moderno.</p>
+            </div>
+            <div class="footer__links">
+                <div>
+                    <h4>Secciones</h4>
+                    <a href="#">Noticias del Vaticano</a>
+                    <a href="#">Iglesia en El Salvador</a>
+                    <a href="#">Iglesia en el Mundo</a>
+                    <a href="#">Liturgia</a>
+                    <a href="#">Siervas de la Misericordia de Dios</a>
+                </div>
+                <div>
+                    <h4>Institucional</h4>
+                    <a href="#">Quienes somos</a>
+                    <a href="#">Codigo etico</a>
+                    <a href="#">Politica de privacidad</a>
+                    <a href="#">Contacto</a>
+                </div>
+            </div>
+            <div class="footer__meta">
+                <p>&copy; 2024 SMD Mi Dios. Todos los derechos reservados.</p>
+                <p>Disenado con fe.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div id="article-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="article-modal-title">
+        <div class="modal__dialog" tabindex="-1">
+            <button class="icon-button modal__close" id="close-article-modal" aria-label="Cerrar articulo">
+                <i data-lucide="x"></i>
+            </button>
+            <div id="article-modal-image-wrap" class="modal__media">
+                <img id="article-modal-image" src="" alt="">
+            </div>
+            <div class="modal__body">
+                <span id="article-modal-category" class="pill pill--line"></span>
+                <h2 id="article-modal-title"></h2>
+                <p id="article-modal-body"></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
 </body>
 </html>
