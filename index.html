@@ -7,7 +7,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet"> <!-- Tipografía principal Karla -->
 
     <link rel="stylesheet" href="styles.css">
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -50,7 +50,7 @@
             </a>
 
             <div class="header__side header__side--right">
-                <button class="button button--filled">Donar</button>
+                <button class="button button--filled button--donate">Donar</button>
             </div>
         </div>
     </header>
@@ -74,75 +74,33 @@
     </div>
 
     <main class="layout main">
-        <section class="hero" aria-labelledby="destacado">
-            <div class="hero__grid">
-                <article class="hero__feature article-card" data-article="true" data-title="El Papa Francisco llama a una revolucion de la ternura" data-category="Vaticano" data-image="https://images.unsplash.com/photo-1548625361-17d47225c50c?q=80&w=2000&auto=format&fit=crop" data-body="El Papa Francisco publica una carta que invita a poner la tecnologia al servicio de la dignidad humana y una cultura de cuidado.">
-                    <figure class="hero__media">
-                        <img src="https://images.unsplash.com/photo-1548625361-17d47225c50c?q=80&w=2000&auto=format&fit=crop" alt="Cupulas del Vaticano">
-                    </figure>
-                    <div class="hero__body">
-                        <div class="section-heading">
-                            <p class="section-heading__kicker" id="destacado">Destacado</p>
-                            <span class="pill pill--gold">Vaticano</span>
-                        </div>
-                        <h1 class="hero__title">El Papa Francisco llama a una revolucion de la ternura</h1>
-                        <p class="hero__lead">En su nueva carta, el Santo Padre aborda los desafios de la tecnologia, advierte sobre el aislamiento y pide abrir espacios concretos de encuentro.</p>
-                        <p class="hero__meta">Por Redaccion SMD - Hace 1 hora</p>
-                    </div>
-                </article>
-
-                <div class="hero__latest" aria-labelledby="ultimas">
-                    <div class="section-heading section-heading--tight">
-                        <p class="section-heading__kicker" id="ultimas">Ultimas</p>
-                        <span class="section-heading__line"></span>
-                    </div>
-                    <div class="latest-list">
-                        <article class="news-card news-card--compact article-card" data-article="true" data-title="Notre Dame reabre sus puertas" data-category="Mundo" data-image="https://images.unsplash.com/photo-1517789178007-16d16f8484b3?q=80&w=500&auto=format&fit=crop" data-body="La catedral de Paris vuelve a recibir peregrinos tras anos de restauracion y trabajo artesanal.">
-                            <div class="news-card__media">
-                                <img src="https://images.unsplash.com/photo-1517789178007-16d16f8484b3?q=80&w=500&auto=format&fit=crop" alt="Catedral restaurada">
-                            </div>
-                            <div class="news-card__body">
-                                <span class="pill">Mundo</span>
-                                <h3 class="news-card__title">Notre Dame reabre sus puertas al mundo</h3>
-                                <p class="news-card__meta">Hace 2 horas</p>
-                            </div>
-                        </article>
-
-                        <article class="news-card news-card--compact article-card" data-article="true" data-title="Apps de oracion baten record" data-category="Tecnologia y Fe" data-image="https://images.unsplash.com/photo-1438232992991-995b7058bbb3?q=80&w=500&auto=format&fit=crop" data-body="Plataformas de oracion guiada reportan descargas historicas en America Latina.">
-                            <div class="news-card__media">
-                                <img src="https://images.unsplash.com/photo-1438232992991-995b7058bbb3?q=80&w=500&auto=format&fit=crop" alt="Persona usando app de oracion">
-                            </div>
-                            <div class="news-card__body">
-                                <span class="pill pill--blue">Tecnologia y Fe</span>
-                                <h3 class="news-card__title">Apps de oracion alcanzan record de descargas</h3>
-                                <p class="news-card__meta">Hace 4 horas</p>
-                            </div>
-                        </article>
-
-                        <article class="news-card news-card--compact article-card" data-article="true" data-title="Opinion: El silencio como lujo" data-category="Opinion" data-image="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=600&auto=format&fit=crop" data-body="Reflexion sobre el ruido digital y la necesidad de espacios de silencio para escuchar a Dios y a los demas.">
-                            <div class="news-card__media">
-                                <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=600&auto=format&fit=crop" alt="Pluma sobre papel">
-                            </div>
-                            <div class="news-card__body">
-                                <span class="pill pill--dark">Opinion</span>
-                                <h3 class="news-card__title">Opinion: El silencio, un lujo necesario</h3>
-                                <p class="news-card__meta">Columna - Mons. Juan Perez</p>
-                            </div>
-                        </article>
-
-                        <article class="news-card news-card--compact article-card" data-article="true" data-title="Jovenes reaniman la adoracion" data-category="Jovenes" data-image="https://images.unsplash.com/photo-1529070538774-1843cb3265df?q=80&w=500&auto=format&fit=crop" data-body="Parroquias reportan aumento en la adoracion inspirados por el testimonio digital del beato Carlo Acutis.">
-                            <div class="news-card__media">
-                                <img src="https://images.unsplash.com/photo-1529070538774-1843cb3265df?q=80&w=500&auto=format&fit=crop" alt="Jovenes en adoracion">
-                            </div>
-                            <div class="news-card__body">
-                                <span class="pill">Jovenes</span>
-                                <h3 class="news-card__title">El efecto Carlo Acutis sigue creciendo</h3>
-                                <p class="news-card__meta">Hace 6 horas</p>
-                            </div>
-                        </article>
-                    </div>
-                </div>
+        <section class="feature hero" aria-labelledby="destacado">
+            <div class="hero__bg" aria-hidden="true"></div>
+            <header class="feature__intro hero__content">
+                <p class="feature__tag">Sí Mi Dios - Periodismo católico</p>
+                <h1 class="feature__headline hero__headline"><span class="headline-accent">Un verdadero cristiano busca la verdad.</span> Aqu&iacute; te mantendremos al d&iacute;a con novedades y an&aacute;lisis sobre la Iglesia Cat&oacute;lica</h1>
+            </header>
+            <div id="hero-sticky-wrap" class="hero-sticky-wrap">
+                <button id="hero-sticky-btn" class="button button--filled hero-sticky-btn" type="button">
+                    <span>Leer mis noticias</span>
+                    <i data-lucide="arrow-down" aria-hidden="true"></i>
+                </button>
             </div>
+            <article class="feature__card article-card" data-article="true" data-title="El Papa Francisco llama a una revolucion de la ternura" data-category="Vaticano" data-image="https://images.unsplash.com/photo-1548625361-17d47225c50c?q=80&w=2000&auto=format&fit=crop" data-body="El Papa Francisco publica una carta que invita a poner la tecnologia al servicio de la dignidad humana y una cultura de cuidado.">
+                <div class="feature__media">
+                    <span class="pill pill--gold feature__pill">Vaticano</span>
+                    <img src="https://images.unsplash.com/photo-1548625361-17d47225c50c?q=80&w=2000&auto=format&fit=crop" alt="Cupulas del Vaticano" loading="eager" decoding="async">
+                </div>
+                <div class="feature__content">
+                    <div class="feature__eyebrow">
+                        <p class="section-heading__kicker" id="destacado">Destacado</p>
+                    </div>
+                    <h2 class="feature__title">El Papa Francisco llama a una revolucion de la ternura</h2>
+                    <p class="feature__dek">En su nueva carta, el Santo Padre aborda los desafios de la tecnologia, advierte sobre el aislamiento y pide abrir espacios concretos de encuentro.</p>
+                    <div class="feature__meta">Por Redaccion SMD · Hace 1 hora</div>
+                    <button class="button button--outline feature__cta" type="button">Leer ahora</button>
+                </div>
+            </article>
         </section>
 
         <section class="section" aria-labelledby="ultimas-grid">
