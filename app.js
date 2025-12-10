@@ -53,7 +53,7 @@ function initRevealAnimations() {
                 obs.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.16 });
+    }, { threshold: 0.12, rootMargin: '0px 0px -4% 0px' });
 
     revealTargets.forEach((el) => {
         el.classList.add('js-reveal');
@@ -63,8 +63,11 @@ function initRevealAnimations() {
 
 // Imagenes con blur-up ligero
 function initImagePlaceholders() {
+    const fallbackSrc = 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=800&auto=format&fit=crop';
     const images = document.querySelectorAll('.hero__media img, .news-card__media img');
     images.forEach((img) => {
+        img.loading = 'lazy';
+        img.decoding = 'async';
         const markLoaded = () => {
             img.classList.remove('image-loading');
             img.classList.add('image-loaded');
@@ -75,7 +78,14 @@ function initImagePlaceholders() {
         } else {
             img.classList.add('image-loading');
             img.addEventListener('load', markLoaded, { once: true });
-            img.addEventListener('error', markLoaded, { once: true });
+            img.addEventListener('error', () => {
+                if (img.dataset.fallbackApplied) {
+                    markLoaded();
+                    return;
+                }
+                img.dataset.fallbackApplied = 'true';
+                img.src = fallbackSrc;
+            }, { once: true });
         }
     });
 }
