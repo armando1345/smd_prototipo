@@ -280,6 +280,48 @@ p {
     }
 }
 
+/* Mobile-only: compacta tipografía y tarjetas para una lectura equilibrada en pantallas pequeñas */
+@media (max-width: 640px) {
+    .hero__content {
+        padding: clamp(20px, 6vw, 32px);
+    }
+
+    .hero__headline {
+        font-size: clamp(2rem, 6vw + 0.8rem, 2.6rem);
+        line-height: 1.18;
+        font-weight: 850;
+        max-width: 22ch;
+    }
+
+    .feature__card {
+        padding: var(--space-4);
+        gap: var(--space-4);
+    }
+
+    .news-grid {
+        gap: var(--space-3);
+    }
+
+    .news-card {
+        border-radius: var(--radius-1);
+    }
+
+    .news-card__body {
+        padding: var(--space-3);
+        gap: var(--space-2);
+    }
+
+    .news-card__title {
+        font-size: 1.05rem;
+        line-height: 1.28;
+        font-weight: 750;
+    }
+
+    .news-card__summary {
+        font-size: 0.95rem;
+    }
+}
+
 .ticker {
     background: var(--color-red);
     color: var(--color-surface);
@@ -1444,3 +1486,9 @@ body.no-scroll {
         grid-template-columns: 1fr;
     }
 }
+
+
+
+
+
+
