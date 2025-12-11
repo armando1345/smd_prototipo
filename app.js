@@ -364,27 +364,3 @@ window.addEventListener('scroll', () => {
         header.classList.remove('is-compact');
     }
 });
-
-// Cerrar barra de ultima hora
-const breakingBar = document.getElementById('breaking-bar');
-const closeBreaking = document.getElementById('close-breaking');
-const BREAKING_DISMISS_KEY = 'breakingDismissedAt';
-const BREAKING_DISMISS_WINDOW = 24 * 60 * 60 * 1000;
-
-function hideBreakingBar() {
-    if (breakingBar) {
-        breakingBar.style.display = 'none';
-    }
-}
-
-if (breakingBar && closeBreaking) {
-    const storedDismiss = localStorage.getItem(BREAKING_DISMISS_KEY);
-    if (storedDismiss && Date.now() - Number(storedDismiss) < BREAKING_DISMISS_WINDOW) {
-        hideBreakingBar();
-    }
-
-    closeBreaking.addEventListener('click', () => {
-        localStorage.setItem(BREAKING_DISMISS_KEY, Date.now().toString());
-        hideBreakingBar();
-    });
-}
