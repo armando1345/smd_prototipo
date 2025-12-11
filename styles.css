@@ -284,6 +284,7 @@ p {
 @media (max-width: 640px) {
     .hero__content {
         padding: clamp(20px, 6vw, 32px);
+        max-width: 100%;
     }
 
     .hero__headline {
@@ -291,12 +292,22 @@ p {
         line-height: 1.14;
         font-weight: 970; /* Más peso para que el titular impacte en mobile */
         letter-spacing: -0.02em;
-        max-width: 21ch;
+        max-width: 24ch;
+        white-space: normal; /* Evita apilar palabras en vertical */
+        word-break: normal; /* Evita cortes agresivos */
+        overflow-wrap: normal; /* Evita saltos forzados */
+    }
+
+    .hero__body h1 {
+        white-space: normal; /* Corrección: no forzar saltos extraños en mobile */
+        word-break: normal;
+        overflow-wrap: normal;
     }
 
     .feature__card {
         padding: var(--space-4);
         gap: var(--space-4);
+        grid-template-columns: 1fr; /* Altura auto sin recortes en mobile */
     }
 
     .news-grid {
@@ -328,71 +339,7 @@ p {
     }
 }
 
-.ticker {
-    background: var(--color-red);
-    color: var(--color-surface);
-    font-size: 0.85rem;
-}
-
-.ticker__inner {
-    display: flex;
-    align-items: center;
-    gap: var(--space-2);
-    padding: var(--space-1) 0;
-    min-height: 42px;
-    overflow: hidden;
-}
-
-.ticker__label {
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    font-size: 0.75rem;
-    padding: var(--space-1) var(--space-2);
-    border: 1px solid rgba(255,255,255,0.35);
-    border-radius: var(--radius-1);
-}
-
-.ticker__text {
-    flex: 1;
-    opacity: 0.9;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.ticker__cta {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 6px 10px;
-    border-radius: var(--radius-1);
-    background: rgba(255,255,255,0.14);
-    color: #fff;
-    font-weight: 700;
-    transition: background var(--transition), transform var(--transition);
-}
-
-.ticker__cta:hover {
-    background: rgba(255,255,255,0.2);
-    transform: translateY(-1px);
-}
-
-@media (max-width: 640px) {
-    .ticker__label {
-        display: none;
-    }
-
-    .ticker__cta {
-        display: none;
-    }
-
-    .ticker__inner {
-        gap: var(--space-1);
-        padding: 6px 0;
-        min-height: 36px;
-    }
-}
+/* Ticker eliminado para aligerar la carga visual del hero */
 .site-header {
     position: sticky;
     top: 0;
@@ -1490,6 +1437,15 @@ body.no-scroll {
 
     .newsletter__form {
         grid-template-columns: 1fr;
+    }
+
+    /* Mobile-first refuerzo: contenedores crecen con contenido, sin recortes */
+    .feature__card,
+    .news-card,
+    .category-block,
+    .radio__panel {
+        height: auto;
+        min-height: auto;
     }
 }
 
