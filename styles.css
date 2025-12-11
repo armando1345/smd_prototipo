@@ -285,17 +285,19 @@ p {
     .hero__content {
         padding: clamp(20px, 6vw, 32px);
         max-width: 100%;
+        min-height: auto; /* Evita cortes del bloque titular en mobile */
     }
 
     .hero__headline {
-        font-size: clamp(2.3rem, 6.5vw + 1rem, 3rem);
+        font-size: clamp(2.1rem, 6vw + 0.9rem, 2.7rem); /* Clamp específico mobile para evitar escaleras de palabras */
         line-height: 1.14;
-        font-weight: 970; /* Más peso para que el titular impacte en mobile */
+        font-weight: 900; /* Peso alto para impacto sin deformar */
         letter-spacing: -0.02em;
-        max-width: 24ch;
+        max-width: 26ch; /* Bloque más ancho para evitar muchas líneas */
         white-space: normal; /* Evita apilar palabras en vertical */
         word-break: normal; /* Evita cortes agresivos */
         overflow-wrap: normal; /* Evita saltos forzados */
+        text-wrap: balance;
     }
 
     .hero__body h1 {
@@ -308,6 +310,7 @@ p {
         padding: var(--space-4);
         gap: var(--space-4);
         grid-template-columns: 1fr; /* Altura auto sin recortes en mobile */
+        min-height: auto; /* Evita recortes de la tarjeta destacada */
     }
 
     .news-grid {
@@ -317,10 +320,12 @@ p {
 
     .news-card {
         border-radius: var(--radius-1);
+        min-height: auto; /* Contenido crece sin recortar */
     }
 
     .news-card__media {
         aspect-ratio: 16 / 9; /* Más alto para que no se corten en mobile */
+        overflow: hidden; /* Mantiene marco limpio sin recortes de texto */
     }
 
     .news-card__body {
@@ -1446,6 +1451,13 @@ body.no-scroll {
     .radio__panel {
         height: auto;
         min-height: auto;
+        overflow: visible; /* Previene cortes de texto o imágenes en mobile */
+    }
+
+    .feature__content,
+    .hero__content,
+    .news-card__body {
+        min-width: 0; /* Evita desbordes laterales en flex/grid en móviles estrechos */
     }
 }
 
