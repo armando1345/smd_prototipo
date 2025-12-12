@@ -39,6 +39,11 @@
     box-sizing: border-box;
 }
 
+img, video, svg {
+    max-width: 100%;
+    height: auto;
+}
+
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
         animation-duration: 0.01ms !important;
@@ -57,6 +62,7 @@ body {
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden; /* Guard-rail: evita scroll horizontal fantasma en mobile */
 }
 
 img {
@@ -226,6 +232,9 @@ p {
     -webkit-backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.35);
     box-shadow: 0 14px 40px rgba(15, 23, 42, 0.12);
+    max-width: calc(100% - 24px); /* Previene overflow horizontal del wrapper en pantallas angostas */
+    width: fit-content;
+    box-sizing: border-box; /* Evita que padding + width generen desbordes */
 }
 
 .hero-sticky-wrap.is-hidden {
@@ -282,22 +291,32 @@ p {
 
 /* Mobile-only: compacta tipografía y tarjetas para una lectura equilibrada en pantallas pequeñas */
 @media (max-width: 640px) {
+    .layout {
+        max-width: 100%;
+        overflow: visible;
+        box-sizing: border-box;
+    }
+
     .hero__content {
-        padding: clamp(20px, 6vw, 32px);
+        padding: clamp(16px, 6vw, 28px);
         max-width: 100%;
         min-height: auto; /* Evita cortes del bloque titular en mobile */
+        overflow: visible; /* Evita que el texto se recorte */
+        box-sizing: border-box; /* Evita que padding ensanche el contenedor y provoque overflow */
     }
 
     .hero__headline {
-        font-size: clamp(2.1rem, 6vw + 0.9rem, 2.7rem); /* Clamp específico mobile para evitar escaleras de palabras */
-        line-height: 1.14;
-        font-weight: 900; /* Peso alto para impacto sin deformar */
-        letter-spacing: -0.02em;
-        max-width: 26ch; /* Bloque más ancho para evitar muchas líneas */
+        font-size: clamp(1.8rem, 6vw + 0.8rem, 2.4rem); /* Clamp afinado para 360–430px */
+        line-height: 1.12;
+        font-weight: 880; /* Impacto sin deformar */
+        letter-spacing: -0.01em;
+        max-width: 24ch; /* Compacta para evitar “escalera” */
         white-space: normal; /* Evita apilar palabras en vertical */
         word-break: normal; /* Evita cortes agresivos */
         overflow-wrap: normal; /* Evita saltos forzados */
         text-wrap: balance;
+        margin-inline: auto;
+        text-align: center;
     }
 
     .hero__body h1 {
@@ -311,16 +330,20 @@ p {
         gap: var(--space-4);
         grid-template-columns: 1fr; /* Altura auto sin recortes en mobile */
         min-height: auto; /* Evita recortes de la tarjeta destacada */
+        width: 100%;
+        overflow: visible; /* Evita cortes por overflow en mobile */
+        box-sizing: border-box; /* Evita sumar padding a la anchura total y provocar overflow */
     }
 
     .news-grid {
-        grid-template-columns: 1fr; /* Evita cortes de cards en mobile */
+        grid-template-columns: 1fr !important; /* Fuerza una sola columna en mobile */
         gap: var(--space-3);
     }
 
     .news-card {
         border-radius: var(--radius-1);
         min-height: auto; /* Contenido crece sin recortar */
+        overflow: visible; /* Previene cortes en móviles estrechos */
     }
 
     .news-card__media {
@@ -339,8 +362,37 @@ p {
         font-weight: 820;
     }
 
-    .news-card__summary {
-        font-size: 0.95rem;
+.news-card__summary {
+    font-size: 0.95rem;
+}
+}
+
+/* Ajuste específico 480px: evita cortes del contenedor del titular y la “escalera” de palabras */
+@media (max-width: 480px) {
+    .hero__content {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        height: auto !important;
+        max-height: none !important;
+        overflow: visible !important; /* Corrige el corte del bloque titular en mobile */
+        padding-inline: 16px;
+        box-sizing: border-box; /* El padding no suma anchura extra que cause overflow */
+        margin: 0 auto;
+    }
+
+    .hero__headline {
+        font-size: clamp(1.25rem, 5vw, 1.7rem); /* Un poco más pequeño para compactar el bloque en móvil */
+        line-height: 1.12;
+        font-weight: 920; /* Más peso para reforzar impacto */
+        letter-spacing: normal;
+        white-space: normal; /* Evita columna vertical de palabras */
+        word-break: normal; /* Elimina cortes agresivos */
+        overflow-wrap: normal;
+        text-wrap: balance;
+        max-width: 28ch; /* Max-width más amplio para no forzar saltos cortos */
+        margin-inline: auto;
+        text-align: center;
     }
 }
 
@@ -1459,10 +1511,10 @@ body.no-scroll {
     .news-card__body {
         min-width: 0; /* Evita desbordes laterales en flex/grid en móviles estrechos */
     }
+
+    .hero,
+    .feature,
+    .news-grid {
+        grid-template-columns: 1fr !important; /* Fuerza una sola columna en mobile para evitar columnas fantasma */
+    }
 }
-
-
-
-
-
-
