@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMD | Lectura</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="article-page">
+    <div class="reading-progress" aria-hidden="true">
+        <div class="reading-progress__bar" id="reading-progress-bar"></div>
+    </div>
+
+    <header class="article-shell">
+        <div class="layout article-shell__inner">
+            <a class="article-shell__logo" href="index.html">
+                <img src="https://res.cloudinary.com/dul66qlpq/image/upload/v1762346821/Logo_smd_dj2ldo.svg" alt="SMD Mi Dios">
+            </a>
+        </div>
+    </header>
+
+    <main class="article-main">
+        <section class="article-hero layout">
+            <div class="article-hero__content">
+                <span class="pill pill--line" id="article-category">Iglesia en el Mundo</span>
+                <h1 class="article-hero__title" id="article-title">Titulo de la noticia</h1>
+                <p class="article-hero__lede" id="article-excerpt">Una lectura pausada para profundizar en la historia que acabas de abrir.</p>
+                <div class="article-hero__meta">
+                    <span id="article-reading-time">8 min de lectura</span>
+                    <span aria-hidden="true">•</span>
+                    <span id="article-author">Redaccion SMD</span>
+                </div>
+            </div>
+            <div class="article-hero__media">
+                <div class="article-hero__image">
+                    <img id="article-image" src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1400&auto=format&fit=crop" alt="Imagen de la noticia">
+                </div>
+                <div class="article-hero__glow" aria-hidden="true"></div>
+            </div>
+        </section>
+
+        <section class="article-body">
+            <div class="article-body__inner layout">
+                <article class="article-content" id="article-body">
+                    <p>Esta es una version de respaldo del articulo. Si estas leyendo esto, la pagina cargo en modo estatico y aun asi mantiene una experiencia limpia y centrada en el texto.</p>
+                    <p>Sigue desplazandote: al final encontraras un boton para apoyar el periodismo de SMD.</p>
+                    <div class="article-donate">
+                        <p>Asi como en esta historia, las obras necesitan recursos para seguir. Si quieres donar a Si Mi Dios, el boton esta abajo.</p>
+                        <a class="button button--donate" href="#">Donar a Si Mi Dios</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
