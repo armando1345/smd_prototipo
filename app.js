@@ -1,6 +1,29 @@
 // Inicializar iconos
 lucide.createIcons();
 
+const ARTICLE_STORAGE_KEY = 'smd-article-data';
+const ARTICLE_FALLBACK = {
+    title: 'Cuando la comunidad se vuelve abrigo',
+    category: 'Iglesia en el Mundo',
+    body: 'Un relato sereno sobre personas que se acompanan para sostener la fe en medio de la prisa.',
+    excerpt: 'Lectura larga para quienes buscan contexto sin ruido.',
+    image: 'https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=1400&auto=format&fit=crop',
+    author: 'Redaccion SMD',
+    highlights: [
+        'Texto amplio y limpio en una sola columna.',
+        'Una unica imagen protagonista con el branding de SMD.',
+        'CTA final para apoyar la mision periodistica.'
+    ],
+    callout: 'La fe crece cuando se vuelve historia compartida.',
+    paragraphs: [
+        'Las comunidades catolicas que acompanamos aman la calma: leen con tiempo, hablan despacio y se dejan tocar por historias reales.',
+        'En esta pieza bajamos la velocidad para entender el trasfondo pastoral y humano de una noticia que merece ser saboreada.',
+        'La voz de los protagonistas llega limpia: sin ventanas emergentes, sin videos que interrumpan, solo palabras e imagen.',
+        'El cierre es un puente hacia la accion: si algo de lo leido te movio, puedes sumar tu aporte para que sigamos investigando.',
+        'Gracias por leer y por sostener un periodismo que respira hondo antes de hablar.'
+    ]
+};
+
 // Categorías permitidas y normalización
 const ALLOWED_CATEGORIES = {
     'vaticano': 'Vaticano',
@@ -54,6 +77,45 @@ function applyAllowedCategories() {
             }
         }
     });
+}
+
+function saveArticleData(data = {}) {
+    try {
+        sessionStorage.setItem(ARTICLE_STORAGE_KEY, JSON.stringify(data));
+    } catch (error) {
+        console.warn('No se pudo guardar el articulo en sesion', error);
+    }
+}
+
+function loadArticleData() {
+    try {
+        const raw = sessionStorage.getItem(ARTICLE_STORAGE_KEY);
+        if (!raw) return null;
+        return JSON.parse(raw);
+    } catch (error) {
+        console.warn('No se pudo leer el articulo en sesion', error);
+        return null;
+    }
+}
+
+function buildArticlePayload(article = {}) {
+    const merged = { ...ARTICLE_FALLBACK, ...article };
+    const baseParagraphs = Array.isArray(merged.paragraphs) && merged.paragraphs.length ? merged.paragraphs : ARTICLE_FALLBACK.paragraphs;
+    const paragraphs = merged.body ? [merged.body, ...baseParagraphs.slice(1)] : baseParagraphs;
+
+    return {
+        ...merged,
+        category: normalizeCategory(merged.category || ARTICLE_FALLBACK.category) || ARTICLE_FALLBACK.category,
+        excerpt: merged.excerpt || merged.body || ARTICLE_FALLBACK.excerpt,
+        paragraphs
+    };
+}
+
+function redirectToArticlePage(article) {
+    if (!article) return;
+    const payload = buildArticlePayload(article);
+    saveArticleData(payload);
+    window.location.href = 'article.html';
 }
 
 // Menu movil
@@ -149,6 +211,7 @@ initRevealAnimations();
 initImagePlaceholders();
 applyAllowedCategories();
 initHeroStickyButton();
+initArticlePage();
 
 // Boton sticky del hero que desaparece al llegar al destacado
 function initHeroStickyButton() {
@@ -326,14 +389,16 @@ function getArticleData(card) {
     const body = card.dataset.body || (bodyNode ? bodyNode.textContent.trim() : 'Contenido no disponible para esta noticia.');
     const category = card.dataset.category || (categoryNode ? categoryNode.textContent.trim() : '');
     const image = card.dataset.image || (card.querySelector('img') ? card.querySelector('img').src : '');
+    const excerpt = card.dataset.excerpt || body;
+    const author = card.dataset.author || 'Redaccion SMD';
 
-    return { title, body, category, image };
+    return { title, body, category, image, excerpt, author };
 }
 
 const articleCards = document.querySelectorAll('[data-article]');
 articleCards.forEach((card) => {
     card.tabIndex = 0;
-    const open = () => openArticleModal(getArticleData(card), card);
+    const open = () => redirectToArticlePage(getArticleData(card));
     card.addEventListener('click', open);
     card.addEventListener('keydown', (event) => {
         if (event.key === 'Enter' || event.key === ' ') {
@@ -342,6 +407,109 @@ articleCards.forEach((card) => {
         }
     });
 });
+
+function setReadingTime(paragraphs = []) {
+    const readingTimeEl = document.getElementById('article-reading-time');
+    if (!readingTimeEl) return;
+    const text = Array.isArray(paragraphs) ? paragraphs.join(' ') : String(paragraphs || '');
+    const words = text.split(/\s+/).filter(Boolean).length;
+    const minutes = Math.max(3, Math.round(words / 180));
+    readingTimeEl.textContent = `${minutes} min de lectura`;
+}
+
+function initReadingProgress(articleBody) {
+    const bar = document.getElementById('reading-progress-bar');
+    if (!bar || !articleBody) return;
+
+    const clamp = (value) => Math.min(Math.max(value, 0), 100);
+
+    const update = () => {
+        const start = articleBody.offsetTop || 0;
+        const max = Math.max(articleBody.offsetHeight - window.innerHeight, 1);
+        const progress = ((window.scrollY - start) / max) * 100;
+        const percent = clamp(progress);
+        bar.style.width = `${percent}%`;
+    };
+
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+}
+
+function initArticlePage() {
+    const articlePage = document.querySelector('.article-page');
+    if (!articlePage) return;
+
+    const stored = loadArticleData() || {};
+    const data = buildArticlePayload(stored);
+    const { title, excerpt, category, image, author, paragraphs, callout } = data;
+
+    const titleEl = document.getElementById('article-title');
+    if (titleEl) {
+        titleEl.textContent = title || ARTICLE_FALLBACK.title;
+    }
+
+    if (title) {
+        document.title = `SMD | ${title}`;
+    }
+
+    const excerptEl = document.getElementById('article-excerpt');
+    if (excerptEl) {
+        excerptEl.textContent = excerpt || ARTICLE_FALLBACK.excerpt;
+    }
+
+    const categoryEl = document.getElementById('article-category');
+    if (categoryEl) {
+        categoryEl.textContent = category || ARTICLE_FALLBACK.category;
+        categoryEl.classList.remove('pill--hidden');
+    }
+
+    const authorEl = document.getElementById('article-author');
+    if (authorEl) {
+        authorEl.textContent = author || ARTICLE_FALLBACK.author;
+    }
+
+    const imageEl = document.getElementById('article-image');
+    if (imageEl) {
+        imageEl.src = image || ARTICLE_FALLBACK.image;
+        imageEl.alt = title || 'Imagen de noticia';
+    }
+
+    const bodyEl = document.getElementById('article-body');
+    if (bodyEl) {
+        bodyEl.innerHTML = '';
+        const story = Array.isArray(paragraphs) && paragraphs.length ? paragraphs : ARTICLE_FALLBACK.paragraphs;
+        story.forEach((paragraph, index) => {
+            if (index === 2 && callout) {
+                const calloutEl = document.createElement('div');
+                calloutEl.className = 'article-callout';
+                calloutEl.textContent = callout;
+                bodyEl.appendChild(calloutEl);
+            }
+            const p = document.createElement('p');
+            p.textContent = paragraph;
+            bodyEl.appendChild(p);
+        });
+
+        const donateWrap = document.createElement('div');
+        donateWrap.className = 'article-donate';
+
+        const donateText = document.createElement('p');
+        donateText.textContent = 'Asi como en esta noticia, las obras necesitan recursos para seguir. Si quieres donar a Si Mi Dios, el boton esta abajo.';
+        donateWrap.appendChild(donateText);
+
+        const donateBtn = document.createElement('a');
+        donateBtn.className = 'button button--donate';
+        donateBtn.href = '#';
+        donateBtn.textContent = 'Donar a Si Mi Dios';
+        donateWrap.appendChild(donateBtn);
+
+        bodyEl.appendChild(donateWrap);
+    }
+
+    setReadingTime(paragraphs);
+    initReadingProgress(bodyEl);
+}
 
 // Atajos de teclado
 document.addEventListener('keydown', (event) => {
