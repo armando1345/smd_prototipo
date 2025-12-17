@@ -27,20 +27,112 @@ const ARTICLE_FALLBACK = {
 // Categorías permitidas y normalización
 const ALLOWED_CATEGORIES = {
     'vaticano': 'Vaticano',
-    'iglesia en el mundo': 'Iglesia en el Mundo',
-    'mundo': 'Iglesia en el Mundo',
-    'tecnologia y fe': 'Iglesia en el Mundo',
-    'reportajes': 'Iglesia en el Mundo',
-    'cultura': 'Iglesia en el Mundo',
-    'solidaridad': 'Iglesia en el Mundo',
-    'actualidad': 'Iglesia en el Mundo',
-    'jovenes': 'Iglesia en el Mundo',
-    'smd radio': 'Iglesia en el Mundo',
+    'iglesia en el mundo': 'Mundo',
+    'mundo': 'Mundo',
+    'tecnologia y fe': 'Mundo',
+    'reportajes': 'Reportajes',
+    'cultura': 'Cultura',
+    'solidaridad': 'Solidaridad',
+    'actualidad': 'Actualidad',
+    'jovenes': 'Jovenes',
+    'smd radio': 'SMD Audio',
     'iglesia en el salvador': 'Iglesia en el Salvador',
     'iglesia en el el salvador': 'Iglesia en el Salvador',
     'liturgia': 'Liturgia',
     'siervas de la misericordia de dios': 'Siervas de la Misericordia de Dios',
-    'opinion': 'Opinión'
+    'opinion': 'Opinion'
+};
+
+const SECTION_STORAGE_KEY = 'smd-section-data';
+const SECTION_FALLBACKS = {
+    'Vaticano': [
+        {
+            title: 'El Papa Francisco llama a una revolucion de la ternura',
+            category: 'Vaticano',
+            excerpt: 'Carta pastoral sobre tecnologia y dignidad humana.',
+            image: 'https://images.unsplash.com/photo-1548625361-17d47225c50c?q=80&w=2000&auto=format&fit=crop',
+            body: 'Analisis de la carta y sus llamados a la cultura del encuentro.'
+        },
+        {
+            title: 'Agenda del Papa para la semana',
+            category: 'Vaticano',
+            excerpt: 'Audiencias con universidades catolicas y delegaciones.',
+            image: 'https://images.unsplash.com/photo-1515169067868-5387ec356754?q=80&w=800&auto=format&fit=crop',
+            body: 'Resumen de los principales encuentros previstos en Roma.'
+        }
+    ],
+    'Iglesia en el Salvador': [
+        {
+            title: 'Parroquias organizan jornadas de servicio',
+            category: 'Iglesia en el Salvador',
+            excerpt: 'Convocatoria para apoyar comedores sociales el fin de semana.',
+            image: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=800&auto=format&fit=crop',
+            body: 'Pastoral social busca sumar voluntarios en las principales zonas.'
+        },
+        {
+            title: 'Vocaciones que nacen en la red',
+            category: 'Iglesia en el Salvador',
+            excerpt: 'Testimonios de seminaristas que encontraron acompanamiento en linea.',
+            image: 'https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?q=80&w=800&auto=format&fit=crop',
+            body: 'Relatos que muestran la fuerza de las comunidades digitales.'
+        }
+    ],
+    'Mundo': [
+        {
+            title: 'Caritas lanza campana global contra el hambre',
+            category: 'Mundo',
+            excerpt: 'Recaudacion internacional para regiones afectadas por la sequia.',
+            image: 'https://images.unsplash.com/photo-1593113598332-cd288d649433?q=80&w=800&auto=format&fit=crop',
+            body: 'Organizaciones locales coordinan la logistica de la ayuda.'
+        },
+        {
+            title: 'Los Museos Vaticanos abren en horario nocturno',
+            category: 'Mundo',
+            excerpt: 'Visitas guiadas y recitales en patios principales durante el verano.',
+            image: 'https://images.unsplash.com/photo-1544163994-1a9e992955f2?q=80&w=800&auto=format&fit=crop',
+            body: 'La propuesta busca ofrecer una experiencia mas serena a los visitantes.'
+        }
+    ],
+    'Liturgia': [
+        {
+            title: 'Agenda liturgica de la semana',
+            category: 'Liturgia',
+            excerpt: 'Celebraciones y solemnidades destacadas con horarios locales.',
+            image: 'https://images.unsplash.com/photo-1444522652181-6a46f8c21839?q=80&w=1200&auto=format&fit=crop',
+            body: 'Guia para acompanarte en las principales fiestas y memorias.'
+        },
+        {
+            title: 'Cantos recomendados para Adviento',
+            category: 'Liturgia',
+            excerpt: 'Selecciones coral y guias de partituras para coros parroquiales.',
+            image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=1200&auto=format&fit=crop',
+            body: 'Recursos sencillos para animar las celebraciones comunitarias.'
+        }
+    ],
+    'Opinion': [
+        {
+            title: 'El silencio como disciplina espiritual',
+            category: 'Opinion',
+            excerpt: 'Una invitacion a recuperar momentos de retiro.',
+            image: 'https://images.unsplash.com/photo-1489515217757-5fd1be406fef?q=80&w=1200&auto=format&fit=crop',
+            body: 'Reflexion sobre limites sanos en el consumo de pantallas.'
+        },
+        {
+            title: 'Fratelli tutti: tres anos despues',
+            category: 'Opinion',
+            excerpt: 'Balance de los frutos sociales y pastorales de la enciclica.',
+            image: 'https://images.unsplash.com/photo-1497215842964-222b430dc094?q=80&w=1200&auto=format&fit=crop',
+            body: 'Como las comunidades locales aterrizan el llamado a la fraternidad.'
+        }
+    ]
+};
+
+const SECTION_GROUPS = {
+    'Vaticano': ['Vaticano'],
+    'Iglesia en el Salvador': ['Iglesia en el Salvador'],
+    'Mundo': ['Mundo', 'Reportajes', 'Cultura', 'Solidaridad', 'Actualidad', 'Jovenes', 'SMD Audio', 'Siervas de la Misericordia de Dios'],
+    'Liturgia': ['Liturgia'],
+    'Opinion': ['Opinion']
 };
 
 function normalizeCategory(value = '') {
@@ -96,6 +188,64 @@ function loadArticleData() {
         console.warn('No se pudo leer el articulo en sesion', error);
         return null;
     }
+}
+
+function saveSectionData(data = {}) {
+    try {
+        sessionStorage.setItem(SECTION_STORAGE_KEY, JSON.stringify(data));
+    } catch (error) {
+        console.warn('No se pudo guardar la seccion en sesion', error);
+    }
+}
+
+function loadSectionData() {
+    try {
+        const raw = sessionStorage.getItem(SECTION_STORAGE_KEY);
+        if (!raw) return null;
+        return JSON.parse(raw);
+    } catch (error) {
+        console.warn('No se pudo leer la seccion en sesion', error);
+        return null;
+    }
+}
+
+function collectArticles() {
+    return Array.from(document.querySelectorAll('[data-article]')).map((card) => getArticleData(card));
+}
+
+function filterArticlesByCategory(category = '') {
+    const target = normalizeCategory(category) || category;
+    if (!target) return collectArticles();
+    const groups = SECTION_GROUPS[target] || [target];
+    return collectArticles().filter((article) => {
+        const cleaned = normalizeCategory(article.category) || article.category;
+        return groups.includes(cleaned);
+    });
+}
+
+function getSectionFallback(category = '') {
+    const cleaned = normalizeCategory(category) || category;
+    return SECTION_FALLBACKS[cleaned] || [];
+}
+
+function navigateToSection(rawCategory = '', href = '') {
+    const category = normalizeCategory(rawCategory) || rawCategory || 'Noticias';
+    const articles = filterArticlesByCategory(category);
+    saveSectionData({ category, articles });
+    const targetHref = href || `section.html?category=${encodeURIComponent(category)}`;
+    window.location.href = targetHref;
+}
+
+function handleSectionLinks() {
+    const links = document.querySelectorAll('.js-section-link');
+    links.forEach((link) => {
+        link.addEventListener('click', (event) => {
+            const raw = link.dataset.category || link.textContent || '';
+            if (!raw) return;
+            event.preventDefault();
+            navigateToSection(raw, link.getAttribute('href'));
+        });
+    });
 }
 
 function buildArticlePayload(article = {}) {
@@ -210,7 +360,9 @@ function initImagePlaceholders() {
 initRevealAnimations();
 initImagePlaceholders();
 applyAllowedCategories();
+handleSectionLinks();
 initHeroStickyButton();
+initSectionPage();
 initArticlePage();
 
 // Boton sticky del hero que desaparece al llegar al destacado
@@ -223,14 +375,34 @@ function initHeroStickyButton() {
     if (!button || !buttonWrap || !hero || !target) return;
 
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const isMobile = window.matchMedia('(max-width: 640px)').matches;
     let heroVisible = true;
     let targetVisible = false;
 
     const updateState = () => {
+        if (isMobile) {
+            button.classList.remove('is-hidden');
+            buttonWrap.classList.remove('is-hidden');
+            return;
+        }
         const shouldHide = targetVisible || !heroVisible;
         button.classList.toggle('is-hidden', shouldHide);
         buttonWrap.classList.toggle('is-hidden', shouldHide);
     };
+
+    button.addEventListener('click', () => {
+        const behavior = prefersReducedMotion ? 'auto' : 'smooth';
+        const header = document.getElementById('main-header');
+        const offset = header ? header.offsetHeight + 16 : 16; /* Offset para evitar que el header tape el destacado */
+        const targetTop = target.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top: Math.max(targetTop, 0), behavior });
+        button.classList.add('is-hidden');
+    });
+
+    if (isMobile) {
+        updateState();
+        return;
+    }
 
     const heroObserver = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
@@ -248,15 +420,6 @@ function initHeroStickyButton() {
 
     heroObserver.observe(hero);
     targetObserver.observe(target);
-
-    button.addEventListener('click', () => {
-        const behavior = prefersReducedMotion ? 'auto' : 'smooth';
-        const header = document.getElementById('main-header');
-        const offset = header ? header.offsetHeight + 16 : 16; /* Offset para evitar que el header tape el destacado */
-        const targetTop = target.getBoundingClientRect().top + window.scrollY - offset;
-        window.scrollTo({ top: Math.max(targetTop, 0), behavior });
-        button.classList.add('is-hidden');
-    });
 }
 
 // Menu desplegable de secciones
@@ -395,18 +558,22 @@ function getArticleData(card) {
     return { title, body, category, image, excerpt, author };
 }
 
-const articleCards = document.querySelectorAll('[data-article]');
-articleCards.forEach((card) => {
-    card.tabIndex = 0;
-    const open = () => redirectToArticlePage(getArticleData(card));
-    card.addEventListener('click', open);
-    card.addEventListener('keydown', (event) => {
-        if (event.key === 'Enter' || event.key === ' ') {
-            event.preventDefault();
-            open();
-        }
+function bindArticleCards(scope = document) {
+    const cards = scope.querySelectorAll('[data-article]');
+    cards.forEach((card) => {
+        card.tabIndex = 0;
+        const open = () => redirectToArticlePage(getArticleData(card));
+        card.addEventListener('click', open);
+        card.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                open();
+            }
+        });
     });
-});
+}
+
+bindArticleCards();
 
 function setReadingTime(paragraphs = []) {
     const readingTimeEl = document.getElementById('article-reading-time');
@@ -509,6 +676,95 @@ function initArticlePage() {
 
     setReadingTime(paragraphs);
     initReadingProgress(bodyEl);
+}
+
+function createSectionCard(article = {}, fallbackCategory = '') {
+    const card = document.createElement('article');
+    card.className = 'news-card article-card';
+    card.dataset.article = 'true';
+    card.dataset.category = article.category || fallbackCategory || '';
+    card.dataset.title = article.title || 'Noticia';
+    card.dataset.body = article.body || article.excerpt || '';
+    card.dataset.image = article.image || ARTICLE_FALLBACK.image;
+
+    const media = document.createElement('div');
+    media.className = 'news-card__media';
+
+    const pill = document.createElement('span');
+    pill.className = 'pill pill--line';
+    pill.textContent = article.category || fallbackCategory || '';
+    media.appendChild(pill);
+
+    const img = document.createElement('img');
+    img.src = article.image || ARTICLE_FALLBACK.image;
+    img.alt = article.title || 'Imagen de noticia';
+    media.appendChild(img);
+
+    const body = document.createElement('div');
+    body.className = 'news-card__body';
+
+    const title = document.createElement('h3');
+    title.className = 'news-card__title';
+    title.textContent = article.title || 'Noticia';
+
+    const summary = document.createElement('p');
+    summary.className = 'news-card__summary';
+    summary.textContent = article.excerpt || article.body || ARTICLE_FALLBACK.excerpt;
+
+    body.appendChild(title);
+    body.appendChild(summary);
+
+    card.appendChild(media);
+    card.appendChild(body);
+    return card;
+}
+
+function renderSectionPage(category = '', articles = []) {
+    const grid = document.getElementById('section-grid');
+    const empty = document.getElementById('section-empty');
+    const kicker = document.getElementById('section-kicker');
+    const title = document.getElementById('section-title');
+    const lead = document.getElementById('section-lead');
+
+    const displayCategory = normalizeCategory(category) || category || 'Seccion';
+    if (kicker) kicker.textContent = displayCategory;
+    if (title) title.textContent = `Noticias de ${displayCategory}`;
+    if (lead) lead.textContent = `Explora todas las publicaciones de ${displayCategory}.`;
+
+    if (!grid) return;
+    grid.innerHTML = '';
+
+    if (!articles.length) {
+        if (empty) empty.hidden = false;
+        return;
+    }
+
+    if (empty) empty.hidden = true;
+
+    articles.forEach((article) => {
+        const card = createSectionCard(article, displayCategory);
+        grid.appendChild(card);
+    });
+
+    bindArticleCards(grid);
+    applyAllowedCategories();
+    initImagePlaceholders();
+}
+
+function initSectionPage() {
+    const sectionPage = document.querySelector('.section-page');
+    if (!sectionPage) return;
+
+    const params = new URLSearchParams(window.location.search);
+    const rawCategory = params.get('category') || '';
+    const category = normalizeCategory(rawCategory) || rawCategory || 'Noticias';
+
+    const stored = loadSectionData();
+    const storedCategory = stored ? normalizeCategory(stored.category) || stored.category : '';
+    const articles = stored && storedCategory === category ? stored.articles || [] : [];
+    const finalArticles = Array.isArray(articles) && articles.length ? articles : getSectionFallback(category);
+
+    renderSectionPage(category, finalArticles);
 }
 
 // Atajos de teclado
