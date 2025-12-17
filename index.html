@@ -20,19 +20,19 @@
                     <i data-lucide="menu"></i>
                 </button>
                 <div class="sections-dropdown" id="sections-dropdown">
-                    <button class="icon-button sections-dropdown__toggle" id="sections-dropdown-toggle" aria-expanded="false" aria-haspopup="true" aria-controls="sections-dropdown-menu">
-                        <i data-lucide="menu"></i>
-                        <span class="sr-only">Abrir secciones</span>
-                    </button>
-                    <div class="sections-dropdown__menu" id="sections-dropdown-menu" role="menu">
-                        <a href="#" role="menuitem">Vaticano</a>
-                        <a href="#" role="menuitem">Iglesia en El Salvador</a>
-                        <a href="#" role="menuitem">Mundo</a>
-                        <a href="#" role="menuitem">Liturgia</a>
-                        <a href="#" role="menuitem">Opinion</a>
-                    </div>
+                <button class="icon-button sections-dropdown__toggle" id="sections-dropdown-toggle" aria-expanded="false" aria-haspopup="true" aria-controls="sections-dropdown-menu">
+                    <i data-lucide="menu"></i>
+                    <span class="sr-only">Abrir secciones</span>
+                </button>
+                <div class="sections-dropdown__menu" id="sections-dropdown-menu" role="menu">
+                    <a class="js-section-link" href="section.html?category=Vaticano" data-category="Vaticano" role="menuitem">Vaticano</a>
+                    <a class="js-section-link" href="section.html?category=Iglesia%20en%20El%20Salvador" data-category="Iglesia en El Salvador" role="menuitem">Iglesia en El Salvador</a>
+                    <a class="js-section-link" href="section.html?category=Mundo" data-category="Mundo" role="menuitem">Mundo</a>
+                    <a class="js-section-link" href="section.html?category=Liturgia" data-category="Liturgia" role="menuitem">Liturgia</a>
+                    <a class="js-section-link" href="section.html?category=Opinion" data-category="Opinion" role="menuitem">Opinion</a>
                 </div>
             </div>
+        </div>
 
             <a href="#" class="header__logo" aria-label="SMD Inicio">
                 <img src="https://res.cloudinary.com/dul66qlpq/image/upload/v1762346821/Logo_smd_dj2ldo.svg" alt="SMD Mi Dios">
@@ -52,13 +52,13 @@
             </button>
         </div>
         <nav class="mobile-menu__nav" aria-label="Menu movil">
-            <a href="#">Vaticano</a>
-            <a href="#">Iglesia en El Salvador</a>
-            <a href="#">Iglesia en el Mundo</a>
-            <a href="#">Liturgia</a>
-            <a href="#">Siervas de la Misericordia de Dios</a>
-            <a href="#">Opinion</a>
-            <a href="#" class="mobile-menu__cta">SMD Radio (USD 2/mes)</a>
+            <a class="js-section-link" href="section.html?category=Vaticano" data-category="Vaticano">Vaticano</a>
+            <a class="js-section-link" href="section.html?category=Iglesia%20en%20El%20Salvador" data-category="Iglesia en El Salvador">Iglesia en El Salvador</a>
+            <a class="js-section-link" href="section.html?category=Mundo" data-category="Mundo">Iglesia en el Mundo</a>
+            <a class="js-section-link" href="section.html?category=Liturgia" data-category="Liturgia">Liturgia</a>
+            <a class="js-section-link" href="section.html?category=Siervas%20de%20la%20Misericordia%20de%20Dios" data-category="Siervas de la Misericordia de Dios">Siervas de la Misericordia de Dios</a>
+            <a class="js-section-link" href="section.html?category=Opinion" data-category="Opinion">Opinion</a>
+            <a href="#" class="mobile-menu__cta">SMD Audio (USD 2/mes)</a>
         </nav>
     </div>
 
@@ -228,7 +228,7 @@
         <section class="section radio" aria-labelledby="radio">
             <div class="section-heading">
                 <p class="section-heading__kicker" id="radio">Audio</p>
-                <h2 class="section-heading__title">SMD Radio</h2>
+                <h2 class="section-heading__title">SMD Audio</h2>
             </div>
             <div class="radio__panel">
                 <div class="radio__intro">
@@ -237,20 +237,20 @@
                     <p class="radio__text">Suscribete para recibir conversaciones profundas con voces de la Iglesia y la sociedad.</p>
                     <div class="radio__actions">
                         <span class="radio__price">USD 2 / mes</span>
-                        <button class="button button--filled">
+                        <a class="button button--filled" href="premium.html">
                             Suscribirse
                             <i data-lucide="lock"></i>
-                        </button>
+                        </a>
                         <p class="radio__small">Cancela cuando quieras.</p>
                     </div>
                 </div>
                 <div class="radio__list">
-                    <article class="radio__item article-card" data-article="true" data-title="Los secretos del conclave" data-category="SMD Radio" data-body="Que sucede tras las puertas cerradas de la Capilla Sixtina y como se prepara cada cardenal.">
+                    <article class="radio__item article-card" data-article="true" data-title="Los secretos del conclave" data-category="SMD Audio" data-body="Que sucede tras las puertas cerradas de la Capilla Sixtina y como se prepara cada cardenal.">
                         <p class="radio__tag">Exclusivo - 45 min</p>
                         <h3 class="radio__item-title">Los secretos del conclave</h3>
                         <p class="radio__item-meta">Conduccion: Maria Lopez</p>
                     </article>
-                    <article class="radio__item article-card" data-article="true" data-title="La Iglesia perseguida en Oriente" data-category="SMD Radio" data-body="Testimonios directos que no veras en los medios tradicionales.">
+                    <article class="radio__item article-card" data-article="true" data-title="La Iglesia perseguida en Oriente" data-category="SMD Audio" data-body="Testimonios directos que no veras en los medios tradicionales.">
                         <p class="radio__tag">Entrevista - 60 min</p>
                         <h3 class="radio__item-title">La Iglesia perseguida en Oriente</h3>
                         <p class="radio__item-meta">Conduccion: Carlos Diaz</p>
@@ -269,7 +269,7 @@
                 <form class="newsletter__form">
                     <label class="sr-only" for="email">Correo electronico</label>
                     <input id="email" name="email" type="email" placeholder="Tu correo electronico" required>
-                    <button type="button" class="button button--outline">Suscribirse</button>
+                    <a class="button button--outline" href="newsletter.html">Suscribirse</a>
                 </form>
                 <p class="newsletter__small">Al suscribirte aceptas nuestra politica de privacidad.</p>
             </div>
@@ -285,11 +285,11 @@
             <div class="footer__links">
                 <div>
                     <h4>Secciones</h4>
-                    <a href="#">Noticias del Vaticano</a>
-                    <a href="#">Iglesia en El Salvador</a>
-                    <a href="#">Iglesia en el Mundo</a>
-                    <a href="#">Liturgia</a>
-                    <a href="#">Siervas de la Misericordia de Dios</a>
+                    <a class="js-section-link" href="section.html?category=Vaticano" data-category="Vaticano">Noticias del Vaticano</a>
+                    <a class="js-section-link" href="section.html?category=Iglesia%20en%20El%20Salvador" data-category="Iglesia en El Salvador">Iglesia en El Salvador</a>
+                    <a class="js-section-link" href="section.html?category=Mundo" data-category="Mundo">Iglesia en el Mundo</a>
+                    <a class="js-section-link" href="section.html?category=Liturgia" data-category="Liturgia">Liturgia</a>
+                    <a class="js-section-link" href="section.html?category=Siervas%20de%20la%20Misericordia%20de%20Dios" data-category="Siervas de la Misericordia de Dios">Siervas de la Misericordia de Dios</a>
                 </div>
                 <div>
                     <h4>Institucional</h4>
