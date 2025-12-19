@@ -1799,6 +1799,113 @@ body.no-scroll {
     margin: 0;
 }
 
+.institution-page .main {
+    gap: clamp(20px, 4vw, 40px);
+}
+
+.institution-hero {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-5);
+    padding: var(--space-5);
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.05), rgba(214, 175, 99, 0.12));
+    border: 1px solid #e0e7f0;
+    border-radius: var(--radius-3);
+    box-shadow: var(--shadow-soft);
+}
+
+.institution-hero__kicker {
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+    font-weight: 700;
+    margin-bottom: var(--space-2);
+}
+
+.institution-hero__title {
+    font-size: clamp(1.9rem, 4vw + 0.8rem, 2.6rem);
+    line-height: 1.16;
+    margin: 0 0 var(--space-3);
+    text-wrap: balance;
+}
+
+.institution-hero__lead {
+    color: var(--color-muted);
+    font-size: 1.05rem;
+    margin-bottom: var(--space-4);
+}
+
+.institution-hero__card {
+    background: #ffffff;
+    border: 1px solid #e7eaef;
+    border-radius: var(--radius-2);
+    padding: var(--space-4);
+    display: grid;
+    gap: var(--space-3);
+    box-shadow: var(--shadow-card);
+}
+
+.institution-hero__tag {
+    font-weight: 700;
+    color: var(--color-dark-blue);
+}
+
+.institution-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: var(--space-2);
+    color: var(--color-text);
+    font-weight: 600;
+}
+
+.institution-list li::before {
+    content: '•';
+    color: var(--color-gold);
+    margin-right: 8px;
+}
+
+.institution-body {
+    display: grid;
+    gap: var(--space-4);
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.institution-block {
+    background: #ffffff;
+    border: 1px solid #e7eaef;
+    border-radius: var(--radius-2);
+    padding: var(--space-4);
+    display: grid;
+    gap: var(--space-2);
+    box-shadow: var(--shadow-soft);
+}
+
+.institution-block h2 {
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.institution-block p {
+    margin: 0;
+    color: var(--color-muted);
+}
+
+.contact-form {
+    display: grid;
+    gap: var(--space-2);
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: var(--space-3);
+    border-radius: var(--radius-1);
+    border: 1px solid var(--color-border-strong);
+    background: #ffffff;
+    font-family: inherit;
+}
+
 /* Pagina de lectura */
 .article-page {
     background: radial-gradient(circle at 12% 20%, #f3f8ff 0, #f9fbff 35%, #fdfbf5 72%);
