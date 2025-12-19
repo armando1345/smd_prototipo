@@ -396,7 +396,9 @@ function initHeroStickyButton() {
         const offset = header ? header.offsetHeight + 16 : 16; /* Offset para evitar que el header tape el destacado */
         const targetTop = target.getBoundingClientRect().top + window.scrollY - offset;
         window.scrollTo({ top: Math.max(targetTop, 0), behavior });
-        button.classList.add('is-hidden');
+        if (!isMobile) {
+            button.classList.add('is-hidden');
+        }
     });
 
     if (isMobile) {
