@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMD | Premium</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Karla:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="icon" type="image/svg+xml" href="https://res.cloudinary.com/dul66qlpq/image/upload/v1762346821/Logo_smd_dj2ldo.svg">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="premium-page">
+    <header class="site-header" id="main-header">
+        <div class="layout header__inner">
+            <div class="header__side">
+                <a class="icon-button header__menu-toggle" href="index.html" aria-label="Inicio">
+                    <i data-lucide="arrow-left"></i>
+                </a>
+            </div>
+
+            <a href="index.html" class="header__logo" aria-label="SMD Inicio">
+                <img src="https://res.cloudinary.com/dul66qlpq/image/upload/v1762346821/Logo_smd_dj2ldo.svg" alt="SMD Mi Dios">
+            </a>
+
+            <div class="header__side header__side--right">
+                <a class="button button--outline" href="index.html">Volver</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="layout main premium-main">
+        <section class="premium-hero" aria-labelledby="premium-title">
+            <div class="premium-hero__text">
+                <p class="premium-hero__kicker">SMD Audio Premium</p>
+                <h1 id="premium-title" class="premium-hero__title">Voces confiables, sin ruido, por USD 2 / mes.</h1>
+                <p class="premium-hero__lead">Accede a entrevistas exclusivas, analisis pausado y audio sin interrupciones. Apoya un periodismo catolico independiente.</p>
+                <div class="premium-hero__actions">
+                    <a class="button button--filled" href="#premium-cta">Suscribirme</a>
+                    <a class="button button--outline" href="index.html">Seguir leyendo gratis</a>
+                </div>
+                <p class="premium-hero__meta">Cancela cuando quieras. Pronto integraremos Wompi y PayPal.</p>
+            </div>
+            <div class="premium-hero__card">
+                <p class="premium-hero__tag">Incluye</p>
+                <ul class="premium-list">
+                    <li>Dos entrevistas largas a la semana</li>
+                    <li>Analisis editorial exclusivo</li>
+                    <li>Acceso anticipado a coberturas especiales</li>
+                    <li>Reproductor sin anuncios</li>
+                </ul>
+                <a class="button button--filled premium-hero__cta" id="premium-cta" href="#">Quiero apoyarlos</a>
+            </div>
+        </section>
+
+        <section class="section premium-grid" aria-label="Destacados premium">
+            <article class="premium-card">
+                <p class="pill pill--line">Entrevista</p>
+                <h2>Los secretos del conclave</h2>
+                <p>Conversacion a fondo sobre la vida dentro de la Capilla Sixtina y la preparacion de los cardenales.</p>
+            </article>
+            <article class="premium-card">
+                <p class="pill pill--line">Analisis</p>
+                <h2>Iglesia perseguida en Oriente</h2>
+                <p>Testimonios directos de comunidades que resisten en silencio y necesitan nuestra voz.</p>
+            </article>
+            <article class="premium-card">
+                <p class="pill pill--line">Audio</p>
+                <h2>Cada semana, sin anuncios</h2>
+                <p>Reproductor limpio con descargas para escuchar offline cuando quieras.</p>
+            </article>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="layout footer__inner">
+            <div class="footer__brand">
+                <img src="https://res.cloudinary.com/dul66qlpq/image/upload/v1762346821/Logo_smd_dj2ldo.svg" alt="SMD Mi Dios">
+                <p>Somos un medio independiente comprometido con la verdad, la belleza y la tradicion de la Iglesia Catolica en el mundo moderno.</p>
+            </div>
+            <div class="footer__links">
+                <div>
+                    <h4>Secciones</h4>
+                    <a class="js-section-link" href="section.html?category=Vaticano" data-category="Vaticano">Noticias del Vaticano</a>
+                    <a class="js-section-link" href="section.html?category=Iglesia%20en%20El%20Salvador" data-category="Iglesia en El Salvador">Iglesia en El Salvador</a>
+                    <a class="js-section-link" href="section.html?category=Mundo" data-category="Mundo">Iglesia en el Mundo</a>
+                    <a class="js-section-link" href="section.html?category=Liturgia" data-category="Liturgia">Liturgia</a>
+                    <a class="js-section-link" href="section.html?category=Opinion" data-category="Opinion">Opinion</a>
+                </div>
+                <div>
+                    <h4>Institucional</h4>
+                    <a href="about.html#sobre-nosotras">Sobre nosotras</a>
+                    <a href="etica.html">Codigo etico</a>
+                    <a href="privacidad.html">Politica de privacidad</a>
+                    <a href="contacto.html">Contacto</a>
+                </div>
+            </div>
+            <div class="footer__meta">
+                <p>&copy; 2025 SMD Mi Dios. Todos los derechos reservados.</p>
+                <p>Disenado con fe.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
+
