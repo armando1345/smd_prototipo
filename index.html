@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMD | Siervas de la Misericordia de Dios</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Karla:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="icon" type="image/svg+xml" href="https://res.cloudinary.com/dul66qlpq/image/upload/v1762346821/Logo_smd_dj2ldo.svg">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <div class="preloader" id="preloader" aria-hidden="true">
+        <div class="preloader__inner">
+            <img src="https://res.cloudinary.com/dul66qlpq/image/upload/v1762346821/Logo_smd_dj2ldo.svg" alt="Logo SMD" class="preloader__logo">
+            <div class="preloader__ring"></div>
+        </div>
+    </div>
+
+    <header class="site-header" id="main-header">
+        <div class="topbar">
+            <div class="layout topbar__inner">
+                <p class="topbar__text">Si Mi Dios | Informacion catolica con verdad, belleza y tradicion</p>
+                <div class="topbar__actions">
+                    <a class="social-link" href="#" aria-label="Facebook de SMD"><i data-lucide="facebook"></i></a>
+                    <a class="social-link" href="#" aria-label="YouTube de SMD"><i data-lucide="youtube"></i></a>
+                    <a class="button button--donate button--small" href="#">Donar</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="layout header__inner">
+            <a href="index.html" class="header__logo" aria-label="SMD Inicio">
+                <img src="https://res.cloudinary.com/dul66qlpq/image/upload/v1762346821/Logo_smd_dj2ldo.svg" alt="SMD Mi Dios">
+            </a>
+
+            <nav class="primary-nav" aria-label="Navegacion principal">
+                <a href="index.html" class="is-active">Inicio</a>
+                <a class="js-section-link" href="section.html?category=Vaticano" data-category="Vaticano">Vaticano</a>
+                <a class="js-section-link" href="section.html?category=Iglesia%20en%20El%20Salvador" data-category="Iglesia en El Salvador">Iglesia en El Salvador</a>
+                <a class="js-section-link" href="section.html?category=Mundo" data-category="Mundo">Mundo</a>
+                <a class="js-section-link" href="section.html?category=Liturgia" data-category="Liturgia">Liturgia</a>
+                <a class="js-section-link" href="section.html?category=Opinion" data-category="Opinion">Opinion</a>
+                <a href="about.html#sobre-nosotras">Sobre nosotras</a>
+                <a href="contacto.html">Contacto</a>
+                <a href="premium.html">SMD Podcast</a>
+                <div class="sections-dropdown nav-dropdown" id="sections-dropdown">
+                    <button class="nav-dropdown__toggle" id="sections-dropdown-toggle" aria-expanded="false" aria-haspopup="true" aria-controls="sections-dropdown-menu">
+                        Mas
+                        <i data-lucide="chevron-down"></i>
+                    </button>
+                    <div class="sections-dropdown__menu nav-dropdown__menu" id="sections-dropdown-menu" role="menu">
+                        <a href="etica.html" role="menuitem">Codigo etico</a>
+                        <a href="privacidad.html" role="menuitem">Privacidad</a>
+                        <a href="premium.html" role="menuitem">Premium</a>
+                    </div>
+                </div>
+            </nav>
+
+            <button class="icon-button header__menu-toggle" id="mobile-menu-btn" aria-label="Abrir menu">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+    </header>
+
+    <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+        <div class="mobile-menu__dialog" role="dialog" aria-modal="true" aria-label="Menu movil">
+            <div class="mobile-menu__header">
+                <img src="https://res.cloudinary.com/dul66qlpq/image/upload/v1762346821/Logo_smd_dj2ldo.svg" alt="SMD Mi Dios" class="mobile-menu__logo">
+                <button class="icon-button" id="close-menu-btn" aria-label="Cerrar menu">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+            <nav class="mobile-menu__nav">
+                <a href="index.html">Inicio</a>
+                <a class="js-section-link" href="section.html?category=Vaticano" data-category="Vaticano">Vaticano</a>
+                <a class="js-section-link" href="section.html?category=Iglesia%20en%20El%20Salvador" data-category="Iglesia en El Salvador">Iglesia en El Salvador</a>
+                <a class="js-section-link" href="section.html?category=Mundo" data-category="Mundo">Mundo</a>
+                <a class="js-section-link" href="section.html?category=Liturgia" data-category="Liturgia">Liturgia</a>
+                <a class="js-section-link" href="section.html?category=Opinion" data-category="Opinion">Opinion</a>
+                <a href="about.html#sobre-nosotras">Sobre nosotras</a>
+                <a href="contacto.html">Contacto</a>
+                <a href="premium.html">SMD Podcast</a>
+                <div class="mobile-menu__group">
+                    <button class="mobile-menu__group-toggle" type="button" aria-expanded="false">
+                        Mas
+                        <i data-lucide="chevron-down"></i>
+                    </button>
+                    <div class="mobile-menu__group-menu">
+                        <a href="etica.html">Codigo etico</a>
+                        <a href="privacidad.html">Privacidad</a>
+                    </div>
+                </div>
+                <a class="button button--donate button--small" href="#">Donar</a>
+            </nav>
+        </div>
+    </div>
+
+    <main>
+        <section class="hero-carousel hero" id="hero-carousel" aria-label="Titulares principales">
+            <div class="hero-carousel__slides">
+                <article class="hero-slide is-active" style="background-image: url('https://images.unsplash.com/photo-1490750967868-88aa4486c946?q=80&w=1800&auto=format&fit=crop');">
+                    <div class="hero-slide__overlay"></div>
+                    <div class="layout hero-slide__content">
+                        <p class="hero-slide__kicker">SMD</p>
+                        <h1 class="hero-slide__title">El dia a dia de la Iglesia Catolica, intacto</h1>
+                        <p class="hero-slide__subtitle">Si buscas verdad y fidelidad al magisterio, aqui podras leer en paz con profundidad y contexto.</p>
+                        <a class="button button--solid" href="about.html#sobre-nosotras">Conocer sobre nosotras</a>
+                    </div>
+                </article>
+                <article class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1548625361-17d47225c50c?q=80&w=1800&auto=format&fit=crop');">
+                    <div class="hero-slide__overlay"></div>
+                    <div class="layout hero-slide__content">
+                        <p class="hero-slide__kicker">Vaticano</p>
+                        <h2 class="hero-slide__title">Verdad, belleza y tradicion para leer la actualidad</h2>
+                        <p class="hero-slide__subtitle">Cobertura diaria del Santo Padre, documentos clave y vida de la Iglesia universal.</p>
+                        <a class="button button--solid js-section-link" href="section.html?category=Vaticano" data-category="Vaticano">Ir a Vaticano</a>
+                    </div>
+                </article>
+                <article class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1507692049790-de58290a4334?q=80&w=1800&auto=format&fit=crop');">
+                    <div class="hero-slide__overlay"></div>
+                    <div class="layout hero-slide__content">
+                        <p class="hero-slide__kicker">Liturgia</p>
+                        <h2 class="hero-slide__title">Liturgia para celebrar con profundidad</h2>
+                        <p class="hero-slide__subtitle">Evangelio del dia, agenda liturgica y recursos pastorales para tu comunidad.</p>
+                        <a class="button button--solid js-section-link" href="section.html?category=Liturgia" data-category="Liturgia">Ver Liturgia</a>
+                    </div>
+                </article>
+                <article class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1489515217757-5fd1be406fef?q=80&w=1800&auto=format&fit=crop');">
+                    <div class="hero-slide__overlay"></div>
+                    <div class="layout hero-slide__content">
+                        <p class="hero-slide__kicker">Mundo</p>
+                        <h2 class="hero-slide__title">Historias catolicas globales, narradas sin ruido</h2>
+                        <p class="hero-slide__subtitle">Reportajes y analisis de impacto social para mirar la Iglesia en movimiento.</p>
+                        <a class="button button--solid js-section-link" href="section.html?category=Mundo" data-category="Mundo">Explorar Mundo</a>
+                    </div>
+                </article>
+            </div>
+            <div class="hero-carousel__dots" aria-label="Paginacion del hero">
+                <button class="hero-dot is-active" type="button" data-slide-to="0" aria-label="Ir al slide 1"></button>
+                <button class="hero-dot" type="button" data-slide-to="1" aria-label="Ir al slide 2"></button>
+                <button class="hero-dot" type="button" data-slide-to="2" aria-label="Ir al slide 3"></button>
+                <button class="hero-dot" type="button" data-slide-to="3" aria-label="Ir al slide 4"></button>
+            </div>
+        </section>
+
+        <section class="audio-section reveal-block" aria-labelledby="audio-title">
+            <div class="layout audio-section__inner">
+                <p class="section-kicker" id="audio-title">SMD Podcast</p>
+                <h2>Palabras al oido</h2>
+                <p>Escucha una reflexion semanal con analisis pastoral y acompanamiento espiritual.</p>
+                <div class="audio-player" data-audio-player>
+                    <audio id="audio-element" preload="metadata" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
+                    <button class="audio-player__toggle" id="audio-toggle" type="button" aria-label="Reproducir audio">
+                        <i data-lucide="play"></i>
+                        <span id="audio-toggle-label">Reproducir</span>
+                    </button>
+                    <div class="audio-player__line">
+                        <input id="audio-progress" type="range" min="0" max="100" value="0" step="0.1" aria-label="Progreso del audio">
+                        <div class="audio-player__times">
+                            <span id="audio-current">0:00</span>
+                            <span id="audio-duration">0:00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mission-section reveal-block" aria-labelledby="mission-title">
+            <div class="layout mission-section__inner">
+                <span class="mission-section__word" aria-hidden="true">MISERICORDIA</span>
+                <div class="mission-section__content">
+                    <p class="section-kicker">Historia y mision</p>
+                    <h2 id="mission-title">Una congregacion joven con vocacion de servicio</h2>
+                    <p>Las Siervas de la Misericordia de Dios nacieron en San Salvador y hoy sirven en distintos paises, llevando esperanza con obras concretas.</p>
+                    <a class="button button--solid" href="about.html#sobre-nosotras">Conocer la congregacion</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="collage-section reveal-block" aria-labelledby="collage-title">
+            <div class="layout collage-section__inner">
+                <div class="collage-grid">
+                    <img src="https://images.unsplash.com/photo-1438232992991-995b7058bbb3?q=80&w=700&auto=format&fit=crop" alt="Mision pastoral" loading="lazy" decoding="async">
+                    <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=700&auto=format&fit=crop" alt="Trabajo comunitario" loading="lazy" decoding="async">
+                    <img src="https://images.unsplash.com/photo-1483721310020-03333e577078?q=80&w=700&auto=format&fit=crop" alt="Iglesia y comunidad" loading="lazy" decoding="async">
+                    <img src="https://images.unsplash.com/photo-1532453288672-3a27e9be9efd?q=80&w=700&auto=format&fit=crop" alt="Servicio social" loading="lazy" decoding="async">
+                </div>
+                <div class="collage-section__content">
+                    <p class="section-kicker">Obras y mision</p>
+                    <h2 id="collage-title">Presencia viva en El Salvador y mas alla</h2>
+                    <p>Desde parroquias y escuelas hasta proyectos de misericordia, esta obra se sostiene con comunidad, servicio y verdad.</p>
+                    <a class="button button--solid js-section-link" href="section.html?category=Iglesia%20en%20El%20Salvador" data-category="Iglesia en El Salvador">Ver cobertura local</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="news-stream reveal-block" aria-labelledby="news-stream-title">
+            <div class="layout">
+                <div class="section-head">
+                    <p class="section-kicker" id="news-stream-title">Ultimas noticias</p>
+                    <h2>Lecturas recientes de SMD</h2>
+                </div>
+                <div class="news-grid">
+                    <article class="news-card article-card" data-article="true" data-title="Agenda del Papa para la semana" data-category="Vaticano" data-image="https://images.unsplash.com/photo-1515169067868-5387ec356754?q=80&w=1200&auto=format&fit=crop" data-body="Audiencias y encuentros del Santo Padre con universidades catolicas y delegaciones de misiones." data-excerpt="Audiencias y encuentros del Santo Padre con universidades catolicas y delegaciones de misiones." data-author="Redaccion SMD">
+                        <div class="news-card__media">
+                            <img src="https://images.unsplash.com/photo-1515169067868-5387ec356754?q=80&w=1200&auto=format&fit=crop" alt="Agenda en Vaticano" loading="lazy" decoding="async">
+                        </div>
+                        <div class="news-card__body">
+                            <span class="pill">Vaticano</span>
+                            <h3 class="news-card__title">Agenda del Papa para la semana</h3>
+                            <p class="news-card__summary">Audiencias y encuentros pastorales con comunidades de distintos paises.</p>
+                        </div>
+                    </article>
+
+                    <article class="news-card article-card" data-article="true" data-title="Parroquias organizan jornadas de servicio" data-category="Iglesia en El Salvador" data-image="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1200&auto=format&fit=crop" data-body="Voluntarios y religiosas coordinan entregas de alimentos y atencion pastoral en barrios vulnerables." data-excerpt="Voluntarios y religiosas coordinan entregas de alimentos y atencion pastoral en barrios vulnerables." data-author="Equipo pastoral SMD">
+                        <div class="news-card__media">
+                            <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1200&auto=format&fit=crop" alt="Voluntariado en parroquia" loading="lazy" decoding="async">
+                        </div>
+                        <div class="news-card__body">
+                            <span class="pill">Iglesia en El Salvador</span>
+                            <h3 class="news-card__title">Parroquias organizan jornadas de servicio</h3>
+                            <p class="news-card__summary">La pastoral social refuerza comedores y acompanamiento comunitario.</p>
+                        </div>
+                    </article>
+
+                    <article class="news-card article-card" data-article="true" data-title="Caritas lanza campana global contra el hambre" data-category="Mundo" data-image="https://images.unsplash.com/photo-1593113598332-cd288d649433?q=80&w=1200&auto=format&fit=crop" data-body="La red internacional de Caritas impulsa una respuesta coordinada frente a la sequia en varias regiones." data-excerpt="La red internacional de Caritas impulsa una respuesta coordinada frente a la sequia en varias regiones." data-author="Redaccion SMD">
+                        <div class="news-card__media">
+                            <img src="https://images.unsplash.com/photo-1593113598332-cd288d649433?q=80&w=1200&auto=format&fit=crop" alt="Campana de Caritas" loading="lazy" decoding="async">
+                        </div>
+                        <div class="news-card__body">
+                            <span class="pill">Mundo</span>
+                            <h3 class="news-card__title">Caritas lanza campana global contra el hambre</h3>
+                            <p class="news-card__summary">Colecta internacional para responder a la emergencia humanitaria.</p>
+                        </div>
+                    </article>
+
+                    <article class="news-card article-card" data-article="true" data-title="Agenda liturgica de la semana" data-category="Liturgia" data-image="https://images.unsplash.com/photo-1444522652181-6a46f8c21839?q=80&w=1200&auto=format&fit=crop" data-body="Celebraciones y solemnidades destacadas para acompanar la vida de fe en comunidad." data-excerpt="Celebraciones y solemnidades destacadas para acompanar la vida de fe en comunidad." data-author="Liturgia SMD">
+                        <div class="news-card__media">
+                            <img src="https://images.unsplash.com/photo-1444522652181-6a46f8c21839?q=80&w=1200&auto=format&fit=crop" alt="Celebracion liturgica" loading="lazy" decoding="async">
+                        </div>
+                        <div class="news-card__body">
+                            <span class="pill">Liturgia</span>
+                            <h3 class="news-card__title">Agenda liturgica de la semana</h3>
+                            <p class="news-card__summary">Guia practica para parroquias, coros y agentes pastorales.</p>
+                        </div>
+                    </article>
+
+                    <article class="news-card article-card" data-article="true" data-title="Fratelli tutti: tres anos despues" data-category="Opinion" data-image="https://images.unsplash.com/photo-1497215842964-222b430dc094?q=80&w=1200&auto=format&fit=crop" data-body="Balance pastoral y social de la enciclica en comunidades locales y regionales." data-excerpt="Balance pastoral y social de la enciclica en comunidades locales y regionales." data-author="Opinion SMD">
+                        <div class="news-card__media">
+                            <img src="https://images.unsplash.com/photo-1497215842964-222b430dc094?q=80&w=1200&auto=format&fit=crop" alt="Escritorio de analisis" loading="lazy" decoding="async">
+                        </div>
+                        <div class="news-card__body">
+                            <span class="pill">Opinion</span>
+                            <h3 class="news-card__title">Fratelli tutti: tres anos despues</h3>
+                            <p class="news-card__summary">Tres claves para aterrizar su llamado a la fraternidad hoy.</p>
+                        </div>
+                    </article>
+
+                    <article class="news-card article-card" data-article="true" data-title="Agua y territorio: defensores en primera linea" data-category="Reportajes" data-image="https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?q=80&w=1200&auto=format&fit=crop" data-body="Comunidades rurales sostienen su esperanza con organizacion y trabajo conjunto con la Iglesia local." data-excerpt="Comunidades rurales sostienen su esperanza con organizacion y trabajo conjunto con la Iglesia local." data-author="Reportajes SMD">
+                        <div class="news-card__media">
+                            <img src="https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?q=80&w=1200&auto=format&fit=crop" alt="Comunidad rural" loading="lazy" decoding="async">
+                        </div>
+                        <div class="news-card__body">
+                            <span class="pill">Reportajes</span>
+                            <h3 class="news-card__title">Agua y territorio: defensores en primera linea</h3>
+                            <p class="news-card__summary">Una historia de fe, dignidad y cuidado de la casa comun.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="gallery-section reveal-block" aria-labelledby="gallery-title">
+            <div class="layout">
+                <div class="section-head">
+                    <p class="section-kicker" id="gallery-title">Galeria</p>
+                    <h2>Momentos de mision y comunidad</h2>
+                </div>
+                <div class="masonry-grid" id="gallery-grid">
+                    <button class="gallery-item" type="button" data-lightbox data-full="https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=1500&auto=format&fit=crop" data-caption="Celebracion comunitaria en tiempo liturgico">
+                        <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=700&auto=format&fit=crop" alt="Celebracion comunitaria" loading="lazy" decoding="async">
+                        <span class="gallery-item__overlay">Ver mas</span>
+                    </button>
+                    <button class="gallery-item" type="button" data-lightbox data-full="https://images.unsplash.com/photo-1511632765486-a01980e01a18?q=80&w=1500&auto=format&fit=crop" data-caption="Encuentro de voluntariado parroquial">
+                        <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?q=80&w=700&auto=format&fit=crop" alt="Voluntariado" loading="lazy" decoding="async">
+                        <span class="gallery-item__overlay">Ver mas</span>
+                    </button>
+                    <button class="gallery-item" type="button" data-lightbox data-full="https://images.unsplash.com/photo-1444723121867-7a241cacace9?q=80&w=1500&auto=format&fit=crop" data-caption="Peregrinacion y oracion comunitaria">
+                        <img src="https://images.unsplash.com/photo-1444723121867-7a241cacace9?q=80&w=700&auto=format&fit=crop" alt="Peregrinacion" loading="lazy" decoding="async">
+                        <span class="gallery-item__overlay">Ver mas</span>
+                    </button>
+                    <button class="gallery-item" type="button" data-lightbox data-full="https://images.unsplash.com/photo-1504052434569-70ad5836ab65?q=80&w=1500&auto=format&fit=crop" data-caption="Mision educativa con jovenes">
+                        <img src="https://images.unsplash.com/photo-1504052434569-70ad5836ab65?q=80&w=700&auto=format&fit=crop" alt="Mision educativa" loading="lazy" decoding="async">
+                        <span class="gallery-item__overlay">Ver mas</span>
+                    </button>
+                    <button class="gallery-item" type="button" data-lightbox data-full="https://images.unsplash.com/photo-1438232992991-995b7058bbb3?q=80&w=1500&auto=format&fit=crop" data-caption="Celebracion eucaristica">
+                        <img src="https://images.unsplash.com/photo-1438232992991-995b7058bbb3?q=80&w=700&auto=format&fit=crop" alt="Celebracion eucaristica" loading="lazy" decoding="async">
+                        <span class="gallery-item__overlay">Ver mas</span>
+                    </button>
+                    <button class="gallery-item" type="button" data-lightbox data-full="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=1500&auto=format&fit=crop" data-caption="Coro y servicio liturgico">
+                        <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=700&auto=format&fit=crop" alt="Coro liturgico" loading="lazy" decoding="async">
+                        <span class="gallery-item__overlay">Ver mas</span>
+                    </button>
+                    <button class="gallery-item" type="button" data-lightbox data-full="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1500&auto=format&fit=crop" data-caption="Entrega de alimentos en barrio">
+                        <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=700&auto=format&fit=crop" alt="Entrega de alimentos" loading="lazy" decoding="async">
+                        <span class="gallery-item__overlay">Ver mas</span>
+                    </button>
+                    <button class="gallery-item" type="button" data-lightbox data-full="https://images.unsplash.com/photo-1593113598332-cd288d649433?q=80&w=1500&auto=format&fit=crop" data-caption="Accion solidaria internacional">
+                        <img src="https://images.unsplash.com/photo-1593113598332-cd288d649433?q=80&w=700&auto=format&fit=crop" alt="Accion solidaria" loading="lazy" decoding="async">
+                        <span class="gallery-item__overlay">Ver mas</span>
+                    </button>
+                    <button class="gallery-item" type="button" data-lightbox data-full="https://images.unsplash.com/photo-1532453288672-3a27e9be9efd?q=80&w=1500&auto=format&fit=crop" data-caption="Encuentro pastoral con familias">
+                        <img src="https://images.unsplash.com/photo-1532453288672-3a27e9be9efd?q=80&w=700&auto=format&fit=crop" alt="Encuentro pastoral" loading="lazy" decoding="async">
+                        <span class="gallery-item__overlay">Ver mas</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section class="subscribe-section reveal-block" aria-labelledby="subscribe-title">
+            <div class="layout subscribe-section__inner">
+                <span class="subscribe-section__word" aria-hidden="true">SUSCRIBETE</span>
+                <div>
+                    <p class="section-kicker section-kicker--light">Suscripcion SMD</p>
+                    <h2 id="subscribe-title">Recibe cada semana nuestra cobertura</h2>
+                    <p>Un correo breve con noticias, liturgia y analisis para leer con calma.</p>
+                </div>
+                <form class="subscribe-form" action="#" method="post">
+                    <label class="sr-only" for="subscribe-email">Correo electronico</label>
+                    <input id="subscribe-email" type="email" name="email" placeholder="Tu correo electronico" required>
+                    <button type="submit" class="button button--light">Suscribirme</button>
+                </form>
+            </div>
+        </section>
+
+        <section class="doc-feature reveal-block" aria-labelledby="doc-feature-title">
+            <div class="layout doc-feature__inner">
+                <div class="doc-feature__content">
+                    <p class="section-kicker">Documento destacado</p>
+                    <h2 id="doc-feature-title">Codigo etico y mision editorial de SMD</h2>
+                    <p>Conoce las bases de nuestro servicio periodistico: verificacion de fuentes, caridad en el lenguaje e independencia editorial al servicio de la Iglesia.</p>
+                    <div class="doc-feature__actions">
+                        <a class="button button--solid" href="etica.html">Leer</a>
+                        <a class="button button--ghost" href="about.html#sobre-nosotras">Descargar</a>
+                    </div>
+                </div>
+                <figure class="doc-feature__media">
+                    <img src="https://images.unsplash.com/photo-1473177104440-ffee2f376098?q=80&w=1000&auto=format&fit=crop" alt="Documento institucional de SMD" loading="lazy" decoding="async">
+                </figure>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="layout footer__inner">
+            <div class="footer__col footer__brand">
+                <img src="https://res.cloudinary.com/dul66qlpq/image/upload/v1762346821/Logo_smd_dj2ldo.svg" alt="SMD Mi Dios">
+                <p>Si Mi Dios es un medio catolico dedicado a narrar la vida de la Iglesia con fidelidad al magisterio y lenguaje de misericordia.</p>
+            </div>
+            <div class="footer__col">
+                <h3>Enlaces rapidos</h3>
+                <a href="index.html">Inicio</a>
+                <a class="js-section-link" href="section.html?category=Vaticano" data-category="Vaticano">Vaticano</a>
+                <a class="js-section-link" href="section.html?category=Iglesia%20en%20El%20Salvador" data-category="Iglesia en El Salvador">Iglesia en El Salvador</a>
+                <a class="js-section-link" href="section.html?category=Mundo" data-category="Mundo">Mundo</a>
+                <a class="js-section-link" href="section.html?category=Liturgia" data-category="Liturgia">Liturgia</a>
+                <a class="js-section-link" href="section.html?category=Opinion" data-category="Opinion">Opinion</a>
+                <a href="about.html#sobre-nosotras">Sobre nosotras</a>
+                <a href="premium.html">SMD Podcast</a>
+            </div>
+            <div class="footer__col">
+                <h3>Contacto</h3>
+                <p>contacto@smd.com</p>
+                <p>+503 0000 0000</p>
+                <p>San Salvador, El Salvador</p>
+                <a href="etica.html">Codigo etico</a>
+                <a href="privacidad.html">Politica de privacidad</a>
+                <a href="contacto.html">Formulario de contacto</a>
+            </div>
+        </div>
+        <div class="layout footer__social-row">
+            <a class="social-link social-link--footer" href="#" aria-label="Facebook de SMD"><i data-lucide="facebook"></i></a>
+            <a class="social-link social-link--footer" href="#" aria-label="YouTube de SMD"><i data-lucide="youtube"></i></a>
+        </div>
+        <div class="layout footer__copy">&copy; 2026 SMD Mi Dios. Todos los derechos reservados.</div>
+    </footer>
+
+    <div id="article-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="article-modal-title">
+        <div class="modal__dialog" tabindex="-1">
+            <button class="icon-button modal__close" id="close-article-modal" aria-label="Cerrar articulo">
+                <i data-lucide="x"></i>
+            </button>
+            <div id="article-modal-image-wrap" class="modal__media">
+                <img id="article-modal-image" src="" alt="">
+            </div>
+            <div class="modal__body">
+                <span id="article-modal-category" class="pill"></span>
+                <h2 id="article-modal-title"></h2>
+                <p id="article-modal-body"></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal modal--video" id="video-modal" role="dialog" aria-modal="true" aria-labelledby="video-modal-title">
+        <div class="modal__dialog modal__dialog--video" tabindex="-1">
+            <button class="icon-button modal__close" id="close-video-modal" aria-label="Cerrar video">
+                <i data-lucide="x"></i>
+            </button>
+            <h2 id="video-modal-title" class="sr-only">Video de SMD</h2>
+            <div class="video-modal__frame">
+                <iframe id="video-modal-iframe" src="" title="Video de SMD" loading="lazy" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal modal--lightbox" id="gallery-lightbox" role="dialog" aria-modal="true" aria-labelledby="lightbox-caption">
+        <div class="modal__dialog modal__dialog--lightbox" tabindex="-1">
+            <button class="icon-button modal__close" id="lightbox-close" aria-label="Cerrar galeria">
+                <i data-lucide="x"></i>
+            </button>
+            <button class="lightbox-nav lightbox-nav--prev" id="lightbox-prev" aria-label="Imagen anterior">
+                <i data-lucide="chevron-left"></i>
+            </button>
+            <img id="lightbox-image" src="" alt="Imagen de galeria ampliada">
+            <button class="lightbox-nav lightbox-nav--next" id="lightbox-next" aria-label="Imagen siguiente">
+                <i data-lucide="chevron-right"></i>
+            </button>
+            <p id="lightbox-caption"></p>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
+

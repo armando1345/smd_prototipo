@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMD | Seccion</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Karla:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="icon" type="image/svg+xml" href="https://res.cloudinary.com/dul66qlpq/image/upload/v1762346821/Logo_smd_dj2ldo.svg">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="section-page">
+    <div class="preloader" id="preloader" aria-hidden="true">
+        <div class="preloader__inner">
+            <img src="https://res.cloudinary.com/dul66qlpq/image/upload/v1762346821/Logo_smd_dj2ldo.svg" alt="Logo SMD" class="preloader__logo">
+            <div class="preloader__ring"></div>
+        </div>
+    </div>
+
+    <header class="site-header" id="main-header">
+        <div class="topbar">
+            <div class="layout topbar__inner">
+                <p class="topbar__text">Si Mi Dios | Informacion catolica con verdad, belleza y tradicion</p>
+                <div class="topbar__actions">
+                    <a class="social-link" href="#" aria-label="Facebook de SMD"><i data-lucide="facebook"></i></a>
+                    <a class="social-link" href="#" aria-label="YouTube de SMD"><i data-lucide="youtube"></i></a>
+                    <a class="button button--donate button--small" href="#">Donar</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="layout header__inner">
+            <a href="index.html" class="header__logo" aria-label="SMD Inicio">
+                <img src="https://res.cloudinary.com/dul66qlpq/image/upload/v1762346821/Logo_smd_dj2ldo.svg" alt="SMD Mi Dios">
+            </a>
+
+            <nav class="primary-nav" aria-label="Navegacion principal">
+                <a href="index.html">Inicio</a>
+                <a class="js-section-link" href="section.html?category=Vaticano" data-category="Vaticano">Vaticano</a>
+                <a class="js-section-link" href="section.html?category=Iglesia%20en%20El%20Salvador" data-category="Iglesia en El Salvador">Iglesia en El Salvador</a>
+                <a class="js-section-link" href="section.html?category=Mundo" data-category="Mundo">Mundo</a>
+                <a class="js-section-link" href="section.html?category=Liturgia" data-category="Liturgia">Liturgia</a>
+                <a class="js-section-link" href="section.html?category=Opinion" data-category="Opinion">Opinion</a>
+                <a href="about.html#sobre-nosotras">Sobre nosotras</a>
+                <a href="contacto.html">Contacto</a>
+                <a href="premium.html">SMD Podcast</a>
+                <div class="sections-dropdown nav-dropdown" id="sections-dropdown">
+                    <button class="nav-dropdown__toggle" id="sections-dropdown-toggle" aria-expanded="false" aria-haspopup="true" aria-controls="sections-dropdown-menu">
+                        Mas
+                        <i data-lucide="chevron-down"></i>
+                    </button>
+                    <div class="sections-dropdown__menu nav-dropdown__menu" id="sections-dropdown-menu" role="menu">
+                        <a href="etica.html" role="menuitem">Codigo etico</a>
+                        <a href="privacidad.html" role="menuitem">Privacidad</a>
+                        <a href="premium.html" role="menuitem">Premium</a>
+                    </div>
+                </div>
+            </nav>
+
+            <button class="icon-button header__menu-toggle" id="mobile-menu-btn" aria-label="Abrir menu">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+    </header>
+
+    <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+        <div class="mobile-menu__dialog" role="dialog" aria-modal="true" aria-label="Menu movil">
+            <div class="mobile-menu__header">
+                <img src="https://res.cloudinary.com/dul66qlpq/image/upload/v1762346821/Logo_smd_dj2ldo.svg" alt="SMD Mi Dios" class="mobile-menu__logo">
+                <button class="icon-button" id="close-menu-btn" aria-label="Cerrar menu">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+            <nav class="mobile-menu__nav">
+                <a href="index.html">Inicio</a>
+                <a class="js-section-link" href="section.html?category=Vaticano" data-category="Vaticano">Vaticano</a>
+                <a class="js-section-link" href="section.html?category=Iglesia%20en%20El%20Salvador" data-category="Iglesia en El Salvador">Iglesia en El Salvador</a>
+                <a class="js-section-link" href="section.html?category=Mundo" data-category="Mundo">Mundo</a>
+                <a class="js-section-link" href="section.html?category=Liturgia" data-category="Liturgia">Liturgia</a>
+                <a class="js-section-link" href="section.html?category=Opinion" data-category="Opinion">Opinion</a>
+                <a href="about.html#sobre-nosotras">Sobre nosotras</a>
+                <a href="contacto.html">Contacto</a>
+                <a href="premium.html">SMD Podcast</a>
+                <a class="button button--donate button--small" href="#">Donar</a>
+            </nav>
+        </div>
+    </div>
+
+    <main class="section-main">
+        <div class="layout">
+            <section class="section-hero">
+                <p class="section-kicker" id="section-kicker">Seccion</p>
+                <h1 id="section-title">Noticias de la seccion</h1>
+                <p class="section-hero__lead" id="section-lead">Explora todas las publicaciones de esta linea editorial.</p>
+            </section>
+
+            <section aria-label="Listado de articulos">
+                <div id="section-grid" class="news-grid section-grid"></div>
+                <p id="section-empty" class="section-empty" hidden>No hay articulos para esta seccion todavia.</p>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="layout footer__inner">
+            <div class="footer__col footer__brand">
+                <img src="https://res.cloudinary.com/dul66qlpq/image/upload/v1762346821/Logo_smd_dj2ldo.svg" alt="SMD Mi Dios">
+                <p>Si Mi Dios es un medio catolico dedicado a narrar la vida de la Iglesia con fidelidad al magisterio y lenguaje de misericordia.</p>
+            </div>
+            <div class="footer__col">
+                <h3>Enlaces rapidos</h3>
+                <a href="index.html">Inicio</a>
+                <a class="js-section-link" href="section.html?category=Vaticano" data-category="Vaticano">Vaticano</a>
+                <a class="js-section-link" href="section.html?category=Iglesia%20en%20El%20Salvador" data-category="Iglesia en El Salvador">Iglesia en El Salvador</a>
+                <a class="js-section-link" href="section.html?category=Mundo" data-category="Mundo">Mundo</a>
+                <a class="js-section-link" href="section.html?category=Liturgia" data-category="Liturgia">Liturgia</a>
+                <a class="js-section-link" href="section.html?category=Opinion" data-category="Opinion">Opinion</a>
+                <a href="about.html#sobre-nosotras">Sobre nosotras</a>
+                <a href="premium.html">SMD Podcast</a>
+            </div>
+            <div class="footer__col">
+                <h3>Contacto</h3>
+                <p>contacto@smd.com</p>
+                <p>+503 0000 0000</p>
+                <p>San Salvador, El Salvador</p>
+                <a href="etica.html">Codigo etico</a>
+                <a href="privacidad.html">Politica de privacidad</a>
+                <a href="contacto.html">Formulario de contacto</a>
+            </div>
+        </div>
+        <div class="layout footer__social-row">
+            <a class="social-link social-link--footer" href="#" aria-label="Facebook de SMD"><i data-lucide="facebook"></i></a>
+            <a class="social-link social-link--footer" href="#" aria-label="YouTube de SMD"><i data-lucide="youtube"></i></a>
+        </div>
+        <div class="layout footer__copy">&copy; 2026 SMD Mi Dios. Todos los derechos reservados.</div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
+
+
