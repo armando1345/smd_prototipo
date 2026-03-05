@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMD | Sobre nosotras</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Karla:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="icon" type="image/svg+xml" href="https://res.cloudinary.com/dul66qlpq/image/upload/v1762346821/Logo_smd_dj2ldo.svg">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="internal-page about-page">
+    <div class="preloader" id="preloader" aria-hidden="true">
+        <div class="preloader__inner">
+            <img src="https://res.cloudinary.com/dul66qlpq/image/upload/v1762346821/Logo_smd_dj2ldo.svg" alt="Logo SMD" class="preloader__logo">
+            <div class="preloader__ring"></div>
+        </div>
+    </div>
+
+    <header class="site-header" id="main-header">
+        <div class="topbar">
+            <div class="layout topbar__inner">
+                <p class="topbar__text">Si Mi Dios | Informacion catolica con verdad, belleza y tradicion</p>
+                <div class="topbar__actions">
+                    <a class="social-link" href="#" aria-label="Facebook de SMD"><i data-lucide="facebook"></i></a>
+                    <a class="social-link" href="#" aria-label="YouTube de SMD"><i data-lucide="youtube"></i></a>
+                    <a class="button button--donate button--small" href="#">Donar</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="layout header__inner">
+            <a href="index.html" class="header__logo" aria-label="SMD Inicio">
+                <img src="https://res.cloudinary.com/dul66qlpq/image/upload/v1762346821/Logo_smd_dj2ldo.svg" alt="SMD Mi Dios">
+            </a>
+
+            <nav class="primary-nav" aria-label="Navegacion principal">
+                <a href="index.html">Inicio</a>
+                <a class="js-section-link" href="section.html?category=Vaticano" data-category="Vaticano">Vaticano</a>
+                <a class="js-section-link" href="section.html?category=Iglesia%20en%20El%20Salvador" data-category="Iglesia en El Salvador">Iglesia en El Salvador</a>
+                <a class="js-section-link" href="section.html?category=Mundo" data-category="Mundo">Mundo</a>
+                <a class="js-section-link" href="section.html?category=Liturgia" data-category="Liturgia">Liturgia</a>
+                <a class="js-section-link" href="section.html?category=Opinion" data-category="Opinion">Opinion</a>
+                <a href="about.html#sobre-nosotras" class="is-active">Sobre nosotras</a>
+                <a href="contacto.html">Contacto</a>
+                <a href="premium.html">SMD Podcast</a>
+                <div class="sections-dropdown nav-dropdown" id="sections-dropdown">
+                    <button class="nav-dropdown__toggle" id="sections-dropdown-toggle" aria-expanded="false" aria-haspopup="true" aria-controls="sections-dropdown-menu">
+                        Mas
+                        <i data-lucide="chevron-down"></i>
+                    </button>
+                    <div class="sections-dropdown__menu nav-dropdown__menu" id="sections-dropdown-menu" role="menu">
+                        <a href="etica.html" role="menuitem">Codigo etico</a>
+                        <a href="privacidad.html" role="menuitem">Privacidad</a>
+                        <a href="premium.html" role="menuitem">Premium</a>
+                    </div>
+                </div>
+            </nav>
+
+            <button class="icon-button header__menu-toggle" id="mobile-menu-btn" aria-label="Abrir menu">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+    </header>
+
+    <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+        <div class="mobile-menu__dialog" role="dialog" aria-modal="true" aria-label="Menu movil">
+            <div class="mobile-menu__header">
+                <img src="https://res.cloudinary.com/dul66qlpq/image/upload/v1762346821/Logo_smd_dj2ldo.svg" alt="SMD Mi Dios" class="mobile-menu__logo">
+                <button class="icon-button" id="close-menu-btn" aria-label="Cerrar menu">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+            <nav class="mobile-menu__nav">
+                <a href="index.html">Inicio</a>
+                <a class="js-section-link" href="section.html?category=Vaticano" data-category="Vaticano">Vaticano</a>
+                <a class="js-section-link" href="section.html?category=Iglesia%20en%20El%20Salvador" data-category="Iglesia en El Salvador">Iglesia en El Salvador</a>
+                <a class="js-section-link" href="section.html?category=Mundo" data-category="Mundo">Mundo</a>
+                <a class="js-section-link" href="section.html?category=Liturgia" data-category="Liturgia">Liturgia</a>
+                <a class="js-section-link" href="section.html?category=Opinion" data-category="Opinion">Opinion</a>
+                <a href="about.html#sobre-nosotras">Sobre nosotras</a>
+                <a href="contacto.html">Contacto</a>
+                <a href="premium.html">SMD Podcast</a>
+                <a class="button button--donate button--small" href="#">Donar</a>
+            </nav>
+        </div>
+    </div>
+
+    <main class="internal-main about-main">
+        <div class="layout">
+            <section class="about-hero reveal-block" id="sobre-nosotras">
+                <div class="about-hero__content">
+                    <p class="section-kicker">Siervas de la Misericordia de Dios</p>
+                    <h1>Sobre nosotras</h1>
+                    <p>Somos una congregacion nacida en El Salvador para servir con misericordia. Nuestra mision evangelizadora une vida contemplativa, servicio pastoral y comunicacion catolica.</p>
+                    <div class="about-hero__actions">
+                        <a class="button button--solid" href="contacto.html">Contactar a SMD</a>
+                        <a class="button button--ghost" href="https://www.templodejesusdeladivinamisericordiaelsalvador.com/" target="_blank" rel="noopener noreferrer">Conocer el templo</a>
+                    </div>
+                </div>
+                <figure class="about-hero__media">
+                    <img src="https://res.cloudinary.com/dul66qlpq/image/upload/v1771471002/ChatGPT_Image_18_feb_2026_08_50_26_p.m._okxj11.png" alt="Religiosa de la congregacion" loading="lazy" decoding="async">
+                </figure>
+            </section>
+
+            <section class="about-kpis reveal-block" aria-label="Datos de la congregacion">
+                <article class="about-kpi">
+                    <p class="about-kpi__value">3 paises</p>
+                    <p class="about-kpi__label">Presencia pastoral activa</p>
+                </article>
+                <article class="about-kpi">
+                    <p class="about-kpi__value">1 carisma</p>
+                    <p class="about-kpi__label">Misericordia concreta para los mas pobres</p>
+                </article>
+                <article class="about-kpi">
+                    <p class="about-kpi__value">100%</p>
+                    <p class="about-kpi__label">Compromiso con verdad y servicio evangelizador</p>
+                </article>
+            </section>
+
+            <section class="about-article reveal-block" aria-labelledby="about-article-title">
+                <article class="about-article__body">
+                    <h2 id="about-article-title">Nuestro carisma</h2>
+                    <p>Ser instrumento de la Misericordia de Dios con una opcion preferencial por los pobres mas pobres, sin excluir a nadie del corazon de la Iglesia.</p>
+                    <p>Difundimos la devocion a Jesus de la Divina Misericordia en obras concretas que transforman comunidades.</p>
+
+                    <h3>Donde servimos</h3>
+                    <p>Nacimos en San Salvador y hoy la mision tambien se extiende a Honduras y Argentina, con presencia pastoral en parroquias, formacion y obras de misericordia.</p>
+                    <p>San Salvador, El Salvador.<br>Misiones en Honduras.<br>Acompaniamiento pastoral en Argentina.</p>
+
+                    <h3>Obra visible de la mision</h3>
+                    <p>En Osicala, Morazan, impulsamos la construccion del Templo de Jesus de la Divina Misericordia como lugar de esperanza, reconciliacion y encuentro con Dios.</p>
+                    <p><a class="about-article__link" href="https://www.templodejesusdeladivinamisericordiaelsalvador.com/" target="_blank" rel="noopener noreferrer">Visitar proyecto</a></p>
+
+                    <h3>Identidad de comunidad</h3>
+                    <p>Somos una familia religiosa joven y misionera. El numero importa menos que la conviccion: la misericordia se sirve cerca, en comunidad y con fidelidad al Evangelio.</p>
+                    <p>Comunicamos para sanar, no para dividir.</p>
+                </article>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="layout footer__inner">
+            <div class="footer__col footer__brand">
+                <img src="https://res.cloudinary.com/dul66qlpq/image/upload/v1762346821/Logo_smd_dj2ldo.svg" alt="SMD Mi Dios">
+                <p>Si Mi Dios es un medio catolico dedicado a narrar la vida de la Iglesia con fidelidad al magisterio y lenguaje de misericordia.</p>
+            </div>
+            <div class="footer__col">
+                <h3>Enlaces rapidos</h3>
+                <a href="index.html">Inicio</a>
+                <a class="js-section-link" href="section.html?category=Vaticano" data-category="Vaticano">Vaticano</a>
+                <a class="js-section-link" href="section.html?category=Iglesia%20en%20El%20Salvador" data-category="Iglesia en El Salvador">Iglesia en El Salvador</a>
+                <a class="js-section-link" href="section.html?category=Mundo" data-category="Mundo">Mundo</a>
+                <a class="js-section-link" href="section.html?category=Liturgia" data-category="Liturgia">Liturgia</a>
+                <a class="js-section-link" href="section.html?category=Opinion" data-category="Opinion">Opinion</a>
+                <a href="about.html#sobre-nosotras">Sobre nosotras</a>
+                <a href="premium.html">SMD Podcast</a>
+            </div>
+            <div class="footer__col">
+                <h3>Contacto</h3>
+                <p>contacto@smd.com</p>
+                <p>+503 0000 0000</p>
+                <p>San Salvador, El Salvador</p>
+                <a href="etica.html">Codigo etico</a>
+                <a href="privacidad.html">Politica de privacidad</a>
+                <a href="contacto.html">Formulario de contacto</a>
+            </div>
+        </div>
+        <div class="layout footer__social-row">
+            <a class="social-link social-link--footer" href="#" aria-label="Facebook de SMD"><i data-lucide="facebook"></i></a>
+            <a class="social-link social-link--footer" href="#" aria-label="YouTube de SMD"><i data-lucide="youtube"></i></a>
+        </div>
+        <div class="layout footer__copy">&copy; 2026 SMD Mi Dios. Todos los derechos reservados.</div>
+    </footer>
+
+    <a href='#' class='mobile-fab-donate'><i data-lucide='heart'></i> Donar</a>
+    <script src="app.js"></script>
+</body>
+</html>
+
+
