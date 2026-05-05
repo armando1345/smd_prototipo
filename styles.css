@@ -248,6 +248,12 @@ textarea {
     background: rgba(255, 255, 255, 0.18);
 }
 
+.social-icon {
+    width: 17px;
+    height: 17px;
+    fill: currentColor;
+}
+
 .preloader {
     position: fixed;
     inset: 0;

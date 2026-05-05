@@ -12,7 +12,7 @@ const ARTICLE_FALLBACK = {
     category: 'Iglesia en el Mundo',
     body: 'Un relato sereno sobre personas que se acompanan para sostener la fe en medio de la prisa.',
     excerpt: 'Lectura larga para quienes buscan contexto sin ruido.',
-    image: 'https://images.unsplash.com/photo-1490750967868-88aa4486c946?q=80&w=1400&auto=format&fit=crop',
+    image: 'assets/images/smd/siervas-donacion-comunidad.png',
     author: 'Redaccion SMD',
     highlights: [
         'Texto amplio y limpio en una sola columna.',
@@ -54,14 +54,14 @@ const SECTION_FALLBACKS = {
             title: 'El Papa Francisco llama a una revolucion de la ternura',
             category: 'Vaticano',
             excerpt: 'Carta pastoral sobre tecnologia y dignidad humana.',
-            image: 'https://images.unsplash.com/photo-1515169067868-5387ec356754?q=80&w=2000&auto=format&fit=crop',
+            image: 'assets/images/smd/papa-vaticano.png',
             body: 'Analisis de la carta y sus llamados a la cultura del encuentro.'
         },
         {
             title: 'Agenda del Papa para la semana',
             category: 'Vaticano',
             excerpt: 'Audiencias con universidades catolicas y delegaciones.',
-            image: 'https://images.unsplash.com/photo-1515169067868-5387ec356754?q=80&w=800&auto=format&fit=crop',
+            image: 'assets/images/smd/vaticano-noche.png',
             body: 'Resumen de los principales encuentros previstos en Roma.'
         }
     ],
@@ -70,14 +70,14 @@ const SECTION_FALLBACKS = {
             title: 'Parroquias organizan jornadas de servicio',
             category: 'Iglesia en El Salvador',
             excerpt: 'Convocatoria para apoyar comedores sociales el fin de semana.',
-            image: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=800&auto=format&fit=crop',
+            image: 'assets/images/smd/siervas-donacion-comunidad.png',
             body: 'Pastoral social busca sumar voluntarios en las principales zonas.'
         },
         {
             title: 'Vocaciones que nacen en la red',
             category: 'Iglesia en El Salvador',
             excerpt: 'Testimonios de seminaristas que encontraron acompanamiento en linea.',
-            image: 'https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?q=80&w=800&auto=format&fit=crop',
+            image: 'assets/images/smd/templo-exterior.png',
             body: 'Relatos que muestran la fuerza de las comunidades digitales.'
         }
     ],
@@ -86,14 +86,14 @@ const SECTION_FALLBACKS = {
             title: 'Caritas lanza campana global contra el hambre',
             category: 'Mundo',
             excerpt: 'Recaudacion internacional para regiones afectadas por la sequia.',
-            image: 'https://images.unsplash.com/photo-1593113598332-cd288d649433?q=80&w=800&auto=format&fit=crop',
+            image: 'assets/images/smd/misericordia-agua.png',
             body: 'Organizaciones locales coordinan la logistica de la ayuda.'
         },
         {
             title: 'Los Museos Vaticanos abren en horario nocturno',
             category: 'Mundo',
             excerpt: 'Visitas guiadas y recitales en patios principales durante el verano.',
-            image: 'https://images.unsplash.com/photo-1490750967868-88aa4486c946?q=80&w=800&auto=format&fit=crop',
+            image: 'assets/images/smd/jovenes-cruces.jpg',
             body: 'La propuesta busca ofrecer una experiencia mas serena a los visitantes.'
         }
     ],
@@ -102,14 +102,14 @@ const SECTION_FALLBACKS = {
             title: 'Agenda liturgica de la semana',
             category: 'Liturgia',
             excerpt: 'Celebraciones y solemnidades destacadas con horarios locales.',
-            image: 'https://images.unsplash.com/photo-1444522652181-6a46f8c21839?q=80&w=1200&auto=format&fit=crop',
+            image: 'assets/images/smd/agenda-liturgica.png',
             body: 'Guia para acompanarte en las principales fiestas y memorias.'
         },
         {
             title: 'Cantos recomendados para Adviento',
             category: 'Liturgia',
             excerpt: 'Selecciones coral y guias de partituras para coros parroquiales.',
-            image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=1200&auto=format&fit=crop',
+            image: 'assets/images/smd/siervas-liturgia.png',
             body: 'Recursos sencillos para animar las celebraciones comunitarias.'
         }
     ],
@@ -118,14 +118,14 @@ const SECTION_FALLBACKS = {
             title: 'El silencio como disciplina espiritual',
             category: 'Opinion',
             excerpt: 'Una invitacion a recuperar momentos de retiro.',
-            image: 'https://images.unsplash.com/photo-1489515217757-5fd1be406fef?q=80&w=1200&auto=format&fit=crop',
+            image: 'assets/images/smd/biblia-cruz.png',
             body: 'Reflexion sobre limites sanos en el consumo de pantallas.'
         },
         {
             title: 'Fratelli tutti: tres anos despues',
             category: 'Opinion',
             excerpt: 'Balance de los frutos sociales y pastorales de la enciclica.',
-            image: 'https://images.unsplash.com/photo-1497215842964-222b430dc094?q=80&w=1200&auto=format&fit=crop',
+            image: 'assets/images/smd/fratelli-tutti.png',
             body: 'Como las comunidades locales aterrizan el llamado a la fraternidad.'
         }
     ]
