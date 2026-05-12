@@ -1571,7 +1571,7 @@ main {
 
 .footer__inner {
     display: grid;
-    grid-template-columns: 1.1fr 0.9fr 0.9fr;
+    grid-template-columns: 1.15fr 0.8fr 0.9fr 1fr;
     gap: 24px;
     align-items: start;
 }
@@ -1597,6 +1597,15 @@ main {
 
 .footer__col a:hover {
     color: var(--color-white);
+}
+
+.footer__col strong {
+    color: var(--color-white);
+}
+
+.footer__note {
+    color: #aeb2ba;
+    font-size: 0.9rem;
 }
 
 .footer__brand img {
@@ -1755,10 +1764,7 @@ main {
 }
 
 .internal-hero {
-    background: var(--color-white);
-    border: 1px solid #e2e4ea;
-    border-radius: var(--radius-lg);
-    padding: clamp(22px, 4vw, 36px);
+    padding: clamp(22px, 4vw, 36px) 0;
     display: grid;
     gap: 14px;
     margin-bottom: 22px;
@@ -1803,6 +1809,76 @@ main {
     padding-left: 20px;
     display: grid;
     gap: 8px;
+}
+
+.contact-page {
+    background: #fffdf9;
+}
+
+.contact-layout {
+    max-width: 900px;
+}
+
+.contact-hero {
+    display: grid;
+    gap: 14px;
+    padding-bottom: clamp(22px, 4vw, 38px);
+    border-bottom: 1px solid rgba(15, 37, 56, 0.16);
+}
+
+.contact-hero h1 {
+    max-width: 12ch;
+    font-size: clamp(3rem, 7vw, 5.8rem);
+    line-height: 0.98;
+}
+
+.contact-hero p {
+    max-width: 640px;
+    color: #3d4653;
+    font-size: clamp(1.15rem, 1.8vw, 1.45rem);
+    line-height: 1.5;
+}
+
+.contact-channels {
+    margin-top: clamp(28px, 5vw, 54px);
+    display: grid;
+    gap: 18px;
+    max-width: 720px;
+}
+
+.contact-channel {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 16px;
+    align-items: center;
+    padding: 0 0 18px;
+    border-bottom: 1px solid rgba(15, 37, 56, 0.14);
+}
+
+.contact-channel__icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: var(--color-red);
+    color: var(--color-white);
+}
+
+.contact-channel strong,
+.contact-channel em {
+    display: block;
+}
+
+.contact-channel strong {
+    color: #0f1724;
+    font-size: 1.08rem;
+}
+
+.contact-channel em {
+    margin-top: 3px;
+    color: var(--color-muted);
+    font-style: normal;
 }
 
 .about-main {
@@ -1938,6 +2014,18 @@ main {
 
 .about-article__link:hover {
     opacity: 0.82;
+}
+
+.sanctuary-links {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 14px;
+}
+
+.button--map i {
+    width: 17px;
+    height: 17px;
 }
 
 .about-story__actions {
@@ -2217,19 +2305,6 @@ main {
     box-shadow: 0 14px 30px rgba(23, 30, 44, 0.08);
 }
 
-.contact-form {
-    display: grid;
-    gap: 10px;
-}
-
-.contact-form input,
-.contact-form textarea {
-    border: 1px solid #cfd6df;
-    border-radius: 12px;
-    padding: 10px 12px;
-    background: #fcfcfd;
-}
-
 .section-page {
     background: #f3f4f6;
 }
@@ -2239,13 +2314,11 @@ main {
 }
 
 .section-hero {
-    background: var(--color-white);
-    border: 1px solid #dfe3ea;
-    border-radius: var(--radius-md);
-    padding: clamp(20px, 4vw, 32px);
+    padding: 0 0 clamp(18px, 3vw, 30px);
     display: grid;
     gap: 10px;
-    margin-bottom: 16px;
+    margin-bottom: clamp(18px, 3vw, 30px);
+    border-bottom: 1px solid rgba(15, 37, 56, 0.16);
 }
 
 .section-hero h1 {
@@ -2297,9 +2370,12 @@ main {
     box-shadow: 0 24px 54px rgba(15, 37, 56, 0.16);
 }
 
-.presence-map__svg {
+.presence-map__viewport {
     position: absolute;
     inset: 0;
+}
+
+.presence-map__svg {
     width: 100%;
     height: 100%;
 }
@@ -2827,10 +2903,6 @@ main {
         max-width: none;
     }
 
-    .presence-map__canvas {
-        min-height: 520px;
-    }
-
     .presence-map__header {
         margin-bottom: 12px;
     }
@@ -3101,6 +3173,63 @@ main {
 
     .footer__inner {
         grid-template-columns: 1fr;
+    }
+
+    .presence-map__canvas {
+        aspect-ratio: auto;
+        min-height: 0;
+        max-height: none;
+        overflow: visible;
+        border-radius: 8px;
+        box-shadow: none;
+    }
+
+    .presence-map__viewport {
+        position: static;
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        border: 1px solid rgba(15, 37, 56, 0.16);
+        border-radius: 8px;
+        background: #dcebf5;
+    }
+
+    .presence-map__svg {
+        width: 680px;
+        max-width: none;
+        height: clamp(310px, 78vw, 420px);
+    }
+
+    .presence-map__land,
+    .presence-country path,
+    .presence-country__pin,
+    .presence-country:hover path,
+    .presence-country:focus-visible path,
+    .presence-country.is-active path {
+        filter: none;
+    }
+
+    .presence-country path,
+    .presence-country__target,
+    .presence-country__pin {
+        transition: none;
+    }
+
+    .presence-dialog {
+        position: static;
+        width: 100%;
+        margin-top: 12px;
+        border-color: rgba(15, 37, 56, 0.14);
+        background: var(--color-white);
+        box-shadow: none;
+        backdrop-filter: none;
+    }
+
+    .presence-map__header h2 {
+        max-width: 100%;
+        font-size: clamp(1.72rem, 8vw, 2.28rem);
+        line-height: 1.12;
+        overflow-wrap: anywhere;
     }
 
     .lightbox-nav {

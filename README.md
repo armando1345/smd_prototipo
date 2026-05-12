@@ -24,7 +24,7 @@ El logo sigue cargando desde Cloudinary. Las imágenes de contenido están inclu
 3. En GitHub, entra en `Settings > Pages`.
 4. En `Build and deployment`, selecciona `Deploy from a branch`.
 5. Elige la rama `main` o `master`, según el nombre de tu rama.
-6. Selecciona la carpeta `/ (root)` y guarda los cambios.
+6. Selecciona la carpeta `/root` y guarda los cambios.
 
 GitHub Pages publicará el sitio como una página estática. No hace falta instalar dependencias ni ejecutar un proceso de compilación.
 

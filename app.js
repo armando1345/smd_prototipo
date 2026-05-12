@@ -6,6 +6,35 @@ const ARTICLE_STORAGE_KEY = 'smd-article-data';
 const SECTION_STORAGE_KEY = 'smd-section-data';
 const DEFAULT_SECTION_CATEGORY = 'Mundo';
 const SECTION_OVERVIEW_TITLE = 'Últimos artículos';
+const SANCTUARY_MAP_URL = 'https://www.google.com/maps/search/?api=1&query=Templo%20de%20Jes%C3%BAs%20de%20la%20Divina%20Misericordia%2C%20Osicala%2C%20Moraz%C3%A1n%2C%20El%20Salvador';
+const TEMPLE_PROJECT_URL = 'https://www.templodejesusdeladivinamisericordiaelsalvador.com/';
+
+function shouldOpenNewTab(link) {
+    if (!link || !link.href) return false;
+    return link.href === SANCTUARY_MAP_URL || (link.href === TEMPLE_PROJECT_URL && link.classList.contains('button'));
+}
+
+function normalizeLinkTargets(root = document) {
+    const links = root.querySelectorAll ? root.querySelectorAll('a') : [];
+    links.forEach((link) => {
+        if (shouldOpenNewTab(link)) {
+            link.setAttribute('target', '_blank');
+            link.setAttribute('rel', 'noopener noreferrer');
+            return;
+        }
+        link.removeAttribute('target');
+    });
+}
+
+function initLinkTargetPolicy() {
+    normalizeLinkTargets();
+    document.addEventListener('click', (event) => {
+        const link = event.target.closest?.('a');
+        if (!link || shouldOpenNewTab(link)) return;
+        link.removeAttribute('target');
+        link.target = '_self';
+    }, true);
+}
 
 const ARTICLE_FALLBACK = {
     title: 'Cuando la comunidad se vuelve abrigo',
@@ -770,9 +799,10 @@ function renderPresenceMap(displayCategory = '') {
                 <h2 id="presence-map-title">Países donde están las Siervas</h2>
             </header>
             <div class="presence-map__canvas" aria-label="Mapa interactivo de presencia de las Siervas">
+                <div class="presence-map__viewport" tabindex="0" aria-label="Desplazar mapa de presencia">
                 <svg class="presence-map__svg" viewBox="0 0 760 560" role="img" aria-labelledby="presence-map-svg-title presence-map-svg-desc">
-                    <title id="presence-map-svg-title">Mapa de presencia en America</title>
-                    <desc id="presence-map-svg-desc">Mapa geografico de America con Honduras, El Salvador, Argentina y Chile destacados.</desc>
+                    <title id="presence-map-svg-title">Mapa de presencia en América</title>
+                    <desc id="presence-map-svg-desc">Mapa geográfico de América con Honduras, El Salvador, Argentina y Chile destacados.</desc>
                     <defs>
                         <filter id="presence-shadow" x="-10%" y="-10%" width="120%" height="120%">
                             <feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#0f2538" flood-opacity="0.18"/>
@@ -783,6 +813,7 @@ function renderPresenceMap(displayCategory = '') {
                     <path class="presence-map__land" d="${PRESENCE_MAP_PATHS.land}"/>
 ${PRESENCE_COUNTRIES.map((country) => renderPresenceCountry(country)).join('')}
                 </svg>
+                </div>
 
                 <aside class="presence-dialog" aria-live="polite" aria-labelledby="presence-dialog-title" hidden>
                     <p class="presence-dialog__eyebrow">País selecciónado</p>
@@ -793,7 +824,7 @@ ${PRESENCE_COUNTRIES.map((country) => renderPresenceCountry(country)).join('')}
                             <dd data-presence-started></dd>
                         </div>
                         <div>
-                            <dt>Que hacen</dt>
+                            <dt>Qué hacen</dt>
                             <dd data-presence-work></dd>
                         </div>
                     </dl>
@@ -818,11 +849,19 @@ ${PRESENCE_COUNTRIES.map((country) => renderPresenceCountry(country)).join('')}
         if (dialog) dialog.hidden = true;
     };
 
+    const isCompactMap = () => window.matchMedia && window.matchMedia('(max-width: 760px)').matches;
+
     const positionDialog = (countryId = '') => {
         const point = PRESENCE_COUNTRY_POINTS[countryId];
         if (!point || !canvas || !dialog) return;
 
         dialog.hidden = false;
+
+        if (isCompactMap()) {
+            dialog.style.left = '';
+            dialog.style.top = '';
+            return;
+        }
 
         window.requestAnimationFrame(() => {
             const canvasRect = canvas.getBoundingClientRect();
@@ -908,6 +947,7 @@ function renderSectionPage(category = '', articles = [], options = {}) {
     const kicker = document.getElementById('section-kicker');
     const title = document.getElementById('section-title');
     const lead = document.getElementById('section-lead');
+    const actions = document.getElementById('section-actions');
     const sectionHero = document.querySelector('.section-hero');
 
     const displayCategory = normalizeCategory(category) || category || DEFAULT_SECTION_CATEGORY;
@@ -919,12 +959,26 @@ function renderSectionPage(category = '', articles = [], options = {}) {
     if (title) {
         title.textContent = overview
             ? SECTION_OVERVIEW_TITLE
-            : (displayCategory === 'Opinión' ? 'Artículos de opinión' : `Artículos de ${displayCategory}`);
+            : displayCategory === 'Santuario'
+                ? 'Información sobre el templo de Jesús de la Divina Misericordia'
+                : (displayCategory === 'Opinión' ? 'Artículos de opinión' : `Artículos de ${displayCategory}`);
     }
     if (lead) {
         lead.textContent = overview
             ? 'Explora una selección de artículos recientes de SMD.'
             : `Explora todas las publicaciones de ${displayCategory}.`;
+    }
+    if (actions) {
+        actions.innerHTML = '';
+        const shouldShowSanctuaryMap = !overview && displayCategory === 'Santuario';
+        actions.hidden = !shouldShowSanctuaryMap;
+        if (shouldShowSanctuaryMap) {
+            actions.innerHTML = `<a class="button button--solid button--map" href="${SANCTUARY_MAP_URL}" rel="noopener noreferrer"><i data-lucide="map-pin"></i> Abrir ubicación en Google Maps</a>`;
+            normalizeLinkTargets(actions);
+            if (window.lucide && typeof window.lucide.createIcons === 'function') {
+                window.lucide.createIcons();
+            }
+        }
     }
 
     renderPresenceMap(overview ? '' : displayCategory);
@@ -1465,6 +1519,7 @@ window.addEventListener('scroll', updateHeaderState, { passive: true });
 window.addEventListener('resize', updateHeaderState);
 
 initPreloader();
+initLinkTargetPolicy();
 initMobileSubmenus();
 initSectionsDropdown();
 initHeroCarousel();
