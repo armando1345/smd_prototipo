@@ -9,3 +9,20 @@ Desktop.ini
 
 # Local-only artifacts
 *.log
+
+# Dependencies and build output
+node_modules/
+dist/
+build/
+
+# Heavy source or duplicate media files
+assets/
+*.psd
+*.ai
+*.tif
+*.tiff
+*.raw
+*.heic
+*.zip
+*.rar
+*.7z
