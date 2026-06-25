@@ -120,7 +120,7 @@ const SECTION_FALLBACKS = {
             title: 'El llamado a la vida religiosa',
             category: 'Pastoral Vocacional',
             excerpt: 'Un camino de fe, gracia y entrega generosa al plan del Creador.',
-            image: 'sierva-palmas.jpg',
+            image: 'madre-coronada.jpg',
             body: 'Para las jóvenes que experimentan una inquietud espiritual o sienten el llamado del Señor, la congregación ofrece un espacio eclesial y formativo para descubrir y consolidar la vocación a la vida consagrada.'
         },
         {
@@ -280,6 +280,7 @@ const PRESENCE_COUNTRIES = [
 ];
 
 const PRESENCE_MAP_DEFAULT_VIEWBOX = '0 0 960 520';
+const PRESENCE_MAP_FOCUS_VIEWBOX = '135 85 460 350';
 
 function getPresenceMapData() {
     return window.SMD_WORLD_MAP && Array.isArray(window.SMD_WORLD_MAP.countries)
@@ -287,13 +288,27 @@ function getPresenceMapData() {
         : { viewBox: PRESENCE_MAP_DEFAULT_VIEWBOX, countries: [], presencePoints: {} };
 }
 
-function getPresenceMapSize() {
-    const viewBox = getPresenceMapData().viewBox || PRESENCE_MAP_DEFAULT_VIEWBOX;
+function parsePresenceViewBox(viewBox = PRESENCE_MAP_DEFAULT_VIEWBOX) {
     const parts = viewBox.split(/\s+/).map(Number);
     return {
+        x: Number.isFinite(parts[0]) ? parts[0] : 0,
+        y: Number.isFinite(parts[1]) ? parts[1] : 0,
         width: Number.isFinite(parts[2]) ? parts[2] : 960,
         height: Number.isFinite(parts[3]) ? parts[3] : 520
     };
+}
+
+function getPresenceMapSize() {
+    const viewBox = parsePresenceViewBox(getPresenceMapData().viewBox || PRESENCE_MAP_DEFAULT_VIEWBOX);
+    return { width: viewBox.width, height: viewBox.height };
+}
+
+function getPresenceDisplayViewBox() {
+    return getPresenceMapData().focusViewBox || PRESENCE_MAP_FOCUS_VIEWBOX;
+}
+
+function getPresenceDisplayBox() {
+    return parsePresenceViewBox(getPresenceDisplayViewBox());
 }
 
 function getPresencePoint(countryId = '') {
@@ -794,8 +809,8 @@ function renderPresenceMap(displayCategory = '') {
         return;
     }
 
-    const worldMap = getPresenceMapData();
     const mapSize = getPresenceMapSize();
+    const displayViewBox = getPresenceDisplayViewBox();
 
     mapMount.hidden = false;
     mapMount.innerHTML = `
@@ -806,7 +821,7 @@ function renderPresenceMap(displayCategory = '') {
             </header>
             <div class="presence-map__canvas" aria-label="Mapa interactivo de presencia de las Siervas">
                 <div class="presence-map__viewport" tabindex="0" aria-label="Desplazar mapa de presencia">
-                <svg class="presence-map__svg" viewBox="${worldMap.viewBox || PRESENCE_MAP_DEFAULT_VIEWBOX}" role="img" aria-labelledby="presence-map-svg-title presence-map-svg-desc">
+                <svg class="presence-map__svg" viewBox="${displayViewBox}" role="img" aria-labelledby="presence-map-svg-title presence-map-svg-desc">
                     <title id="presence-map-svg-title">Mapa de presencia mundial</title>
                     <desc id="presence-map-svg-desc">Mapa geográfico mundial con Honduras, El Salvador, Argentina, Chile e Italia destacados.</desc>
                     <defs>
@@ -871,9 +886,9 @@ ${renderPresenceWorldCountries()}
         window.requestAnimationFrame(() => {
             const canvasRect = canvas.getBoundingClientRect();
             const dialogRect = dialog.getBoundingClientRect();
-            const mapSize = getPresenceMapSize();
-            const pinX = (point.x / mapSize.width) * canvasRect.width;
-            const pinY = (point.y / mapSize.height) * canvasRect.height;
+            const displayBox = getPresenceDisplayBox();
+            const pinX = ((point.x - displayBox.x) / displayBox.width) * canvasRect.width;
+            const pinY = ((point.y - displayBox.y) / displayBox.height) * canvasRect.height;
             const gap = 18;
             let left = pinX + gap;
             let top = pinY - (dialogRect.height / 2);

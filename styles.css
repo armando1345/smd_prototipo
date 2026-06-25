@@ -299,10 +299,10 @@ textarea {
 
 .topbar .social-link {
     background:
-        radial-gradient(circle at 30% 18%, rgba(255, 232, 163, 0.72), rgba(241, 192, 79, 0.2) 28%, transparent 54%),
-        rgba(255, 255, 255, 0.08);
-    border-color: rgba(241, 192, 79, 0.54);
-    box-shadow: 0 0 18px rgba(241, 192, 79, 0.12);
+        radial-gradient(circle at 30% 18%, rgba(255, 232, 163, 0.24), rgba(241, 192, 79, 0.07) 28%, transparent 54%),
+        rgba(255, 255, 255, 0.06);
+    border-color: rgba(241, 192, 79, 0.28);
+    box-shadow: 0 0 10px rgba(241, 192, 79, 0.04);
 }
 
 .social-icon {
@@ -1096,7 +1096,13 @@ main {
 .vocation-section__actions {
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
     gap: 10px;
+}
+
+.vocation-section__actions .button i {
+    width: 17px;
+    height: 17px;
 }
 
 .news-stream {
@@ -2456,9 +2462,10 @@ main {
 
 .presence-map__canvas {
     position: relative;
-    aspect-ratio: 960 / 520;
-    min-height: 460px;
-    max-height: 620px;
+    aspect-ratio: 460 / 350;
+    margin-inline: auto;
+    min-height: 430px;
+    max-height: 560px;
     border: 1px solid rgba(15, 37, 56, 0.16);
     border-radius: 8px;
     background: #dcebf5;
@@ -2474,6 +2481,7 @@ main {
 .presence-map__svg {
     width: 100%;
     height: 100%;
+    display: block;
 }
 
 .presence-map__ocean {
@@ -3307,18 +3315,16 @@ main {
 
     .presence-map__viewport {
         position: static;
-        overflow-x: auto;
-        overflow-y: hidden;
-        -webkit-overflow-scrolling: touch;
+        overflow: hidden;
         border: 1px solid rgba(15, 37, 56, 0.16);
         border-radius: 8px;
         background: #dcebf5;
     }
 
     .presence-map__svg {
-        width: 920px;
-        max-width: none;
-        height: clamp(320px, 56vw, 500px);
+        width: 100%;
+        max-width: 100%;
+        height: clamp(320px, 82vw, 390px);
     }
 
     .presence-map__land,
