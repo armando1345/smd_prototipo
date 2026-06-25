@@ -8,6 +8,12 @@ const DEFAULT_SECTION_CATEGORY = 'Mundo';
 const SECTION_OVERVIEW_TITLE = 'Últimos artículos';
 const SANCTUARY_MAP_URL = 'https://www.google.com/maps/search/?api=1&query=Templo%20de%20Jes%C3%BAs%20de%20la%20Divina%20Misericordia%2C%20Osicala%2C%20Moraz%C3%A1n%2C%20El%20Salvador';
 const TEMPLE_PROJECT_URL = 'https://www.templodejesusdeladivinamisericordiaelsalvador.com/';
+const GENERAL_CONTACT_EMAIL = 'razdiazsiervas@yahoo.es';
+const GENERAL_CONTACT_PHONE = '+503 7746 9440';
+const GENERAL_CONTACT_TEL = '+50377469440';
+const GENERAL_WHATSAPP_URL = 'https://wa.me/50377469440';
+const VOCATIONAL_PHONE = '7679-6343';
+const VOCATIONAL_TEL = '+50376796343';
 
 function shouldOpenNewTab(link) {
     if (!link || !link.href) return false;
@@ -247,35 +253,88 @@ const PRESENCE_COUNTRIES = [
         name: 'El Salvador',
         started: 'Cuna de la congregación, fundada el 29 de junio de 1995',
         work: 'Comunidades Juan Pablo II, Madre Camila, Monseñor Romero, San Pedro y San Pablo, San Francisco y el Albergue Casa Madre de la Misericordia.',
-        note: 'Contacto en El Salvador: +503 7746 9440.'
+        contactLabel: 'Contacto en El Salvador',
+        phone: GENERAL_CONTACT_PHONE,
+        tel: GENERAL_CONTACT_TEL,
+        email: GENERAL_CONTACT_EMAIL,
+        communities: [
+            { name: 'Comunidad Juan Pablo II', place: 'Barrio San Felipe, San Miguel', founded: 'Fundada el 29 de agosto de 2011', phone: '+503 7860 4686', tel: '+50378604686' },
+            { name: 'Comunidad Madre Camila', place: 'Sesori, San Miguel', founded: 'Fundada el 7 de marzo de 2024', phone: '+503 7850 3128', tel: '+50378503128' },
+            { name: 'Comunidad Monseñor Romero', place: 'Osicala, Morazán', founded: 'Fundada el 25 de marzo de 2014', phone: '+503 7600 3412', tel: '+50376003412' },
+            {
+                name: 'Albergue Casa Madre de la Misericordia',
+                place: 'Pasaje y residencial San Carlos, N. 8 y 9, San Salvador, El Salvador',
+                founded: 'Fundada el 15 de octubre de 2007',
+                phones: [
+                    { label: '+503 2235 5033', href: '+50322355033' },
+                    { label: '+503 2221 4759', href: '+50322214759' }
+                ],
+                email: GENERAL_CONTACT_EMAIL
+            },
+            { name: 'Comunidad San Pedro y San Pablo', place: 'Nunciatura Apostólica de El Salvador', founded: 'Fundada el 4 de enero de 2015' },
+            { name: 'Comunidad San Francisco', place: 'Parroquia San Francisco, San Salvador', founded: 'Fundada el 5 de enero de 2014' }
+        ],
+        note: 'La imagen aportada incluye contactos locales para Casa Madre, Osicala, Barrio San Felipe y Sesori; para las demás casas se conserva el contacto general disponible.'
     },
     {
         id: 'HN',
         name: 'Honduras',
         started: 'Presencia desde el 22 de febrero de 2017',
         work: 'Comunidades Divina Misericordia en Valle de Ángeles, Santa Faustina en Cerro Grande y San Andrés.',
-        note: 'Contacto en Honduras: +504 9717 1302.'
+        contactLabel: 'Contacto en Honduras',
+        phone: '+504 9717 1302',
+        tel: '+50497171302',
+        email: GENERAL_CONTACT_EMAIL,
+        communities: [
+            { name: 'Comunidad Divina Misericordia', place: 'Valle de Ángeles', founded: 'Fundada el 22 de febrero de 2017' },
+            { name: 'Comunidad Santa Faustina', place: 'Cerro Grande, Tegucigalpa', founded: 'Fundada el 7 de noviembre de 2020', phone: '+504 9717 1302', tel: '+50497171302' },
+            { name: 'Comunidad San Andrés', place: 'Gracias, Lempira', founded: 'Fundada el 14 de noviembre de 2021', phone: '+504 8960 2442', tel: '+50489602442' }
+        ],
+        note: 'La imagen aportada incluye contactos locales para Cerro Grande y Gracias; para Valle de Ángeles se mantiene el canal general disponible.'
     },
     {
         id: 'AR',
         name: 'Argentina',
         started: 'Presencia desde el 15 de marzo de 2019',
         work: 'Comunidades San Óscar Romero en la Nunciatura Apostólica, Divino Salvador en Cruz del Eje, Córdoba, y Reina de la Paz en Mar de Plata.',
-        note: 'La obra conecta el carisma de misericordia con realidades pastorales locales.'
+        contactLabel: 'Contacto en Argentina',
+        phone: '',
+        tel: '',
+        email: GENERAL_CONTACT_EMAIL,
+        communities: [
+            { name: 'Comunidad de San Óscar Romero', place: 'Nunciatura Apostólica', founded: 'Fundada el 15 de marzo de 2019' },
+            { name: 'Comunidad Divino Salvador', place: 'Cruz del Eje, Córdoba', founded: 'Fundada el 29 de enero de 2022' },
+            { name: 'Comunidad Reina de la Paz', place: 'Mar de Plata', founded: 'Fundada el 5 de febrero de 2022' }
+        ],
+        note: 'El material fuente deja el campo de contacto de Argentina sin número específico; se muestra el correo general para consultas.'
     },
     {
         id: 'CL',
         name: 'Chile',
         started: 'Comunidad San José, fundada el 3 de mayo de 2026',
         work: 'Presencia misionera en Santiago de Chile.',
-        note: 'Contacto en Chile: +56 9 7437 0277.'
+        contactLabel: 'Contacto en Chile',
+        phone: '+56 9 7437 0277',
+        tel: '+56974370277',
+        email: GENERAL_CONTACT_EMAIL,
+        communities: [
+            { name: 'Comunidad San José', place: 'Santiago de Chile', founded: 'Fundada el 3 de mayo de 2026' }
+        ],
+        note: 'Contacto indicado en el material fuente para Chile.'
     },
     {
         id: 'IT',
         name: 'Italia',
         started: 'Comunidad San Pedro, fundada el 21 de junio de 2026',
         work: 'Nueva presencia de las Siervas de la Misericordia de Dios en Italia.',
-        note: 'La misión sigue expandiendo el carisma de la misericordia.'
+        contactLabel: 'Contacto en Italia',
+        phone: '',
+        tel: '',
+        email: GENERAL_CONTACT_EMAIL,
+        communities: [
+            { name: 'Comunidad San Pedro', place: 'Italia', founded: 'Fundada el 21 de junio de 2026' }
+        ],
+        note: 'El material fuente deja el campo de contacto de Italia sin número específico; se muestra el correo general para consultas.'
     }
 ];
 
@@ -799,6 +858,184 @@ function renderPresenceWorldCountries() {
         .join('');
 }
 
+function escapeHtml(value = '') {
+    return String(value)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+}
+
+function renderPhoneLink(phone = '', tel = '') {
+    if (!phone) return '';
+    return `<a class="contact-chip" href="tel:${escapeHtml(tel || phone.replace(/\s+/g, ''))}"><i data-lucide="phone"></i>${escapeHtml(phone)}</a>`;
+}
+
+function renderEmailLink(email = '') {
+    if (!email) return '';
+    return `<a class="contact-chip" href="mailto:${escapeHtml(email)}"><i data-lucide="mail"></i>${escapeHtml(email)}</a>`;
+}
+
+function renderCommunityContacts(community = {}, country = {}) {
+    const phones = Array.isArray(community.phones)
+        ? community.phones
+        : (community.phone ? [{ label: community.phone, href: community.tel || community.phone }] : []);
+    const phoneLinks = phones
+        .map((phone) => renderPhoneLink(phone.label, phone.href))
+        .join('');
+    const emailLink = renderEmailLink(community.email || '');
+    const fallback = !phoneLinks && !emailLink
+        ? `<span class="contact-chip contact-chip--muted"><i data-lucide="info"></i>Consultar por ${country.phone ? 'contacto general' : 'correo general'}</span>`
+        : '';
+    return `${phoneLinks}${emailLink}${fallback}`;
+}
+
+function renderCountryCommunities(country = {}) {
+    const communities = Array.isArray(country.communities) ? country.communities : [];
+    if (!communities.length) return '';
+
+    return `
+        <div class="presence-dialog__communities">
+            <h4>Comunidades y contactos</h4>
+            <ul>
+                ${communities.map((community) => `
+                    <li>
+                        <strong>${escapeHtml(community.name)}</strong>
+                        <span>${escapeHtml(community.place || '')}</span>
+                        <em>${escapeHtml(community.founded || '')}</em>
+                        <div class="presence-dialog__contact-row">${renderCommunityContacts(community, country)}</div>
+                    </li>
+                `).join('')}
+            </ul>
+        </div>
+    `;
+}
+
+function renderCountryContact(country = {}) {
+    const links = [
+        renderPhoneLink(country.phone, country.tel),
+        renderEmailLink(country.email)
+    ].filter(Boolean).join('');
+
+    if (!links) return '';
+
+    return `
+        <div class="presence-dialog__contact">
+            <h4>${escapeHtml(country.contactLabel || 'Contacto')}</h4>
+            <div class="presence-dialog__contact-row">${links}</div>
+        </div>
+    `;
+}
+
+const SECTION_INFO = {
+    'Santuario': {
+        kicker: 'Contacto del santuario',
+        title: 'Santuario de la Divina Misericordia en Osicala',
+        lead: 'En Osicala, Morazán Sur, el templo recibe peregrinos que buscan paz, silencio, oración, conversión y celebración de la Eucaristía.',
+        contacts: [
+            { icon: 'map-pin', label: 'Ubicación', value: 'Osicala, Morazán Sur, El Salvador', href: SANCTUARY_MAP_URL },
+            { icon: 'phone', label: 'Teléfono en Osicala', value: '+503 7600 3412', href: 'tel:+50376003412' },
+            { icon: 'mail', label: 'Correo', value: GENERAL_CONTACT_EMAIL, href: `mailto:${GENERAL_CONTACT_EMAIL}` },
+            { icon: 'phone', label: 'Casa Madre', value: '+503 2235 5033 / +503 2221 4759', href: 'tel:+50322355033' }
+        ],
+        groups: [
+            {
+                title: 'Historia y construcción',
+                items: [
+                    'En 1993, Madre Reina Angélica Zelaya Díaz sintió el llamado de fundar una comunidad religiosa en Osicala.',
+                    'Once años después inició la inspiración de construir un templo como espacio de encuentro con Jesús.',
+                    'El 21 de noviembre de 2019 se colocó la primera piedra, en el día de Nuestra Señora Reina de la Paz.',
+                    'En diciembre de 2020 se celebró una misa en memoria de las personas fallecidas por el COVID-19.',
+                    'En 2022 avanzó la instalación del techo y en agosto se colocó la cúpula en la fiesta de Santa María Reina.',
+                    'El 7 de abril de 2024, Fiesta de la Divina Misericordia, se realizó la Consagración y Dedicación del templo.'
+                ]
+            },
+            {
+                title: 'Estado actual',
+                items: [
+                    'El templo está abierto y recibe a cientos de peregrinos.',
+                    'La obra continúa en proceso y se sostiene con donaciones voluntarias.'
+                ]
+            }
+        ]
+    },
+    'Pastoral Vocacional': {
+        kicker: 'Contacto vocacional',
+        title: 'Acompañamiento para el llamado a la vida religiosa',
+        lead: 'La congregación ofrece un espacio eclesial y formativo para jóvenes con inquietud espiritual o deseo de discernir la vida consagrada.',
+        contacts: [
+            { icon: 'user', label: 'Atiende', value: 'Pastoral Vocacional de las Siervas' },
+            { icon: 'phone', label: 'Atención telefónica', value: VOCATIONAL_PHONE, href: `tel:${VOCATIONAL_TEL}` },
+            { icon: 'message-circle', label: 'Facebook', value: 'Karol Wojtyla Siervas y Vocacional Siervas' },
+            { icon: 'mail', label: 'Correo', value: GENERAL_CONTACT_EMAIL, href: `mailto:${GENERAL_CONTACT_EMAIL}` }
+        ],
+        groups: [
+            {
+                title: 'Identidad, carisma y espiritualidad',
+                items: [
+                    'La espiritualidad eclesial brota del Corazón Misericordioso de Dios.',
+                    'El carisma consiste en difundir la devoción a la Divina Misericordia y ser instrumento vivo de ella.',
+                    'La vida comunitaria se desarrolla en espíritu de familia, oración constante y comunión con la Madre Iglesia.',
+                    'La misión se ejerce en parroquias, hospitales, mercados, albergues y zonas marginales.'
+                ]
+            },
+            {
+                title: 'Itinerario formativo',
+                items: [
+                    'Aspirantado y Postulantado: discernimiento y profundización de la inquietud vocacional.',
+                    'Noviciado: formación intensa para asumir los votos de castidad, pobreza y obediencia.',
+                    'Juniorado: consolidación de la identidad dentro de la vida fraterna y los apostolados.'
+                ]
+            }
+        ]
+    }
+};
+
+function renderSectionInfoPanel(displayCategory = '', overview = false) {
+    const panel = document.getElementById('section-info');
+    if (!panel) return;
+
+    const info = !overview ? SECTION_INFO[displayCategory] : null;
+    if (!info) {
+        panel.hidden = true;
+        panel.innerHTML = '';
+        return;
+    }
+
+    panel.hidden = false;
+    panel.innerHTML = `
+        <div class="section-info-panel__intro">
+            <p class="section-kicker">${escapeHtml(info.kicker)}</p>
+            <h2>${escapeHtml(info.title)}</h2>
+            <p>${escapeHtml(info.lead)}</p>
+        </div>
+        <div class="section-info-panel__contacts">
+            ${(info.contacts || []).map((item) => {
+                const content = `<span><strong>${escapeHtml(item.label)}</strong><em>${escapeHtml(item.value)}</em></span>`;
+                const icon = `<i data-lucide="${escapeHtml(item.icon || 'info')}"></i>`;
+                return item.href
+                    ? `<a href="${escapeHtml(item.href)}" class="section-contact-card">${icon}${content}</a>`
+                    : `<div class="section-contact-card">${icon}${content}</div>`;
+            }).join('')}
+        </div>
+        <div class="section-info-panel__groups">
+            ${(info.groups || []).map((group) => `
+                <article>
+                    <h3>${escapeHtml(group.title)}</h3>
+                    <ul>
+                        ${(group.items || []).map((item) => `<li>${escapeHtml(item)}</li>`).join('')}
+                    </ul>
+                </article>
+            `).join('')}
+        </div>
+    `;
+    normalizeLinkTargets(panel);
+    if (window.lucide && typeof window.lucide.createIcons === 'function') {
+        window.lucide.createIcons();
+    }
+}
+
 function renderPresenceMap(displayCategory = '') {
     const mapMount = document.getElementById('section-world-map');
     if (!mapMount) return;
@@ -848,6 +1085,8 @@ ${renderPresenceWorldCountries()}
                             <dd data-presence-work></dd>
                         </div>
                     </dl>
+                    <div data-presence-communities></div>
+                    <div data-presence-contact></div>
                     <p data-presence-note></p>
                 </aside>
             </div>
@@ -858,6 +1097,8 @@ ${renderPresenceWorldCountries()}
     const dialogTitle = mapMount.querySelector('#presence-dialog-title');
     const started = mapMount.querySelector('[data-presence-started]');
     const work = mapMount.querySelector('[data-presence-work]');
+    const communities = mapMount.querySelector('[data-presence-communities]');
+    const contact = mapMount.querySelector('[data-presence-contact]');
     const note = mapMount.querySelector('[data-presence-note]');
     const countryButtons = Array.from(mapMount.querySelectorAll('[data-country-id]'));
 
@@ -916,8 +1157,18 @@ ${renderPresenceWorldCountries()}
         if (dialogTitle) dialogTitle.textContent = country.name;
         if (started) started.textContent = country.started;
         if (work) work.textContent = country.work;
+        if (communities) communities.innerHTML = renderCountryCommunities(country);
+        if (contact) contact.innerHTML = renderCountryContact(country);
         if (note) note.textContent = country.note;
         positionDialog(country.id);
+        if (window.lucide && typeof window.lucide.createIcons === 'function') {
+            window.lucide.createIcons();
+        }
+        if (isCompactMap() && dialog) {
+            window.requestAnimationFrame(() => {
+                dialog.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        }
     };
 
     countryButtons.forEach((button) => {
@@ -1002,6 +1253,7 @@ function renderSectionPage(category = '', articles = [], options = {}) {
         }
     }
 
+    renderSectionInfoPanel(displayCategory, overview);
     renderPresenceMap(overview ? '' : displayCategory);
 
     if (!grid) return;
