@@ -765,6 +765,7 @@ main {
 .audio-section,
 .mission-section,
 .collage-section,
+.vocation-section,
 .news-stream,
 .gallery-section,
 .doc-feature {
@@ -1028,6 +1029,74 @@ main {
 
 .collage-section__content p {
     color: #455164;
+}
+
+.vocation-section {
+    background: #fffdf9;
+    padding: clamp(54px, 8vw, 88px) 0;
+}
+
+.vocation-section__inner {
+    display: grid;
+    grid-template-columns: 0.92fr 1.08fr;
+    gap: clamp(22px, 4vw, 48px);
+    align-items: center;
+}
+
+.vocation-section__media {
+    margin: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: var(--shadow-soft);
+    background: #eef1f4;
+}
+
+.vocation-section__media img {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+}
+
+.vocation-section__content {
+    display: grid;
+    gap: 16px;
+    max-width: 680px;
+}
+
+.vocation-section__content h2 {
+    font-size: clamp(2rem, 3vw, 3.15rem);
+    line-height: 1.08;
+}
+
+.vocation-section__content p {
+    color: #455164;
+    font-size: 1.04rem;
+    line-height: 1.68;
+}
+
+.vocation-section__steps {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.vocation-section__steps li {
+    border-radius: 999px;
+    border: 1px solid rgba(180, 17, 27, 0.26);
+    background: rgba(180, 17, 27, 0.06);
+    color: #8f0f16;
+    font-size: 0.84rem;
+    font-weight: 800;
+    padding: 8px 12px;
+}
+
+.vocation-section__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 .news-stream {
@@ -1982,6 +2051,33 @@ main {
     margin: 0;
 }
 
+.about-story__list {
+    margin: 0;
+    padding-left: 22px;
+    display: grid;
+    gap: 8px;
+}
+
+.about-story__list li {
+    color: #455164;
+}
+
+.about-presence-list {
+    display: grid;
+    gap: 14px;
+}
+
+.about-presence-list section {
+    border-left: 3px solid rgba(180, 17, 27, 0.26);
+    padding-left: 14px;
+}
+
+.about-presence-list h4 {
+    margin: 0 0 4px;
+    color: #0f1724;
+    font-size: 1.06rem;
+}
+
 .about-story__content p:first-of-type {
     font-size: clamp(1.18rem, 1.5vw, 1.34rem);
     line-height: 1.68;
@@ -2360,9 +2456,9 @@ main {
 
 .presence-map__canvas {
     position: relative;
-    aspect-ratio: 760 / 560;
-    min-height: 520px;
-    max-height: 760px;
+    aspect-ratio: 960 / 520;
+    min-height: 460px;
+    max-height: 620px;
     border: 1px solid rgba(15, 37, 56, 0.16);
     border-radius: 8px;
     background: #dcebf5;
@@ -2382,12 +2478,14 @@ main {
 
 .presence-map__ocean {
     fill: #dcebf5;
+    pointer-events: none;
 }
 
 .presence-map__graticule {
     fill: none;
     stroke: rgba(15, 37, 56, 0.12);
     stroke-width: 1;
+    pointer-events: none;
     vector-effect: non-scaling-stroke;
 }
 
@@ -2396,6 +2494,14 @@ main {
     stroke: rgba(70, 96, 78, 0.42);
     stroke-width: 1.2;
     filter: url(#presence-shadow);
+    vector-effect: non-scaling-stroke;
+}
+
+.presence-map__country {
+    fill: #c7d1a6;
+    stroke: rgba(70, 96, 78, 0.34);
+    stroke-width: 0.8;
+    pointer-events: none;
     vector-effect: non-scaling-stroke;
 }
 
@@ -2434,7 +2540,7 @@ main {
     fill: #102033;
     font-size: 15px;
     font-weight: 800;
-    pointer-events: all;
+    pointer-events: none;
     paint-order: stroke;
     stroke: rgba(255, 255, 255, 0.88);
     stroke-width: 4px;
@@ -2472,6 +2578,7 @@ main {
     top: 24px;
     left: 24px;
     z-index: 2;
+    pointer-events: none;
     width: min(380px, calc(100% - 32px));
     border: 1px solid rgba(255, 255, 255, 0.72);
     border-radius: 8px;
@@ -2815,6 +2922,7 @@ main {
     .doc-feature__inner,
     .video-band__inner,
     .collage-section__inner,
+    .vocation-section__inner,
     .internal-grid,
     .premium-grid,
     .about-story__hero,
@@ -3037,6 +3145,7 @@ main {
     .podcast-premium-hero__lead,
     .mission-section__content p,
     .collage-section__content p,
+    .vocation-section__content p,
     .podcast-sample-card p {
         font-size: clamp(1.08rem, 4.2vw, 1.32rem);
         line-height: 1.42;
@@ -3159,6 +3268,18 @@ main {
         order: -1;
     }
 
+    .vocation-section__media {
+        order: 1;
+    }
+
+    .vocation-section__actions {
+        display: grid;
+    }
+
+    .vocation-section__actions .button {
+        width: 100%;
+    }
+
     .collage-grid {
         order: 1;
     }
@@ -3195,12 +3316,13 @@ main {
     }
 
     .presence-map__svg {
-        width: 680px;
+        width: 920px;
         max-width: none;
-        height: clamp(310px, 78vw, 420px);
+        height: clamp(320px, 56vw, 500px);
     }
 
     .presence-map__land,
+    .presence-map__country,
     .presence-country path,
     .presence-country__pin,
     .presence-country:hover path,
