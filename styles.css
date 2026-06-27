@@ -2084,6 +2084,47 @@ main {
     font-size: 1.06rem;
 }
 
+.about-presence-map {
+    margin: 4px 0 6px;
+}
+
+.about-presence-map .presence-map__header h2 {
+    font-size: clamp(1.42rem, 2.2vw, 1.9rem);
+}
+
+.about-presence-map .presence-map__canvas {
+    min-height: 360px;
+    max-height: 430px;
+    box-shadow: none;
+}
+
+.presence-map__overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    display: grid;
+    place-items: center;
+    background: rgba(15, 23, 36, 0.34);
+    color: #ffffff;
+    opacity: 0;
+    text-decoration: none;
+    transition: opacity var(--ease-main);
+}
+
+.presence-map__overlay span {
+    border-radius: 999px;
+    background: rgba(180, 17, 27, 0.94);
+    color: #ffffff;
+    font-weight: 800;
+    padding: 12px 18px;
+    box-shadow: 0 12px 28px rgba(15, 23, 36, 0.22);
+}
+
+.about-presence-map .presence-map__canvas:hover .presence-map__overlay,
+.presence-map__overlay:focus-visible {
+    opacity: 1;
+}
+
 .about-story__content p:first-of-type {
     font-size: clamp(1.18rem, 1.5vw, 1.34rem);
     line-height: 1.68;
@@ -2437,106 +2478,33 @@ main {
 
 .section-info-panel {
     margin: 0 0 clamp(22px, 4vw, 36px);
-    display: grid;
-    gap: 18px;
 }
 
 .section-info-panel[hidden] {
     display: none;
 }
 
-.section-info-panel__intro {
-    max-width: 860px;
+.section-info-panel__content {
+    margin-inline: 0 auto;
+}
+
+.section-info-panel__list {
+    margin: 0;
+    padding-left: 22px;
     display: grid;
     gap: 8px;
 }
 
-.section-info-panel__intro h2 {
-    font-size: clamp(1.55rem, 2.5vw, 2.2rem);
-    line-height: 1.12;
-}
-
-.section-info-panel__intro p:last-child {
-    color: var(--color-muted);
-    line-height: 1.65;
-}
-
-.section-info-panel__contacts {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 12px;
-}
-
-.section-contact-card {
-    min-height: 92px;
-    border: 1px solid rgba(15, 37, 56, 0.14);
-    border-radius: 8px;
-    background: var(--color-white);
-    padding: 14px;
-    color: #0f1724;
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    box-shadow: 0 12px 26px rgba(15, 37, 56, 0.08);
-}
-
-.section-contact-card i {
-    width: 18px;
-    height: 18px;
-    color: var(--color-red);
-    flex: 0 0 auto;
-    margin-top: 2px;
-}
-
-.section-contact-card span {
-    display: grid;
-    gap: 4px;
-    min-width: 0;
-}
-
-.section-contact-card strong {
-    font-size: 0.82rem;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: #8f0f16;
-}
-
-.section-contact-card em {
-    font-style: normal;
-    color: #2f3948;
-    overflow-wrap: anywhere;
-}
-
-a.section-contact-card:hover {
-    border-color: rgba(180, 17, 27, 0.34);
-    transform: translateY(-1px);
-}
-
-.section-info-panel__groups {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 14px;
-}
-
-.section-info-panel__groups article {
-    border: 1px solid rgba(15, 37, 56, 0.14);
-    border-radius: 8px;
-    background: #fffdf9;
-    padding: 16px;
-}
-
-.section-info-panel__groups h3 {
-    font-size: 1.05rem;
-    margin-bottom: 10px;
-}
-
-.section-info-panel__groups ul {
-    margin: 0;
-    padding-left: 18px;
+.section-info-panel__list li {
     color: #455164;
-    display: grid;
-    gap: 7px;
-    line-height: 1.55;
+}
+
+.section-info-panel__list a {
+    color: var(--color-red);
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    overflow-wrap: anywhere;
 }
 
 .section-world-map {
@@ -2683,6 +2651,38 @@ a.section-contact-card:hover {
 .presence-country:focus-visible path {
     stroke: #f1c04f;
     stroke-width: 3;
+}
+
+.presence-country-marker path {
+    fill: rgba(180, 17, 27, 0.72);
+    stroke: #ffffff;
+    stroke-width: 1.5;
+    filter: drop-shadow(0 6px 9px rgba(83, 14, 20, 0.3));
+    vector-effect: non-scaling-stroke;
+}
+
+.presence-country-marker__target {
+    fill: transparent;
+    stroke: rgba(180, 17, 27, 0.24);
+    stroke-width: 2;
+}
+
+.presence-country-marker__pin {
+    fill: #fff8e6;
+    stroke: #8f0f16;
+    stroke-width: 3;
+    filter: drop-shadow(0 4px 7px rgba(15, 37, 56, 0.28));
+}
+
+.presence-country-marker text {
+    fill: #102033;
+    font-size: 15px;
+    font-weight: 800;
+    pointer-events: none;
+    paint-order: stroke;
+    stroke: rgba(255, 255, 255, 0.88);
+    stroke-width: 4px;
+    stroke-linejoin: round;
 }
 
 .presence-dialog {
@@ -3199,14 +3199,6 @@ a.section-contact-card:hover {
         max-width: none;
     }
 
-    .section-info-panel__contacts {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .section-info-panel__groups {
-        grid-template-columns: 1fr;
-    }
-
     .presence-map__header {
         margin-bottom: 12px;
     }
@@ -3215,7 +3207,8 @@ a.section-contact-card:hover {
         width: min(340px, calc(100% - 32px));
     }
 
-    .presence-country text {
+    .presence-country text,
+    .presence-country-marker text {
         font-size: 16px;
     }
 }
@@ -3252,14 +3245,6 @@ a.section-contact-card:hover {
 
     .article-hero__meta {
         grid-template-columns: 1fr;
-    }
-
-    .section-info-panel__contacts {
-        grid-template-columns: 1fr;
-    }
-
-    .section-contact-card {
-        min-height: 0;
     }
 
     .hero {
@@ -3527,6 +3512,8 @@ a.section-contact-card:hover {
     .presence-map__country,
     .presence-country path,
     .presence-country__pin,
+    .presence-country-marker path,
+    .presence-country-marker__pin,
     .presence-country:hover path,
     .presence-country:focus-visible path,
     .presence-country.is-active path {
@@ -3549,6 +3536,10 @@ a.section-contact-card:hover {
         background: var(--color-white);
         box-shadow: none;
         backdrop-filter: none;
+    }
+
+    .about-presence-map .presence-map__overlay {
+        opacity: 1;
     }
 
     .presence-map__header h2 {

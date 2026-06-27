@@ -828,7 +828,7 @@ function getPresenceMapCountryByIso(iso2 = '') {
     return getPresenceMapData().countries.find((country) => country.iso2 === iso2) || null;
 }
 
-function renderPresenceBaseCountry(mapCountry = {}, presenceCountry = null) {
+function renderPresenceBaseCountry(mapCountry = {}, presenceCountry = null, interactive = true) {
     if (!mapCountry.path) return '';
 
     if (!presenceCountry) {
@@ -842,6 +842,16 @@ function renderPresenceBaseCountry(mapCountry = {}, presenceCountry = null) {
     const targetRadius = point.radius || 18;
     const classSuffix = presenceCountry.id.toLowerCase();
 
+    if (!interactive) {
+        return `
+                    <g class="presence-country-marker presence-country-marker--${classSuffix}" aria-label="${presenceCountry.name}">
+                        <path d="${mapCountry.path}"/>
+                        <circle class="presence-country-marker__target" cx="${point.x}" cy="${point.y}" r="${targetRadius}"/>
+                        <circle class="presence-country-marker__pin" cx="${point.x}" cy="${point.y}" r="5"/>
+                        <text x="${point.labelX}" y="${point.labelY}">${presenceCountry.name}</text>
+                    </g>`;
+    }
+
     return `
                     <g class="presence-country presence-country--${classSuffix}" role="button" tabindex="0" data-country-id="${presenceCountry.id}" aria-label="Ver información de ${presenceCountry.name}">
                         <path d="${mapCountry.path}"/>
@@ -851,10 +861,10 @@ function renderPresenceBaseCountry(mapCountry = {}, presenceCountry = null) {
                     </g>`;
 }
 
-function renderPresenceWorldCountries() {
+function renderPresenceWorldCountries(interactive = true) {
     const presenceByIso = new Map(PRESENCE_COUNTRIES.map((country) => [country.id, country]));
     return getPresenceMapData().countries
-        .map((mapCountry) => renderPresenceBaseCountry(mapCountry, presenceByIso.get(mapCountry.iso2) || null))
+        .map((mapCountry) => renderPresenceBaseCountry(mapCountry, presenceByIso.get(mapCountry.iso2) || null, interactive))
         .join('');
 }
 
@@ -992,6 +1002,15 @@ const SECTION_INFO = {
     }
 };
 
+function formatSectionContact(item = {}) {
+    const label = escapeHtml(item.label || '');
+    const value = escapeHtml(item.value || '');
+    const content = item.href
+        ? `<a href="${escapeHtml(item.href)}">${value}</a>`
+        : value;
+    return `<li><strong>${label}:</strong> ${content}</li>`;
+}
+
 function renderSectionInfoPanel(displayCategory = '', overview = false) {
     const panel = document.getElementById('section-info');
     if (!panel) return;
@@ -1005,28 +1024,20 @@ function renderSectionInfoPanel(displayCategory = '', overview = false) {
 
     panel.hidden = false;
     panel.innerHTML = `
-        <div class="section-info-panel__intro">
-            <p class="section-kicker">${escapeHtml(info.kicker)}</p>
+        <div class="section-info-panel__content article-content">
             <h2>${escapeHtml(info.title)}</h2>
             <p>${escapeHtml(info.lead)}</p>
-        </div>
-        <div class="section-info-panel__contacts">
-            ${(info.contacts || []).map((item) => {
-                const content = `<span><strong>${escapeHtml(item.label)}</strong><em>${escapeHtml(item.value)}</em></span>`;
-                const icon = `<i data-lucide="${escapeHtml(item.icon || 'info')}"></i>`;
-                return item.href
-                    ? `<a href="${escapeHtml(item.href)}" class="section-contact-card">${icon}${content}</a>`
-                    : `<div class="section-contact-card">${icon}${content}</div>`;
-            }).join('')}
-        </div>
-        <div class="section-info-panel__groups">
+            ${(info.contacts || []).length ? `
+                <h3>${escapeHtml(info.kicker)}</h3>
+                <ul class="section-info-panel__list">
+                    ${(info.contacts || []).map(formatSectionContact).join('')}
+                </ul>
+            ` : ''}
             ${(info.groups || []).map((group) => `
-                <article>
-                    <h3>${escapeHtml(group.title)}</h3>
-                    <ul>
-                        ${(group.items || []).map((item) => `<li>${escapeHtml(item)}</li>`).join('')}
-                    </ul>
-                </article>
+                <h3>${escapeHtml(group.title)}</h3>
+                <ul class="section-info-panel__list">
+                    ${(group.items || []).map((item) => `<li>${escapeHtml(item)}</li>`).join('')}
+                </ul>
             `).join('')}
         </div>
     `;
@@ -1036,8 +1047,8 @@ function renderSectionInfoPanel(displayCategory = '', overview = false) {
     }
 }
 
-function renderPresenceMap(displayCategory = '') {
-    const mapMount = document.getElementById('section-world-map');
+function renderPresenceMap(displayCategory = '', mountId = 'section-world-map', options = {}) {
+    const mapMount = document.getElementById(mountId);
     if (!mapMount) return;
 
     if (displayCategory !== 'Presencia en el Mundo') {
@@ -1048,16 +1059,27 @@ function renderPresenceMap(displayCategory = '') {
 
     const mapSize = getPresenceMapSize();
     const displayViewBox = getPresenceDisplayViewBox();
+    const interactive = options.interactive !== false;
+    const mapKicker = interactive ? 'Mapa interactivo' : 'Presencia en el mundo';
+    const canvasLabel = interactive
+        ? 'Mapa interactivo de presencia de las Siervas'
+        : 'Mapa de presencia de las Siervas';
+    const viewportAttributes = interactive
+        ? ' tabindex="0" aria-label="Desplazar mapa de presencia"'
+        : '';
+    const overlayLink = !interactive && options.detailHref
+        ? `<a class="presence-map__overlay" href="${escapeHtml(options.detailHref)}" aria-label="Ver mapa interactivo"><span>Ver mapa interactivo</span></a>`
+        : '';
 
     mapMount.hidden = false;
     mapMount.innerHTML = `
         <section class="presence-map" aria-labelledby="presence-map-title">
             <header class="presence-map__header">
-                <p class="section-kicker">Mapa interactivo</p>
+                <p class="section-kicker">${mapKicker}</p>
                 <h2 id="presence-map-title">Países donde están las Siervas</h2>
             </header>
-            <div class="presence-map__canvas" aria-label="Mapa interactivo de presencia de las Siervas">
-                <div class="presence-map__viewport" tabindex="0" aria-label="Desplazar mapa de presencia">
+            <div class="presence-map__canvas" aria-label="${canvasLabel}">
+                <div class="presence-map__viewport"${viewportAttributes}>
                 <svg class="presence-map__svg" viewBox="${displayViewBox}" role="img" aria-labelledby="presence-map-svg-title presence-map-svg-desc">
                     <title id="presence-map-svg-title">Mapa de presencia mundial</title>
                     <desc id="presence-map-svg-desc">Mapa geográfico mundial con Honduras, El Salvador, Argentina, Chile e Italia destacados.</desc>
@@ -1068,11 +1090,12 @@ function renderPresenceMap(displayCategory = '') {
                     </defs>
                     <rect class="presence-map__ocean" width="${mapSize.width}" height="${mapSize.height}"/>
                     <path class="presence-map__graticule" d="M120 0V520M240 0V520M360 0V520M480 0V520M600 0V520M720 0V520M840 0V520M0 86.7H960M0 173.3H960M0 260H960M0 346.7H960M0 433.3H960"/>
-${renderPresenceWorldCountries()}
+${renderPresenceWorldCountries(interactive)}
                 </svg>
                 </div>
+                ${overlayLink}
 
-                <aside class="presence-dialog" aria-live="polite" aria-labelledby="presence-dialog-title" hidden>
+                ${interactive ? `<aside class="presence-dialog" aria-live="polite" aria-labelledby="presence-dialog-title" hidden>
                     <p class="presence-dialog__eyebrow">País seleccionado</p>
                     <h3 id="presence-dialog-title"></h3>
                     <dl>
@@ -1088,10 +1111,15 @@ ${renderPresenceWorldCountries()}
                     <div data-presence-communities></div>
                     <div data-presence-contact></div>
                     <p data-presence-note></p>
-                </aside>
+                </aside>` : ''}
             </div>
         </section>
     `;
+    if (!interactive) {
+        normalizeLinkTargets(mapMount);
+        return;
+    }
+
     const canvas = mapMount.querySelector('.presence-map__canvas');
     const dialog = mapMount.querySelector('.presence-dialog');
     const dialogTitle = mapMount.querySelector('#presence-dialog-title');
@@ -1212,6 +1240,16 @@ ${renderPresenceWorldCountries()}
     clearCountry();
 }
 
+function initAboutPresenceMap() {
+    const aboutMap = document.getElementById('about-presence-map');
+    if (!aboutMap) return;
+
+    renderPresenceMap('Presencia en el Mundo', 'about-presence-map', {
+        interactive: false,
+        detailHref: 'section.html?category=Presencia%20en%20el%20Mundo'
+    });
+}
+
 function renderSectionPage(category = '', articles = [], options = {}) {
     const { overview = false } = options;
     const grid = document.getElementById('section-grid');
@@ -1224,6 +1262,8 @@ function renderSectionPage(category = '', articles = [], options = {}) {
 
     const displayCategory = normalizeCategory(category) || category || DEFAULT_SECTION_CATEGORY;
     const isPresenceMap = !overview && displayCategory === 'Presencia en el Mundo';
+    const sectionInfo = SECTION_INFO[displayCategory] || null;
+    const isSectionInfoPage = !overview && Boolean(sectionInfo);
 
     if (sectionHero) sectionHero.hidden = isPresenceMap;
 
@@ -1233,12 +1273,16 @@ function renderSectionPage(category = '', articles = [], options = {}) {
             ? SECTION_OVERVIEW_TITLE
             : displayCategory === 'Santuario'
                 ? 'Información sobre el templo de Jesús de la Divina Misericordia'
-                : (displayCategory === 'Opinión' ? 'Artículos de opinión' : `Artículos de ${displayCategory}`);
+                : isSectionInfoPage
+                    ? displayCategory
+                    : (displayCategory === 'Opinión' ? 'Artículos de opinión' : `Artículos de ${displayCategory}`);
     }
     if (lead) {
         lead.textContent = overview
             ? 'Explora una selección de artículos recientes de SMD.'
-            : `Explora todas las publicaciones de ${displayCategory}.`;
+            : isSectionInfoPage
+                ? sectionInfo.lead
+                : `Explora todas las publicaciones de ${displayCategory}.`;
     }
     if (actions) {
         actions.innerHTML = '';
@@ -1258,8 +1302,12 @@ function renderSectionPage(category = '', articles = [], options = {}) {
 
     if (!grid) return;
     const listingSection = grid.closest('section');
-    if (listingSection) listingSection.hidden = isPresenceMap;
-    if (isPresenceMap) return;
+    if (listingSection) listingSection.hidden = isPresenceMap || isSectionInfoPage;
+    if (empty) empty.hidden = true;
+    if (isPresenceMap || isSectionInfoPage) {
+        grid.innerHTML = '';
+        return;
+    }
 
     grid.innerHTML = '';
 
@@ -1805,6 +1853,7 @@ initImagePlaceholders();
 applyAllowedCategories();
 handleSectionLinks();
 bindArticleCards();
+initAboutPresenceMap();
 initSectionPage();
 initArticlePage();
 updateHeaderState();
