@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Galería fotográfica de las comunidades de las Siervas de la Misericordia de Dios.">
+    <title>Galería de comunidades | SMD</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Karla:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="icon" type="image/svg+xml" href="https://res.cloudinary.com/dul66qlpq/image/upload/v1762346821/Logo_smd_dj2ldo.svg">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="gallery-page">
+    <div class="preloader" id="preloader" aria-hidden="true">
+        <div class="preloader__inner">
+            <img src="https://res.cloudinary.com/dul66qlpq/image/upload/v1762346821/Logo_smd_dj2ldo.svg" alt="Logo SMD" class="preloader__logo">
+            <div class="preloader__ring"></div>
+        </div>
+    </div>
+
+    <header class="site-header" id="main-header">
+        <div class="topbar">
+            <div class="layout topbar__inner">
+                <p class="topbar__text">Si Mi Dios | Información católica con verdad, belleza y tradición</p>
+            </div>
+        </div>
+
+        <div class="layout header__inner">
+            <a href="index.html" class="header__logo" aria-label="SMD Inicio">
+                <img src="https://res.cloudinary.com/dul66qlpq/image/upload/v1762346821/Logo_smd_dj2ldo.svg" alt="SMD Mi Dios">
+            </a>
+
+            <nav class="primary-nav" aria-label="Navegación principal">
+                <a href="index.html">Inicio</a>
+                <a href="about.html#sobre-nosotras">Siervas</a>
+                <a href="section.html?category=Santuario">Santuario</a>
+                <a href="section.html?category=Pastoral%20Vocacional">Pastoral Vocacional</a>
+                <a class="is-active" href="section.html?category=Presencia%20en%20el%20Mundo">Presencia en el Mundo</a>
+                <a href="contacto.html">Contáctanos</a>
+            </nav>
+
+            <button class="icon-button header__menu-toggle" id="mobile-menu-btn" aria-label="Abrir menú">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+    </header>
+
+    <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+        <div class="mobile-menu__dialog" role="dialog" aria-modal="true" aria-label="Menú móvil">
+            <div class="mobile-menu__header">
+                <img src="https://res.cloudinary.com/dul66qlpq/image/upload/v1762346821/Logo_smd_dj2ldo.svg" alt="SMD Mi Dios" class="mobile-menu__logo">
+                <button class="icon-button" id="close-menu-btn" aria-label="Cerrar menú"><i data-lucide="x"></i></button>
+            </div>
+            <nav class="mobile-menu__nav">
+                <a href="index.html">Inicio</a>
+                <a href="about.html#sobre-nosotras">Siervas</a>
+                <a href="section.html?category=Santuario">Santuario</a>
+                <a href="section.html?category=Pastoral%20Vocacional">Pastoral Vocacional</a>
+                <a href="section.html?category=Presencia%20en%20el%20Mundo">Presencia en el Mundo</a>
+                <a href="contacto.html">Contáctanos</a>
+            </nav>
+        </div>
+    </div>
+
+    <main class="country-gallery-main">
+        <section class="country-gallery-hero">
+            <div class="layout country-gallery-hero__inner">
+                <a class="country-gallery-back" href="section.html?category=Presencia%20en%20el%20Mundo">
+                    <i data-lucide="arrow-left"></i>
+                    Volver al mapa
+                </a>
+                <p class="section-kicker">Galería por país</p>
+                <h1 id="country-gallery-title">Comunidades</h1>
+                <p id="country-gallery-summary">Memoria fotográfica de la misión de las Siervas de la Misericordia de Dios.</p>
+                <div class="country-gallery-stats" aria-live="polite">
+                    <span><strong id="country-gallery-community-count">0</strong> comunidades</span>
+                    <span><strong id="country-gallery-photo-count">0</strong> fotografías</span>
+                </div>
+            </div>
+        </section>
+
+        <div class="layout country-gallery-content">
+            <nav class="country-gallery-tabs" id="country-gallery-tabs" aria-label="Galerías por país"></nav>
+            <div id="country-gallery-communities"></div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="layout footer__inner">
+            <div class="footer__col footer__brand">
+                <img src="https://res.cloudinary.com/dul66qlpq/image/upload/v1762346821/Logo_smd_dj2ldo.svg" alt="SMD Mi Dios">
+                <p>Si Mi Dios narra la vida de la Iglesia con fidelidad y lenguaje de misericordia.</p>
+            </div>
+            <div class="footer__col">
+                <h3>Explorar</h3>
+                <a href="section.html?category=Presencia%20en%20el%20Mundo">Presencia en el Mundo</a>
+                <a href="about.html#sobre-nosotras">Conocer a las Siervas</a>
+                <a href="contacto.html">Contáctanos</a>
+            </div>
+            <div class="footer__col">
+                <h3>Contacto</h3>
+                <a href="mailto:razdiazsiervas@yahoo.es">razdiazsiervas@yahoo.es</a>
+                <a href="tel:+50377469440">+503 7746 9440</a>
+                <p>San Salvador, El Salvador</p>
+            </div>
+        </div>
+        <div class="layout footer__copy">&copy; 2026 SMD Mi Dios. Todos los derechos reservados.</div>
+    </footer>
+
+    <div class="modal modal--lightbox" id="gallery-lightbox" role="dialog" aria-modal="true" aria-labelledby="lightbox-caption">
+        <div class="modal__dialog modal__dialog--lightbox" tabindex="-1">
+            <button class="icon-button modal__close" id="lightbox-close" aria-label="Cerrar galería"><i data-lucide="x"></i></button>
+            <img id="lightbox-image" src="" alt="">
+            <button class="lightbox-nav lightbox-nav--prev" id="lightbox-prev" aria-label="Fotografía anterior"><i data-lucide="chevron-left"></i></button>
+            <button class="lightbox-nav lightbox-nav--next" id="lightbox-next" aria-label="Fotografía siguiente"><i data-lucide="chevron-right"></i></button>
+            <p id="lightbox-caption"></p>
+        </div>
+    </div>
+
+    <script src="gallery-data.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

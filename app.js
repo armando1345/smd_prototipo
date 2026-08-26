@@ -257,6 +257,7 @@ const PRESENCE_COUNTRIES = [
         phone: GENERAL_CONTACT_PHONE,
         tel: GENERAL_CONTACT_TEL,
         email: GENERAL_CONTACT_EMAIL,
+        galleryCount: 8,
         communities: [
             { name: 'Comunidad Juan Pablo II', place: 'Barrio San Felipe, San Miguel', founded: 'Fundada el 29 de agosto de 2011', phone: '+503 7860 4686', tel: '+50378604686' },
             { name: 'Comunidad Madre Camila', place: 'Sesori, San Miguel', founded: 'Fundada el 7 de marzo de 2024', phone: '+503 7850 3128', tel: '+50378503128' },
@@ -285,6 +286,7 @@ const PRESENCE_COUNTRIES = [
         phone: '+504 9717 1302',
         tel: '+50497171302',
         email: GENERAL_CONTACT_EMAIL,
+        galleryCount: 10,
         communities: [
             { name: 'Comunidad Divina Misericordia', place: 'Valle de Ángeles', founded: 'Fundada el 22 de febrero de 2017' },
             { name: 'Comunidad Santa Faustina', place: 'Cerro Grande, Tegucigalpa', founded: 'Fundada el 7 de noviembre de 2020', phone: '+504 9717 1302', tel: '+50497171302' },
@@ -301,6 +303,7 @@ const PRESENCE_COUNTRIES = [
         phone: '',
         tel: '',
         email: GENERAL_CONTACT_EMAIL,
+        galleryCount: 2,
         communities: [
             { name: 'Comunidad de San Óscar Romero', place: 'Nunciatura Apostólica', founded: 'Fundada el 15 de marzo de 2019' },
             { name: 'Comunidad Divino Salvador', place: 'Cruz del Eje, Córdoba', founded: 'Fundada el 29 de enero de 2022' },
@@ -317,6 +320,7 @@ const PRESENCE_COUNTRIES = [
         phone: '+56 9 7437 0277',
         tel: '+56974370277',
         email: GENERAL_CONTACT_EMAIL,
+        galleryCount: 0,
         communities: [
             { name: 'Comunidad San José', place: 'Santiago de Chile', founded: 'Fundada el 3 de mayo de 2026' }
         ],
@@ -331,6 +335,7 @@ const PRESENCE_COUNTRIES = [
         phone: '',
         tel: '',
         email: GENERAL_CONTACT_EMAIL,
+        galleryCount: 2,
         communities: [
             { name: 'Comunidad San Pedro', place: 'Italia', founded: 'Fundada el 21 de junio de 2026' }
         ],
@@ -938,6 +943,25 @@ function renderCountryContact(country = {}) {
     `;
 }
 
+function renderCountryGalleryAction(country = {}) {
+    const count = Number(country.galleryCount) || 0;
+    const countLabel = count === 1 ? '1 fotografía disponible' : `${count} fotografías disponibles`;
+    const availability = count > 0 ? countLabel : 'Aún no hay fotografías publicadas';
+
+    return `
+        <div class="presence-dialog__gallery-action">
+            <a class="presence-gallery-button" href="galeria.html?pais=${encodeURIComponent(country.id || '')}">
+                <span class="presence-gallery-button__icon"><i data-lucide="images"></i></span>
+                <span>
+                    <strong>Ver fotografías</strong>
+                    <small>${escapeHtml(availability)}</small>
+                </span>
+                <i class="presence-gallery-button__arrow" data-lucide="arrow-right"></i>
+            </a>
+        </div>
+    `;
+}
+
 const SECTION_INFO = {
     'Santuario': {
         kicker: 'Contacto del santuario',
@@ -1108,6 +1132,7 @@ ${renderPresenceWorldCountries(interactive)}
                             <dd data-presence-work></dd>
                         </div>
                     </dl>
+                    <div data-presence-gallery></div>
                     <div data-presence-communities></div>
                     <div data-presence-contact></div>
                     <p data-presence-note></p>
@@ -1127,6 +1152,7 @@ ${renderPresenceWorldCountries(interactive)}
     const work = mapMount.querySelector('[data-presence-work]');
     const communities = mapMount.querySelector('[data-presence-communities]');
     const contact = mapMount.querySelector('[data-presence-contact]');
+    const gallery = mapMount.querySelector('[data-presence-gallery]');
     const note = mapMount.querySelector('[data-presence-note]');
     const countryButtons = Array.from(mapMount.querySelectorAll('[data-country-id]'));
 
@@ -1187,6 +1213,7 @@ ${renderPresenceWorldCountries(interactive)}
         if (work) work.textContent = country.work;
         if (communities) communities.innerHTML = renderCountryCommunities(country);
         if (contact) contact.innerHTML = renderCountryContact(country);
+        if (gallery) gallery.innerHTML = renderCountryGalleryAction(country);
         if (note) note.textContent = country.note;
         positionDialog(country.id);
         if (window.lucide && typeof window.lucide.createIcons === 'function') {
@@ -1220,7 +1247,10 @@ ${renderPresenceWorldCountries(interactive)}
     }
 
     if (canvas) {
-        canvas.addEventListener('click', clearCountry);
+        canvas.addEventListener('click', (event) => {
+            if (event.target.closest?.('.presence-country') || event.target.closest?.('.presence-dialog')) return;
+            clearCountry();
+        });
     }
 
     document.addEventListener('click', (event) => {
@@ -1664,6 +1694,95 @@ function initVideoModal() {
     videoModal.addEventListener('keydown', (event) => trapModalFocus(videoModal, event));
 }
 
+function initCountryGalleryPage() {
+    const mount = document.getElementById('country-gallery-communities');
+    const tabs = document.getElementById('country-gallery-tabs');
+    const title = document.getElementById('country-gallery-title');
+    const summary = document.getElementById('country-gallery-summary');
+    const communityCount = document.getElementById('country-gallery-community-count');
+    const photoCount = document.getElementById('country-gallery-photo-count');
+    const galleries = Array.isArray(window.SMD_GALLERIES) ? window.SMD_GALLERIES : [];
+
+    if (!mount || !tabs || !galleries.length) return;
+
+    const requestedCountry = new URLSearchParams(window.location.search).get('pais') || 'SV';
+    const normalizedRequest = requestedCountry.trim().toLowerCase();
+    const country = galleries.find((item) => (
+        item.id.toLowerCase() === normalizedRequest || item.slug.toLowerCase() === normalizedRequest
+    )) || galleries[0];
+    const communities = Array.isArray(country.communities) ? country.communities : [];
+    const totalPhotos = communities.reduce((total, community) => total + (community.photos || []).length, 0);
+
+    document.title = `Galería de ${country.name} | SMD`;
+    const description = document.querySelector('meta[name="description"]');
+    if (description) {
+        description.content = `Galería fotográfica de las comunidades de las Siervas de la Misericordia de Dios en ${country.name}.`;
+    }
+
+    if (title) title.textContent = `Comunidades de ${country.name}`;
+    if (summary) {
+        summary.textContent = totalPhotos
+            ? 'Conoce en imágenes la vida, la misión y los encuentros de cada comunidad.'
+            : 'Este espacio está preparado para reunir la memoria fotográfica de sus comunidades.';
+    }
+    if (communityCount) communityCount.textContent = String(communities.length);
+    if (photoCount) photoCount.textContent = String(totalPhotos);
+
+    tabs.innerHTML = galleries.map((item) => {
+        const count = (item.communities || []).reduce((total, community) => total + (community.photos || []).length, 0);
+        const active = item.id === country.id;
+        return `
+            <a class="country-gallery-tab${active ? ' is-active' : ''}" href="galeria.html?pais=${encodeURIComponent(item.id)}"${active ? ' aria-current="page"' : ''}>
+                <span>${escapeHtml(item.name)}</span>
+                <small>${count}</small>
+            </a>
+        `;
+    }).join('');
+
+    if (!totalPhotos) {
+        mount.innerHTML = `
+            <section class="country-gallery-empty" aria-labelledby="country-gallery-empty-title">
+                <span class="country-gallery-empty__icon"><i data-lucide="image-off"></i></span>
+                <p class="section-kicker">Galería en preparación</p>
+                <h2 id="country-gallery-empty-title">Aún no hay fotografías de ${escapeHtml(country.name)}</h2>
+                <p>Cuando recibamos imágenes de esta comunidad, aparecerán aquí organizadas en su propio álbum.</p>
+                <a class="button button--solid" href="section.html?category=Presencia%20en%20el%20Mundo"><i data-lucide="map"></i> Volver al mapa</a>
+            </section>
+        `;
+    } else {
+        mount.innerHTML = communities.map((community, communityIndex) => {
+            const photos = Array.isArray(community.photos) ? community.photos : [];
+            const label = photos.length === 1 ? '1 fotografía' : `${photos.length} fotografías`;
+            return `
+                <section class="country-community" aria-labelledby="community-title-${communityIndex}">
+                    <header class="country-community__header">
+                        <div>
+                            <p class="section-kicker">${escapeHtml(community.place || country.name)}</p>
+                            <h2 id="community-title-${communityIndex}">${escapeHtml(community.name)}</h2>
+                        </div>
+                        <span class="country-community__count"><i data-lucide="camera"></i>${label}</span>
+                    </header>
+                    <div class="country-community__photos">
+                        ${photos.map((photo, photoIndex) => {
+                            const caption = `${community.name} · Fotografía ${photoIndex + 1} de ${photos.length}`;
+                            return `
+                                <button class="country-photo" type="button" data-lightbox data-full="${escapeHtml(photo)}" data-caption="${escapeHtml(caption)}" aria-label="Ampliar ${escapeHtml(caption)}">
+                                    <img src="${escapeHtml(photo)}" alt="${escapeHtml(caption)}" loading="lazy" decoding="async">
+                                    <span class="country-photo__overlay"><i data-lucide="maximize-2"></i><span>Ampliar</span></span>
+                                </button>
+                            `;
+                        }).join('')}
+                    </div>
+                </section>
+            `;
+        }).join('');
+    }
+
+    if (window.lucide && typeof window.lucide.createIcons === 'function') {
+        window.lucide.createIcons();
+    }
+}
+
 const lightboxModal = document.getElementById('gallery-lightbox');
 const lightboxImage = document.getElementById('lightbox-image');
 const lightboxCaption = document.getElementById('lightbox-caption');
@@ -1845,6 +1964,7 @@ initMobileSubmenus();
 initSectionsDropdown();
 initHeroCarousel();
 initVideoModal();
+initCountryGalleryPage();
 initLightboxGallery();
 initCustomAudioPlayer();
 initMobileFabDonateVisibility();
