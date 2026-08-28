@@ -15,6 +15,114 @@ const GENERAL_WHATSAPP_URL = 'https://wa.me/50377469440';
 const VOCATIONAL_PHONE = '7679-6343';
 const VOCATIONAL_TEL = '+50376796343';
 
+function getGlobalNavState() {
+    const page = (window.location.pathname.split('/').pop() || 'index.html').toLowerCase();
+    const category = new URLSearchParams(window.location.search).get('category') || '';
+
+    if (page === 'index.html' || page === '') return 'inicio';
+    if (page === 'about.html') return 'siervas';
+    if (page === 'contacto.html') return 'contacto';
+    if (page === 'galeria.html') return 'mision';
+    if (page === 'section.html') {
+        if (category === 'Pastoral Vocacional') return 'siervas';
+        if (category === 'Santuario' || category === 'Presencia en el Mundo') return 'mision';
+        return 'actualidad';
+    }
+    if (page === 'article.html' || page === 'premium.html') return 'actualidad';
+    return 'institucional';
+}
+
+function renderGlobalNavigation() {
+    const header = document.getElementById('main-header');
+    const mobile = document.getElementById('mobile-menu');
+    if (!header || !mobile) return;
+
+    const active = getGlobalNavState();
+    const isActive = (key) => active === key ? ' is-active' : '';
+    const logoUrl = 'https://res.cloudinary.com/dul66qlpq/image/upload/v1762346821/Logo_smd_dj2ldo.svg';
+    const facebookIcon = '<svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M22 12.06C22 6.48 17.52 2 11.94 2S2 6.48 2 12.06c0 5.02 3.66 9.18 8.44 9.94v-7.03H7.9v-2.91h2.54V9.84c0-2.51 1.49-3.9 3.77-3.9 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.9h2.78L15.9 15h-2.34V22c4.78-.76 8.44-4.92 8.44-9.94Z"/></svg>';
+    const youtubeIcon = '<svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.12C19.56 3.58 12 3.58 12 3.58s-7.56 0-9.4.5A3 3 0 0 0 .5 6.2 31.2 31.2 0 0 0 0 12a31.2 31.2 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.12c1.84.5 9.4.5 9.4.5s7.56 0 9.4-.5a3 3 0 0 0 2.1-2.12A31.2 31.2 0 0 0 24 12a31.2 31.2 0 0 0-.5-5.8ZM9.6 15.57V8.43L15.82 12 9.6 15.57Z"/></svg>';
+
+    document.body.classList.toggle('site-home', active === 'inicio');
+    header.className = 'site-header global-site-header';
+    header.innerHTML = `
+        <div class="topbar">
+            <div class="layout topbar__inner">
+                <p class="topbar__text">Si Mi Dios · Verdad, belleza y tradición</p>
+                <div class="topbar__actions" aria-label="Canales de SMD">
+                    <a class="social-link" href="#" aria-label="Facebook de SMD">${facebookIcon}</a>
+                    <a class="social-link" href="#" aria-label="YouTube de SMD">${youtubeIcon}</a>
+                    <a class="social-link" href="${GENERAL_WHATSAPP_URL}" rel="noopener" aria-label="WhatsApp de SMD"><i data-lucide="message-circle"></i></a>
+                    <a class="social-link" href="mailto:${GENERAL_CONTACT_EMAIL}" aria-label="Correo de SMD"><i data-lucide="mail"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="layout header__inner">
+            <a href="index.html" class="header__logo" aria-label="SMD Inicio">
+                <img src="${logoUrl}" alt="SMD Mi Dios">
+            </a>
+            <nav class="primary-nav" aria-label="Navegación principal">
+                <a class="nav-link${isActive('inicio')}" href="index.html">Inicio</a>
+                <div class="nav-cluster${isActive('siervas')}">
+                    <a class="nav-cluster__trigger" href="about.html#sobre-nosotras">Las Siervas <i data-lucide="chevron-down"></i></a>
+                    <div class="nav-cluster__menu">
+                        <a href="about.html#sobre-nosotras">Quiénes somos</a>
+                        <a class="js-section-link" href="section.html?category=Pastoral%20Vocacional" data-category="Pastoral Vocacional">Pastoral vocacional</a>
+                    </div>
+                </div>
+                <div class="nav-cluster${isActive('mision')}">
+                    <a class="nav-cluster__trigger" href="section.html?category=Presencia%20en%20el%20Mundo">Misión <i data-lucide="chevron-down"></i></a>
+                    <div class="nav-cluster__menu">
+                        <a class="js-section-link" href="section.html?category=Santuario" data-category="Santuario">Santuario</a>
+                        <a class="js-section-link" href="section.html?category=Presencia%20en%20el%20Mundo" data-category="Presencia en el Mundo">Presencia en el mundo</a>
+                    </div>
+                </div>
+                <div class="nav-cluster${isActive('actualidad')}">
+                    <a class="nav-cluster__trigger js-section-link" href="section.html?category=Mundo" data-category="Mundo">Actualidad <i data-lucide="chevron-down"></i></a>
+                    <div class="nav-cluster__menu">
+                        <a class="js-section-link" href="section.html?category=Vaticano" data-category="Vaticano">Vaticano</a>
+                        <a class="js-section-link" href="section.html?category=San%20Oscar%20Romero" data-category="San Óscar Romero">San Óscar Romero</a>
+                        <a class="js-section-link" href="section.html?category=Liturgia" data-category="Liturgia">Liturgia</a>
+                    </div>
+                </div>
+                <a class="nav-link${isActive('contacto')}" href="contacto.html">Contacto</a>
+                <a class="nav-support" href="contacto.html"><i data-lucide="heart-handshake"></i> Apoyar la misión</a>
+            </nav>
+            <button class="icon-button header__menu-toggle" id="mobile-menu-btn" aria-label="Abrir menú" aria-controls="mobile-menu" aria-expanded="false">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+    `;
+
+    mobile.innerHTML = `
+        <div class="mobile-menu__dialog" role="dialog" aria-modal="true" aria-label="Menú móvil">
+            <div class="mobile-menu__header">
+                <img src="${logoUrl}" alt="SMD Mi Dios" class="mobile-menu__logo">
+                <button class="icon-button" id="close-menu-btn" aria-label="Cerrar menú"><i data-lucide="x"></i></button>
+            </div>
+            <nav class="mobile-menu__nav" aria-label="Navegación móvil">
+                <a class="${isActive('inicio').trim()}" href="index.html">Inicio</a>
+                <p class="mobile-menu__eyebrow">Las Siervas</p>
+                <a href="about.html#sobre-nosotras">Quiénes somos</a>
+                <a class="js-section-link" href="section.html?category=Pastoral%20Vocacional" data-category="Pastoral Vocacional">Pastoral vocacional</a>
+                <p class="mobile-menu__eyebrow">Misión</p>
+                <a class="js-section-link" href="section.html?category=Santuario" data-category="Santuario">Santuario</a>
+                <a class="js-section-link" href="section.html?category=Presencia%20en%20el%20Mundo" data-category="Presencia en el Mundo">Presencia en el mundo</a>
+                <p class="mobile-menu__eyebrow">Actualidad</p>
+                <a class="js-section-link" href="section.html?category=Vaticano" data-category="Vaticano">Vaticano</a>
+                <a class="js-section-link" href="section.html?category=San%20Oscar%20Romero" data-category="San Óscar Romero">San Óscar Romero</a>
+                <a href="contacto.html">Contacto</a>
+                <a class="mobile-menu__support" href="contacto.html"><i data-lucide="heart-handshake"></i> Apoyar la misión</a>
+            </nav>
+        </div>
+    `;
+}
+
+renderGlobalNavigation();
+if (window.lucide && typeof window.lucide.createIcons === 'function') {
+    window.lucide.createIcons();
+}
+
 function shouldOpenNewTab(link) {
     if (!link || !link.href) return false;
     return link.href === SANCTUARY_MAP_URL || (link.href === TEMPLE_PROJECT_URL && link.classList.contains('button'));
@@ -257,7 +365,8 @@ const PRESENCE_COUNTRIES = [
         phone: GENERAL_CONTACT_PHONE,
         tel: GENERAL_CONTACT_TEL,
         email: GENERAL_CONTACT_EMAIL,
-        galleryCount: 8,
+        galleryCount: 12,
+        galleryCover: 'assets/galerias/el-salvador/madre-camila-sesori/foto-01.jpg',
         communities: [
             { name: 'Comunidad Juan Pablo II', place: 'Barrio San Felipe, San Miguel', founded: 'Fundada el 29 de agosto de 2011', phone: '+503 7860 4686', tel: '+50378604686' },
             { name: 'Comunidad Madre Camila', place: 'Sesori, San Miguel', founded: 'Fundada el 7 de marzo de 2024', phone: '+503 7850 3128', tel: '+50378503128' },
@@ -286,7 +395,8 @@ const PRESENCE_COUNTRIES = [
         phone: '+504 9717 1302',
         tel: '+50497171302',
         email: GENERAL_CONTACT_EMAIL,
-        galleryCount: 10,
+        galleryCount: 8,
+        galleryCover: 'assets/galerias/honduras/divina-misericordia/foto-01.jpg',
         communities: [
             { name: 'Comunidad Divina Misericordia', place: 'Valle de Ángeles', founded: 'Fundada el 22 de febrero de 2017' },
             { name: 'Comunidad Santa Faustina', place: 'Cerro Grande, Tegucigalpa', founded: 'Fundada el 7 de noviembre de 2020', phone: '+504 9717 1302', tel: '+50497171302' },
@@ -303,7 +413,8 @@ const PRESENCE_COUNTRIES = [
         phone: '',
         tel: '',
         email: GENERAL_CONTACT_EMAIL,
-        galleryCount: 2,
+        galleryCount: 4,
+        galleryCover: 'assets/galerias/argentina/divino-salvador/foto-01.jpeg',
         communities: [
             { name: 'Comunidad de San Óscar Romero', place: 'Nunciatura Apostólica', founded: 'Fundada el 15 de marzo de 2019' },
             { name: 'Comunidad Divino Salvador', place: 'Cruz del Eje, Córdoba', founded: 'Fundada el 29 de enero de 2022' },
@@ -314,15 +425,16 @@ const PRESENCE_COUNTRIES = [
     {
         id: 'CL',
         name: 'Chile',
-        started: 'Comunidad San José, fundada el 3 de mayo de 2026',
-        work: 'Presencia misionera en Santiago de Chile.',
+        started: 'Comunidad San Pedro',
+        work: 'Presencia misionera de las Siervas en Chile.',
         contactLabel: 'Contacto en Chile',
         phone: '+56 9 7437 0277',
         tel: '+56974370277',
         email: GENERAL_CONTACT_EMAIL,
-        galleryCount: 0,
+        galleryCount: 2,
+        galleryCover: 'assets/galerias/chile/san-pedro/foto-01.jpeg',
         communities: [
-            { name: 'Comunidad San José', place: 'Santiago de Chile', founded: 'Fundada el 3 de mayo de 2026' }
+            { name: 'Comunidad San Pedro', place: 'Chile', founded: '' }
         ],
         note: 'Contacto indicado en el material fuente para Chile.'
     },
@@ -336,6 +448,7 @@ const PRESENCE_COUNTRIES = [
         tel: '',
         email: GENERAL_CONTACT_EMAIL,
         galleryCount: 2,
+        galleryCover: 'assets/galerias/italia/san-pedro/foto-01.jpg',
         communities: [
             { name: 'Comunidad San Pedro', place: 'Italia', founded: 'Fundada el 21 de junio de 2026' }
         ],
@@ -545,6 +658,7 @@ function openMenu() {
     lastFocusedElement = document.activeElement;
     mobileMenu.classList.add('is-open');
     mobileMenu.setAttribute('aria-hidden', 'false');
+    mobileMenuTriggers.forEach((trigger) => trigger.setAttribute('aria-expanded', 'true'));
     document.body.classList.add('no-scroll');
     if (closeMenuBtn) closeMenuBtn.focus();
 }
@@ -553,6 +667,7 @@ function closeMenu() {
     if (!mobileMenu) return;
     mobileMenu.classList.remove('is-open');
     mobileMenu.setAttribute('aria-hidden', 'true');
+    mobileMenuTriggers.forEach((trigger) => trigger.setAttribute('aria-expanded', 'false'));
     const anyModalOpen = Boolean(document.querySelector('.modal.is-open'));
     if (!anyModalOpen) {
         document.body.classList.remove('no-scroll');
@@ -1270,13 +1385,55 @@ ${renderPresenceWorldCountries(interactive)}
     clearCountry();
 }
 
-function initAboutPresenceMap() {
-    const aboutMap = document.getElementById('about-presence-map');
-    if (!aboutMap) return;
+function renderPresenceCountries(displayCategory = '', mountId = 'section-country-presence', options = {}) {
+    const mount = document.getElementById(mountId);
+    if (!mount) return;
 
-    renderPresenceMap('Presencia en el Mundo', 'about-presence-map', {
-        interactive: false,
-        detailHref: 'section.html?category=Presencia%20en%20el%20Mundo'
+    if (displayCategory !== 'Presencia en el Mundo') {
+        mount.hidden = true;
+        mount.innerHTML = '';
+        return;
+    }
+
+    const compact = options.compact === true;
+    mount.hidden = false;
+    mount.innerHTML = `
+        <section class="country-presence${compact ? ' country-presence--compact' : ''}" aria-labelledby="${escapeHtml(mountId)}-title">
+            <header class="country-presence__header">
+                <p class="section-kicker">Presencia en el mundo</p>
+                <h2 id="${escapeHtml(mountId)}-title">Comunidades por país</h2>
+                <p>Selecciona un país para conocer sus comunidades y recorrer su memoria fotográfica.</p>
+            </header>
+            <nav class="country-presence__grid" aria-label="Galerías de comunidades por país">
+                ${PRESENCE_COUNTRIES.map((country) => {
+                    const photoLabel = country.galleryCount === 1 ? '1 fotografía' : `${country.galleryCount} fotografías`;
+                    return `
+                        <a class="country-presence__card" href="galeria.html?pais=${encodeURIComponent(country.id)}" aria-label="Ver comunidades de ${escapeHtml(country.name)}, ${photoLabel}">
+                            <span class="country-presence__portrait">
+                                <img src="${escapeHtml(country.galleryCover || '')}" alt="" loading="lazy" decoding="async">
+                                <span class="country-presence__arrow" aria-hidden="true"><i data-lucide="arrow-up-right"></i></span>
+                            </span>
+                            <strong>${escapeHtml(country.name)}</strong>
+                            <small>${photoLabel}</small>
+                        </a>
+                    `;
+                }).join('')}
+            </nav>
+        </section>
+    `;
+
+    normalizeLinkTargets(mount);
+    if (window.lucide && typeof window.lucide.createIcons === 'function') {
+        window.lucide.createIcons();
+    }
+}
+
+function initAboutPresenceCountries() {
+    const aboutPresence = document.getElementById('about-country-presence');
+    if (!aboutPresence) return;
+
+    renderPresenceCountries('Presencia en el Mundo', 'about-country-presence', {
+        compact: true
     });
 }
 
@@ -1291,11 +1448,11 @@ function renderSectionPage(category = '', articles = [], options = {}) {
     const sectionHero = document.querySelector('.section-hero');
 
     const displayCategory = normalizeCategory(category) || category || DEFAULT_SECTION_CATEGORY;
-    const isPresenceMap = !overview && displayCategory === 'Presencia en el Mundo';
+    const isPresencePage = !overview && displayCategory === 'Presencia en el Mundo';
     const sectionInfo = SECTION_INFO[displayCategory] || null;
     const isSectionInfoPage = !overview && Boolean(sectionInfo);
 
-    if (sectionHero) sectionHero.hidden = isPresenceMap;
+    if (sectionHero) sectionHero.hidden = isPresencePage;
 
     if (kicker) kicker.textContent = overview ? 'Secciones' : displayCategory;
     if (title) {
@@ -1328,13 +1485,13 @@ function renderSectionPage(category = '', articles = [], options = {}) {
     }
 
     renderSectionInfoPanel(displayCategory, overview);
-    renderPresenceMap(overview ? '' : displayCategory);
+    renderPresenceCountries(overview ? '' : displayCategory);
 
     if (!grid) return;
     const listingSection = grid.closest('section');
-    if (listingSection) listingSection.hidden = isPresenceMap || isSectionInfoPage;
+    if (listingSection) listingSection.hidden = isPresencePage || isSectionInfoPage;
     if (empty) empty.hidden = true;
-    if (isPresenceMap || isSectionInfoPage) {
+    if (isPresencePage || isSectionInfoPage) {
         grid.innerHTML = '';
         return;
     }
@@ -1746,7 +1903,7 @@ function initCountryGalleryPage() {
                 <p class="section-kicker">Galería en preparación</p>
                 <h2 id="country-gallery-empty-title">Aún no hay fotografías de ${escapeHtml(country.name)}</h2>
                 <p>Cuando recibamos imágenes de esta comunidad, aparecerán aquí organizadas en su propio álbum.</p>
-                <a class="button button--solid" href="section.html?category=Presencia%20en%20el%20Mundo"><i data-lucide="map"></i> Volver al mapa</a>
+                <a class="button button--solid" href="section.html?category=Presencia%20en%20el%20Mundo"><i data-lucide="globe-2"></i> Ver todos los países</a>
             </section>
         `;
     } else {
@@ -1973,7 +2130,7 @@ initImagePlaceholders();
 applyAllowedCategories();
 handleSectionLinks();
 bindArticleCards();
-initAboutPresenceMap();
+initAboutPresenceCountries();
 initSectionPage();
 initArticlePage();
 updateHeaderState();

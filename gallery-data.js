@@ -5,6 +5,22 @@ window.SMD_GALLERIES = [
         name: 'El Salvador',
         communities: [
             {
+                name: 'Comunidad Juan Pablo II',
+                place: 'San Miguel',
+                photos: [
+                    'assets/galerias/el-salvador/juan-pablo-ii-san-miguel/foto-01.jpeg',
+                    'assets/galerias/el-salvador/juan-pablo-ii-san-miguel/foto-02.jpeg'
+                ]
+            },
+            {
+                name: 'Comunidad San Pedro y San Pablo',
+                place: 'San Salvador',
+                photos: [
+                    'assets/galerias/el-salvador/san-pedro-y-san-pablo-san-salvador/foto-01.jpeg',
+                    'assets/galerias/el-salvador/san-pedro-y-san-pablo-san-salvador/foto-02.jpeg'
+                ]
+            },
+            {
                 name: 'Comunidad Madre Camila',
                 place: 'Sesori, San Miguel',
                 photos: [
@@ -58,9 +74,7 @@ window.SMD_GALLERIES = [
                 place: 'Gracias, Lempira',
                 photos: [
                     'assets/galerias/honduras/san-andres/foto-01.jpg',
-                    'assets/galerias/honduras/san-andres/foto-02.jpg',
-                    'assets/galerias/honduras/san-andres/foto-03.jpg',
-                    'assets/galerias/honduras/san-andres/foto-04.jpg'
+                    'assets/galerias/honduras/san-andres/foto-02.jpg'
                 ]
             },
             {
@@ -79,6 +93,14 @@ window.SMD_GALLERIES = [
         name: 'Argentina',
         communities: [
             {
+                name: 'Comunidad Divino Salvador',
+                place: 'Cruz del Eje, Córdoba',
+                photos: [
+                    'assets/galerias/argentina/divino-salvador/foto-01.jpeg',
+                    'assets/galerias/argentina/divino-salvador/foto-02.jpeg'
+                ]
+            },
+            {
                 name: 'Comunidad Reina de la Paz',
                 place: 'Mar del Plata',
                 photos: [
@@ -94,9 +116,12 @@ window.SMD_GALLERIES = [
         name: 'Chile',
         communities: [
             {
-                name: 'Comunidad San José',
-                place: 'Santiago de Chile',
-                photos: []
+                name: 'Comunidad San Pedro',
+                place: 'Chile',
+                photos: [
+                    'assets/galerias/chile/san-pedro/foto-01.jpeg',
+                    'assets/galerias/chile/san-pedro/foto-02.jpeg'
+                ]
             }
         ]
     },

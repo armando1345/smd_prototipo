@@ -13,9 +13,9 @@ Sitio web estático preparado para publicarse de forma sencilla en GitHub Pages.
 
 ## Imágenes
 
-Las imágenes pesadas se sustituyeron por versiones JPG optimizadas. No es necesario subir archivos PNG antiguos ni una carpeta `assets` duplicada.
+Las imágenes pesadas se sustituyeron por versiones JPG optimizadas. Las fotografías de comunidades se conservan en `assets/galerias`, organizadas por país y comunidad.
 
-El logo sigue cargando desde Cloudinary. Las imágenes de contenido están incluidas localmente junto a `index.html`, para que GitHub Pages pueda servirlas sin configuración adicional.
+El logo sigue cargando desde Cloudinary. Las imágenes editoriales están incluidas localmente junto a `index.html` y las galerías en `assets/galerias`, para que GitHub Pages pueda servirlas sin configuración adicional.
 
 ## Publicación en GitHub Pages
 
