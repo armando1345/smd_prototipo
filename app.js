@@ -64,25 +64,75 @@ function renderGlobalNavigation() {
             <nav class="primary-nav" aria-label="Navegación principal">
                 <a class="nav-link${isActive('inicio')}" href="index.html">Inicio</a>
                 <div class="nav-cluster${isActive('siervas')}">
-                    <a class="nav-cluster__trigger" href="about.html#sobre-nosotras">Las Siervas <i data-lucide="chevron-down"></i></a>
-                    <div class="nav-cluster__menu">
-                        <a href="about.html#sobre-nosotras">Quiénes somos</a>
-                        <a class="js-section-link" href="section.html?category=Pastoral%20Vocacional" data-category="Pastoral Vocacional">Pastoral vocacional</a>
+                    <a class="nav-cluster__trigger" href="about.html#sobre-nosotras" aria-haspopup="true" aria-controls="nav-siervas-menu" aria-expanded="false">Las Siervas <i data-lucide="chevron-down"></i></a>
+                    <div class="nav-cluster__menu" id="nav-siervas-menu">
+                        <div class="layout nav-cluster__inner">
+                            <section class="nav-cluster__column" aria-labelledby="nav-siervas-congregacion">
+                                <p class="nav-cluster__title" id="nav-siervas-congregacion">La congregación</p>
+                                <a href="about.html#sobre-nosotras">Quiénes somos</a>
+                                <a href="about.html#biografia-fundadora">Biografía de la fundadora</a>
+                                <a href="about.html#como-nacen-las-siervas">Cómo nacen las Siervas</a>
+                            </section>
+                            <section class="nav-cluster__column" aria-labelledby="nav-siervas-vida">
+                                <p class="nav-cluster__title" id="nav-siervas-vida">Vocación y vida</p>
+                                <a class="js-section-link" href="section.html?category=Pastoral%20Vocacional" data-category="Pastoral Vocacional">Pastoral vocacional</a>
+                                <a href="about.html#nuestra-mision">Nuestra misión</a>
+                                <a href="about.html#apostolados">Apostolados</a>
+                            </section>
+                            <aside class="nav-cluster__feature">
+                                <span>Siervas de la Misericordia de Dios</span>
+                                <strong>“Habla al mundo de mi misericordia”</strong>
+                                <a href="about.html#sobre-nosotras">Conocer la congregación <i data-lucide="arrow-right"></i></a>
+                            </aside>
+                        </div>
                     </div>
                 </div>
                 <div class="nav-cluster${isActive('mision')}">
-                    <a class="nav-cluster__trigger" href="section.html?category=Presencia%20en%20el%20Mundo">Misión <i data-lucide="chevron-down"></i></a>
-                    <div class="nav-cluster__menu">
-                        <a class="js-section-link" href="section.html?category=Santuario" data-category="Santuario">Santuario</a>
-                        <a class="js-section-link" href="section.html?category=Presencia%20en%20el%20Mundo" data-category="Presencia en el Mundo">Presencia en el mundo</a>
+                    <a class="nav-cluster__trigger" href="section.html?category=Presencia%20en%20el%20Mundo" aria-haspopup="true" aria-controls="nav-mision-menu" aria-expanded="false">Misión <i data-lucide="chevron-down"></i></a>
+                    <div class="nav-cluster__menu" id="nav-mision-menu">
+                        <div class="layout nav-cluster__inner">
+                            <section class="nav-cluster__column" aria-labelledby="nav-mision-obras">
+                                <p class="nav-cluster__title" id="nav-mision-obras">Misión y obras</p>
+                                <a class="js-section-link" href="section.html?category=Santuario" data-category="Santuario">Santuario</a>
+                                <a class="js-section-link" href="section.html?category=Presencia%20en%20el%20Mundo" data-category="Presencia en el Mundo">Presencia en el mundo</a>
+                                <a href="about.html#apostolados">Apostolados</a>
+                            </section>
+                            <section class="nav-cluster__column" aria-labelledby="nav-mision-comunidades">
+                                <p class="nav-cluster__title" id="nav-mision-comunidades">Comunidades</p>
+                                <a href="galeria.html">Galerías por país</a>
+                                <a href="about.html#presencia-en-el-mundo">Países donde servimos</a>
+                                <a href="contacto.html">Contactar a las Siervas</a>
+                            </section>
+                            <aside class="nav-cluster__feature">
+                                <span>Una misericordia concreta</span>
+                                <strong>Presentes junto a quienes más lo necesitan.</strong>
+                                <a class="js-section-link" href="section.html?category=Presencia%20en%20el%20Mundo" data-category="Presencia en el Mundo">Recorrer la misión <i data-lucide="arrow-right"></i></a>
+                            </aside>
+                        </div>
                     </div>
                 </div>
                 <div class="nav-cluster${isActive('actualidad')}">
-                    <a class="nav-cluster__trigger js-section-link" href="section.html?category=Mundo" data-category="Mundo">Actualidad <i data-lucide="chevron-down"></i></a>
-                    <div class="nav-cluster__menu">
-                        <a class="js-section-link" href="section.html?category=Vaticano" data-category="Vaticano">Vaticano</a>
-                        <a class="js-section-link" href="section.html?category=San%20Oscar%20Romero" data-category="San Óscar Romero">San Óscar Romero</a>
-                        <a class="js-section-link" href="section.html?category=Liturgia" data-category="Liturgia">Liturgia</a>
+                    <a class="nav-cluster__trigger" href="section.html?category=Mundo" aria-haspopup="true" aria-controls="nav-actualidad-menu" aria-expanded="false">Actualidad <i data-lucide="chevron-down"></i></a>
+                    <div class="nav-cluster__menu" id="nav-actualidad-menu">
+                        <div class="layout nav-cluster__inner">
+                            <section class="nav-cluster__column" aria-labelledby="nav-actualidad-iglesia">
+                                <p class="nav-cluster__title" id="nav-actualidad-iglesia">Iglesia y actualidad</p>
+                                <a class="js-section-link" href="section.html?category=Vaticano" data-category="Vaticano">Vaticano</a>
+                                <a class="js-section-link" href="section.html?category=San%20Oscar%20Romero" data-category="San Óscar Romero">San Óscar Romero</a>
+                                <a class="js-section-link" href="section.html?category=Liturgia" data-category="Liturgia">Liturgia</a>
+                            </section>
+                            <section class="nav-cluster__column" aria-labelledby="nav-actualidad-explorar">
+                                <p class="nav-cluster__title" id="nav-actualidad-explorar">Explorar</p>
+                                <a class="js-section-link" href="section.html?category=Mundo" data-category="Mundo">Últimos artículos</a>
+                                <a href="galeria.html">Galería</a>
+                                <a href="premium.html">SMD Audio</a>
+                            </section>
+                            <aside class="nav-cluster__feature">
+                                <span>SMD · Si Mi Dios</span>
+                                <strong>Información católica con verdad, belleza y tradición.</strong>
+                                <a class="js-section-link" href="section.html?category=Mundo" data-category="Mundo">Ver actualidad <i data-lucide="arrow-right"></i></a>
+                            </aside>
+                        </div>
                     </div>
                 </div>
                 <a class="nav-link${isActive('contacto')}" href="contacto.html">Contacto</a>
@@ -102,15 +152,30 @@ function renderGlobalNavigation() {
             </div>
             <nav class="mobile-menu__nav" aria-label="Navegación móvil">
                 <a class="${isActive('inicio').trim()}" href="index.html">Inicio</a>
-                <p class="mobile-menu__eyebrow">Las Siervas</p>
-                <a href="about.html#sobre-nosotras">Quiénes somos</a>
-                <a class="js-section-link" href="section.html?category=Pastoral%20Vocacional" data-category="Pastoral Vocacional">Pastoral vocacional</a>
-                <p class="mobile-menu__eyebrow">Misión</p>
-                <a class="js-section-link" href="section.html?category=Santuario" data-category="Santuario">Santuario</a>
-                <a class="js-section-link" href="section.html?category=Presencia%20en%20el%20Mundo" data-category="Presencia en el Mundo">Presencia en el mundo</a>
-                <p class="mobile-menu__eyebrow">Actualidad</p>
-                <a class="js-section-link" href="section.html?category=Vaticano" data-category="Vaticano">Vaticano</a>
-                <a class="js-section-link" href="section.html?category=San%20Oscar%20Romero" data-category="San Óscar Romero">San Óscar Romero</a>
+                <div class="mobile-menu__group${active === 'siervas' ? ' is-open' : ''}">
+                    <button class="mobile-menu__group-toggle" type="button" aria-expanded="${active === 'siervas'}">Las Siervas <i data-lucide="chevron-down"></i></button>
+                    <div class="mobile-menu__group-menu">
+                        <a href="about.html#sobre-nosotras">Quiénes somos</a>
+                        <a href="about.html#biografia-fundadora">Biografía de la fundadora</a>
+                        <a class="js-section-link" href="section.html?category=Pastoral%20Vocacional" data-category="Pastoral Vocacional">Pastoral vocacional</a>
+                    </div>
+                </div>
+                <div class="mobile-menu__group${active === 'mision' ? ' is-open' : ''}">
+                    <button class="mobile-menu__group-toggle" type="button" aria-expanded="${active === 'mision'}">Misión <i data-lucide="chevron-down"></i></button>
+                    <div class="mobile-menu__group-menu">
+                        <a class="js-section-link" href="section.html?category=Santuario" data-category="Santuario">Santuario</a>
+                        <a class="js-section-link" href="section.html?category=Presencia%20en%20el%20Mundo" data-category="Presencia en el Mundo">Presencia en el mundo</a>
+                        <a href="galeria.html">Galerías por país</a>
+                    </div>
+                </div>
+                <div class="mobile-menu__group${active === 'actualidad' ? ' is-open' : ''}">
+                    <button class="mobile-menu__group-toggle" type="button" aria-expanded="${active === 'actualidad'}">Actualidad <i data-lucide="chevron-down"></i></button>
+                    <div class="mobile-menu__group-menu">
+                        <a class="js-section-link" href="section.html?category=Vaticano" data-category="Vaticano">Vaticano</a>
+                        <a class="js-section-link" href="section.html?category=San%20Oscar%20Romero" data-category="San Óscar Romero">San Óscar Romero</a>
+                        <a class="js-section-link" href="section.html?category=Liturgia" data-category="Liturgia">Liturgia</a>
+                    </div>
+                </div>
                 <a href="contacto.html">Contacto</a>
                 <a class="mobile-menu__support" href="contacto.html"><i data-lucide="heart-handshake"></i> Apoyar la misión</a>
             </nav>
@@ -234,7 +299,7 @@ const SECTION_FALLBACKS = {
             title: 'El llamado a la vida religiosa',
             category: 'Pastoral Vocacional',
             excerpt: 'Un camino de fe, gracia y entrega generosa al plan del Creador.',
-            image: 'madre-coronada.jpg',
+            image: 'madre-reina-angelica-crucifijo.png',
             body: 'Para las jóvenes que experimentan una inquietud espiritual o sienten el llamado del Señor, la congregación ofrece un espacio eclesial y formativo para descubrir y consolidar la vocación a la vida consagrada.'
         },
         {
@@ -719,9 +784,84 @@ function initMobileSubmenus() {
         toggle.addEventListener('click', () => {
             const parent = toggle.closest('.mobile-menu__group');
             if (!parent) return;
-            const isOpen = parent.classList.toggle('is-open');
+            const wasOpen = parent.classList.contains('is-open');
+            document.querySelectorAll('.mobile-menu__group.is-open').forEach((group) => {
+                group.classList.remove('is-open');
+                const groupToggle = group.querySelector('.mobile-menu__group-toggle');
+                if (groupToggle) groupToggle.setAttribute('aria-expanded', 'false');
+            });
+            const isOpen = !wasOpen;
+            parent.classList.toggle('is-open', isOpen);
             toggle.setAttribute('aria-expanded', String(isOpen));
         });
+    });
+}
+
+function closeDesktopMegaMenus(except = null) {
+    document.querySelectorAll('.primary-nav .nav-cluster.is-open, .primary-nav .nav-cluster.is-hovering').forEach((cluster) => {
+        if (cluster === except) return;
+        cluster.classList.remove('is-open', 'is-hovering');
+        const trigger = cluster.querySelector('.nav-cluster__trigger');
+        if (trigger) trigger.setAttribute('aria-expanded', 'false');
+    });
+}
+
+function initDesktopMegaMenus() {
+    const nav = document.querySelector('.primary-nav');
+    if (!nav || nav.dataset.megaMenuBound) return;
+    nav.dataset.megaMenuBound = 'true';
+
+    nav.addEventListener('click', (event) => {
+        const trigger = event.target.closest('.nav-cluster__trigger');
+        if (!trigger || !window.matchMedia('(min-width: 1101px)').matches) return;
+        const cluster = trigger.closest('.nav-cluster');
+        if (!cluster) return;
+        event.preventDefault();
+        const willOpen = !cluster.classList.contains('is-open');
+        closeDesktopMegaMenus(cluster);
+        cluster.classList.toggle('is-open', willOpen);
+        trigger.setAttribute('aria-expanded', String(willOpen));
+    }, true);
+
+    document.querySelectorAll('.primary-nav .nav-cluster').forEach((cluster) => {
+        const trigger = cluster.querySelector('.nav-cluster__trigger');
+        const menu = cluster.querySelector('.nav-cluster__menu');
+        if (!trigger || !menu) return;
+        let hoverCloseTimer = 0;
+
+        cluster.addEventListener('pointerenter', () => {
+            if (window.matchMedia('(min-width: 1101px)').matches) {
+                window.clearTimeout(hoverCloseTimer);
+                cluster.classList.add('is-hovering');
+                trigger.setAttribute('aria-expanded', 'true');
+            }
+        });
+
+        cluster.addEventListener('pointerleave', () => {
+            window.clearTimeout(hoverCloseTimer);
+            hoverCloseTimer = window.setTimeout(() => {
+                cluster.classList.remove('is-hovering');
+                if (!cluster.classList.contains('is-open')) {
+                    trigger.setAttribute('aria-expanded', 'false');
+                }
+            }, 240);
+        });
+
+        menu.addEventListener('click', (event) => {
+            if (event.target.closest('a')) closeDesktopMegaMenus();
+        });
+    });
+
+    document.addEventListener('click', (event) => {
+        if (!event.target.closest('.primary-nav .nav-cluster')) {
+            closeDesktopMegaMenus();
+        }
+    });
+
+    window.addEventListener('resize', () => {
+        if (!window.matchMedia('(min-width: 1101px)').matches) {
+            closeDesktopMegaMenus();
+        }
     });
 }
 
@@ -2102,6 +2242,7 @@ function initMobileFabDonateVisibility() {
 document.addEventListener('keydown', (event) => {
     if (event.key !== 'Escape') return;
 
+    closeDesktopMegaMenus();
     closeArticleModal();
     closeVideoModal();
     closeModal(lightboxModal);
@@ -2118,6 +2259,7 @@ window.addEventListener('resize', updateHeaderState);
 initPreloader();
 initLinkTargetPolicy();
 initMobileSubmenus();
+initDesktopMegaMenus();
 initSectionsDropdown();
 initHeroCarousel();
 initVideoModal();
