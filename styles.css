@@ -4815,6 +4815,27 @@ main {
     line-height: 1.78;
 }
 
+.about-story__founder-portrait {
+    float: right;
+    width: min(340px, 43%);
+    margin: 10px 0 32px clamp(28px, 5vw, 54px);
+    border-bottom: 4px solid var(--color-red);
+    background: var(--color-offwhite);
+}
+
+.about-story__founder-portrait img {
+    width: 100%;
+    height: auto;
+}
+
+.about-story__founder-portrait figcaption {
+    color: var(--color-muted);
+    padding: 14px 16px 16px;
+    font-size: 0.88rem;
+    font-weight: 700;
+    line-height: 1.4;
+}
+
 .about-story__content h2,
 .about-story__content h3 {
     margin-top: clamp(30px, 5vw, 58px);
@@ -5116,20 +5137,60 @@ main {
         height: 54px;
     }
 
+    .site-home .hero {
+        min-height: max(680px, 100svh);
+    }
+
+    .site-home .hero-slide {
+        background-position: 54% center;
+    }
+
+    .site-home .hero-slide__overlay {
+        background: linear-gradient(180deg, rgba(7, 17, 30, 0.48) 0%, rgba(7, 17, 30, 0.72) 34%, rgba(7, 17, 30, 0.62) 70%, rgba(7, 17, 30, 0.8) 100%);
+    }
+
     .site-home .hero-slide__content {
-        justify-content: center;
-        padding-top: 118px;
+        align-content: start;
+        gap: 12px;
+        padding-top: 146px;
+        padding-bottom: 96px;
         text-align: center;
     }
 
-    .site-home .hero-slide__title {
+    .site-home .hero-slide__kicker {
         margin-inline: auto;
-        font-size: clamp(2.65rem, 13vw, 4.2rem);
+        font-size: 0.78rem;
+        font-weight: 800;
+    }
+
+    .site-home .hero-slide__title {
+        max-width: 11.5ch;
+        margin-inline: auto;
+        font-size: clamp(2.35rem, 11.4vw, 3.05rem);
+        line-height: 0.98;
+        letter-spacing: -0.035em;
+        overflow-wrap: normal;
+        text-wrap: balance;
     }
 
     .site-home .hero-slide__subtitle {
+        max-width: 31ch;
         margin-inline: auto;
-        font-size: 1.04rem;
+        font-size: clamp(0.96rem, 4.1vw, 1.06rem);
+        line-height: 1.4;
+        overflow-wrap: normal;
+        text-wrap: balance;
+    }
+
+    .site-home .hero-slide__content .button {
+        min-height: 48px;
+        margin: 6px auto 0;
+        padding: 12px 20px;
+        font-size: 0.96rem;
+    }
+
+    .site-home .hero-carousel__dots {
+        bottom: max(22px, env(safe-area-inset-bottom));
     }
 
     .mission-section,
@@ -5179,6 +5240,12 @@ main {
         margin-top: 54px;
     }
 
+    .about-story__founder-portrait {
+        float: none;
+        width: min(360px, 100%);
+        margin: 22px auto 32px;
+    }
+
     .contact-layout {
         min-height: 0;
         gap: 46px;
@@ -5217,6 +5284,39 @@ main {
 
     .mobile-menu__nav > a {
         padding: 11px 4px;
+    }
+}
+
+@media (max-width: 420px) {
+    .global-site-header {
+        --global-topbar-height: 34px;
+        --global-nav-height: 68px;
+    }
+
+    .global-site-header .header__logo img {
+        height: 50px;
+    }
+
+    .site-home .hero {
+        min-height: max(640px, 100svh);
+    }
+
+    .site-home .hero-slide__content {
+        padding-top: 132px;
+        padding-bottom: 82px;
+    }
+
+    .site-home .hero-slide__title {
+        font-size: clamp(2.2rem, 11.2vw, 2.75rem);
+    }
+
+    .site-home .hero-slide__subtitle {
+        max-width: 29ch;
+        font-size: 0.94rem;
+    }
+
+    .site-home .hero-slide__content .button {
+        width: min(100%, 280px);
     }
 }
 

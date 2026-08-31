@@ -299,7 +299,7 @@ const SECTION_FALLBACKS = {
             title: 'El llamado a la vida religiosa',
             category: 'Pastoral Vocacional',
             excerpt: 'Un camino de fe, gracia y entrega generosa al plan del Creador.',
-            image: 'madre-reina-angelica-crucifijo.png',
+            image: 'jovenes-cruces.jpg',
             body: 'Para las jóvenes que experimentan una inquietud espiritual o sienten el llamado del Señor, la congregación ofrece un espacio eclesial y formativo para descubrir y consolidar la vocación a la vida consagrada.'
         },
         {
