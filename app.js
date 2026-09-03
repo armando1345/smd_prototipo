@@ -7,7 +7,6 @@ const SECTION_STORAGE_KEY = 'smd-section-data';
 const DEFAULT_SECTION_CATEGORY = 'Mundo';
 const SECTION_OVERVIEW_TITLE = 'Últimos artículos';
 const SANCTUARY_MAP_URL = 'https://www.google.com/maps/search/?api=1&query=Templo%20de%20Jes%C3%BAs%20de%20la%20Divina%20Misericordia%2C%20Osicala%2C%20Moraz%C3%A1n%2C%20El%20Salvador';
-const TEMPLE_PROJECT_URL = 'https://www.templodejesusdeladivinamisericordiaelsalvador.com/';
 const GENERAL_CONTACT_EMAIL = 'razdiazsiervas@yahoo.es';
 const GENERAL_CONTACT_PHONE = '+503 7746 9440';
 const GENERAL_CONTACT_TEL = '+50377469440';
@@ -23,6 +22,7 @@ function getGlobalNavState() {
     if (page === 'about.html') return 'siervas';
     if (page === 'contacto.html') return 'contacto';
     if (page === 'galeria.html') return 'mision';
+    if (page === 'santuario.html' || page.startsWith('santuario-')) return 'mision';
     if (page === 'section.html') {
         if (category === 'Pastoral Vocacional') return 'siervas';
         if (category === 'Santuario' || category === 'Presencia en el Mundo') return 'mision';
@@ -93,7 +93,7 @@ function renderGlobalNavigation() {
                         <div class="layout nav-cluster__inner">
                             <section class="nav-cluster__column" aria-labelledby="nav-mision-obras">
                                 <p class="nav-cluster__title" id="nav-mision-obras">Misión y obras</p>
-                                <a class="js-section-link" href="section.html?category=Santuario" data-category="Santuario">Santuario</a>
+                                <a href="santuario-recorrido.html">Santuario</a>
                                 <a class="js-section-link" href="section.html?category=Presencia%20en%20el%20Mundo" data-category="Presencia en el Mundo">Presencia en el mundo</a>
                                 <a href="about.html#apostolados">Apostolados</a>
                             </section>
@@ -163,7 +163,7 @@ function renderGlobalNavigation() {
                 <div class="mobile-menu__group${active === 'mision' ? ' is-open' : ''}">
                     <button class="mobile-menu__group-toggle" type="button" aria-expanded="${active === 'mision'}">Misión <i data-lucide="chevron-down"></i></button>
                     <div class="mobile-menu__group-menu">
-                        <a class="js-section-link" href="section.html?category=Santuario" data-category="Santuario">Santuario</a>
+                        <a href="santuario-recorrido.html">Santuario</a>
                         <a class="js-section-link" href="section.html?category=Presencia%20en%20el%20Mundo" data-category="Presencia en el Mundo">Presencia en el mundo</a>
                         <a href="galeria.html">Galerías por país</a>
                     </div>
@@ -190,7 +190,7 @@ if (window.lucide && typeof window.lucide.createIcons === 'function') {
 
 function shouldOpenNewTab(link) {
     if (!link || !link.href) return false;
-    return link.href === SANCTUARY_MAP_URL || (link.href === TEMPLE_PROJECT_URL && link.classList.contains('button'));
+    return link.href === SANCTUARY_MAP_URL || link.dataset.external === 'true';
 }
 
 function normalizeLinkTargets(root = document) {
@@ -672,6 +672,10 @@ function getAllSectionFallbacks() {
 
 function navigateToSection(rawCategory = '', href = '') {
     const category = normalizeCategory(rawCategory) || DEFAULT_SECTION_CATEGORY;
+    if (category === 'Santuario') {
+        window.location.href = 'santuario-recorrido.html';
+        return;
+    }
     const articles = filterArticlesByCategory(category);
     saveSectionData({ category, articles });
     const targetHref = href || `section.html?category=${encodeURIComponent(category)}`;
@@ -1658,6 +1662,12 @@ function renderSectionPage(category = '', articles = [], options = {}) {
 function initSectionPage() {
     const sectionPage = document.querySelector('.section-page');
     if (!sectionPage) return;
+
+    const requestedCategory = new URLSearchParams(window.location.search).get('category') || '';
+    if (normalizeCategory(requestedCategory) === 'Santuario') {
+        window.location.replace('santuario-recorrido.html');
+        return;
+    }
 
     const params = new URLSearchParams(window.location.search);
     const rawCategory = params.get('category') || '';
