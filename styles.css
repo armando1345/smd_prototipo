@@ -4313,6 +4313,9 @@ main {
 .sanctuary-nav__brand {
     display: flex;
     align-items: center;
+    width: 100%;
+    min-width: 0;
+    min-height: 44px;
     line-height: 1.1;
 }
 
@@ -4320,16 +4323,22 @@ main {
     max-width: 310px;
     color: #fff;
     font-size: 1rem;
+    overflow-wrap: anywhere;
 }
 
 .sanctuary-nav__links {
     display: flex;
     justify-content: flex-end;
     gap: 4px;
+    min-width: 0;
 }
 
 .sanctuary-nav__links a {
     position: relative;
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    min-height: 44px;
     padding: 11px 10px;
     color: rgba(255, 255, 255, 0.82);
     font-size: 0.9rem;
@@ -4382,7 +4391,7 @@ main {
 .sanctuary-card__eyebrow {
     margin-bottom: 16px;
     color: var(--color-red);
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     font-weight: 800;
     letter-spacing: 0.08em;
     text-transform: none;
@@ -4400,7 +4409,7 @@ main {
 
 .sanctuary-hero h1 {
     max-width: 10ch;
-    font-size: clamp(3.3rem, 6.6vw, 6.6rem);
+    font-size: clamp(3.3rem, 5.8vw, 5.2rem);
     line-height: 0.93;
     letter-spacing: -0.055em;
 }
@@ -4536,9 +4545,9 @@ main {
 
 .sanctuary-card__number {
     color: var(--color-red);
-    font-size: 0.78rem;
+    font-size: 0.88rem;
     font-weight: 800;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.08em;
 }
 
 .sanctuary-card h3 {
@@ -4679,6 +4688,7 @@ main {
 
 .sanctuary-jump select {
     min-width: 250px;
+    min-height: 46px;
     border: 1px solid var(--color-line);
     border-radius: 4px;
     background: #fff;
@@ -4797,6 +4807,17 @@ main {
     background: var(--color-blue-dark);
     color: rgba(255, 255, 255, 0.76);
     padding: clamp(36px, 6vw, 72px);
+}
+
+.sanctuary-contact-card > *,
+.sanctuary-contact-card__links,
+.sanctuary-contact-card__links a {
+    min-width: 0;
+}
+
+.sanctuary-contact-card h2,
+.sanctuary-contact-card__links a {
+    overflow-wrap: anywhere;
 }
 
 .sanctuary-contact-card h2 {
@@ -4923,6 +4944,9 @@ main {
 }
 
 .saint-prayer summary {
+    display: flex;
+    align-items: center;
+    min-height: 44px;
     color: var(--color-blue-dark);
     font-size: 1.15rem;
     font-weight: 800;
@@ -5039,7 +5063,7 @@ main {
     line-height: 1.55;
 }
 
-@media (max-width: 1080px) {
+@media (max-width: 1200px) {
     .sanctuary-nav__inner {
         grid-template-columns: 1fr;
         gap: 8px;
@@ -5049,6 +5073,8 @@ main {
     .sanctuary-nav__links {
         justify-content: flex-start;
         overflow-x: auto;
+        overscroll-behavior-inline: contain;
+        -webkit-overflow-scrolling: touch;
         scrollbar-width: thin;
     }
 
@@ -5061,19 +5087,40 @@ main {
     }
 }
 
+@media (max-width: 900px) {
+    .sanctuary-hero,
+    .sanctuary-image-band {
+        grid-template-columns: 1fr;
+    }
+
+    .sanctuary-hero {
+        min-height: auto;
+    }
+
+    .sanctuary-hero__content {
+        padding: 64px 32px 70px;
+    }
+
+    .sanctuary-hero__media {
+        min-height: 440px;
+        order: -1;
+    }
+}
+
 @media (max-width: 760px) {
     .sanctuary-nav__brand strong {
         font-size: 0.92rem;
     }
 
     .sanctuary-nav__links {
-        width: calc(100vw - 32px);
+        width: 100%;
+        max-width: 100%;
         padding-bottom: 4px;
     }
 
     .sanctuary-nav__links a {
         padding-inline: 8px;
-        font-size: 0.86rem;
+        font-size: 0.9rem;
     }
 
     .sanctuary-hero,
@@ -5144,7 +5191,7 @@ main {
     }
 
     .saint-index a {
-        font-size: 0.85rem;
+        font-size: 0.9rem;
     }
 
     .saint-profile__portrait {
@@ -5178,6 +5225,14 @@ main {
 }
 
 @media (max-width: 480px) {
+    .sanctuary-contact-card {
+        padding: 30px 22px;
+    }
+
+    .sanctuary-contact-card h2 {
+        font-size: clamp(2rem, 10vw, 2.5rem);
+    }
+
     .sanctuary-hero__media {
         min-height: 340px;
     }
