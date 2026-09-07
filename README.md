@@ -15,6 +15,8 @@ Sitio web estático preparado para publicarse de forma sencilla en GitHub Pages.
 
 Las imágenes pesadas se sustituyeron por versiones JPG optimizadas. Las fotografías de comunidades se conservan en `assets/galerias`, organizadas por país y comunidad.
 
+El recorrido del templo conserva las secuencias de cuadros y reliquias en `assets/santuario/rotacion`. Se recuperaron de los GIF originales publicados (aunque tenían extensión `.jpg`) en https://armando1345.github.io/smd_prototipo/santuario-recorrido.html. Cada secuencia empieza con la nueva fotografía frontal de septiembre de 2026 y continúa en el orden original cada seis segundos. `santuario.js` controla la rotación, la pausa y la navegación manual.
+
 El logo sigue cargando desde Cloudinary. Las imágenes editoriales están incluidas localmente junto a `index.html` y las galerías en `assets/galerias`, para que GitHub Pages pueda servirlas sin configuración adicional.
 
 ## Publicación en GitHub Pages

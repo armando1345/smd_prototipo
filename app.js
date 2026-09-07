@@ -460,7 +460,7 @@ const PRESENCE_COUNTRIES = [
         phone: '+504 9717 1302',
         tel: '+50497171302',
         email: GENERAL_CONTACT_EMAIL,
-        galleryCount: 8,
+        galleryCount: 6,
         galleryCover: 'assets/galerias/honduras/divina-misericordia/foto-01.jpg',
         communities: [
             { name: 'Comunidad Divina Misericordia', place: 'Valle de Ángeles', founded: 'Fundada el 22 de febrero de 2017' },
@@ -1554,7 +1554,7 @@ function renderPresenceCountries(displayCategory = '', mountId = 'section-countr
                     return `
                         <a class="country-presence__card" href="galeria.html?pais=${encodeURIComponent(country.id)}" aria-label="Ver comunidades de ${escapeHtml(country.name)}, ${photoLabel}">
                             <span class="country-presence__portrait">
-                                <img src="${escapeHtml(country.galleryCover || '')}" alt="" loading="lazy" decoding="async">
+                                <span class="country-presence__crop"><img src="${escapeHtml(country.galleryCover || '')}" alt="" loading="lazy" decoding="async"></span>
                                 <span class="country-presence__arrow" aria-hidden="true"><i data-lucide="arrow-up-right"></i></span>
                             </span>
                             <strong>${escapeHtml(country.name)}</strong>

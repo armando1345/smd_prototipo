@@ -64,9 +64,7 @@ window.SMD_GALLERIES = [
                 place: 'Valle de Ángeles',
                 photos: [
                     'assets/galerias/honduras/divina-misericordia/foto-01.jpg',
-                    'assets/galerias/honduras/divina-misericordia/foto-02.jpg',
-                    'assets/galerias/honduras/divina-misericordia/foto-03.jpg',
-                    'assets/galerias/honduras/divina-misericordia/foto-04.jpg'
+                    'assets/galerias/honduras/divina-misericordia/foto-02.jpg'
                 ]
             },
             {

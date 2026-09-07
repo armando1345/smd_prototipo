@@ -9,3 +9,4 @@ Desktop.ini
 
 # Local-only artifacts
 *.log
+tmp/original-saints/
